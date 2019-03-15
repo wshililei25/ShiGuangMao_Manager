@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.youth.banner.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/padding_content_middle"
+            android:paddingLeft="@dimen/padding_content_middle"
+            android:paddingTop="@dimen/padding_content_middle"
+            android:paddingRight="@dimen/padding_content_middle"
+            android:textSize="@dimen/text_big_size"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/countText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_content_middle"
+            android:paddingTop="@dimen/padding_content_middle"
+            android:paddingRight="@dimen/padding_content_middle"
+            android:text="@string/sellCount"
+            android:textColor="@color/text_dark" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/padding_content_middle"
+            android:paddingTop="@dimen/padding_content_middle"
+            android:paddingRight="@dimen/padding_content_middle">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/priceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:layout_marginRight="@dimen/common_margin"
+                android:textColor="@color/yRedLight"
+                android:textSize="@dimen/text_big_size" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/marketPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_dark"
+                android:textSize="@dimen/text_small_size" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_views"
+            android:background="@color/common_background" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_content_middle">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/storeIcon"
+                android:layout_width="@dimen/profileIconSize"
+                android:layout_height="@dimen/profileIconSize"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/margin_views"
+                android:layout_marginRight="@dimen/margin_views" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/storeNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_big_size"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_views"
+            android:background="@color/common_background" />
+
+        <include
+            android:id="@+id/combosInfoLayout"
+            layout="@layout/item_detail_package_info" />
+
+        <include
+            android:id="@+id/costumesLayout"
+            layout="@layout/item_detail_costumes" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_views"
+            android:background="@color/common_background" />
+
+        <LinearLayout
+            android:id="@+id/moreLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/evaluationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_content">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_leave_word_the_latest_evaluation" />
+
+                <TextView
+                    android:id="@+id/evaluateMoreBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="5dp"
+                    android:text="@string/more" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/margin_views"
+                android:background="@color/common_background" />
+
+            <FrameLayout
+                android:id="@+id/paymentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_content">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/take_photos_first_and_pay_when_you_are_satisfied" />
+
+                <TextView
+                    android:id="@+id/photoPayMoreBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawableRight="@drawable/ic_right_arrow"
+                    android:drawablePadding="5dp"
+                    android:text="@string/more" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@color/bg_divider" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/detailImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

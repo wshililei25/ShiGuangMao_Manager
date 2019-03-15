@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_page">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background">
+
+            <ImageView
+                android:id="@+id/bellView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/common_padding"
+                android:paddingTop="@dimen/common_padding"
+                android:paddingBottom="@dimen/common_padding"
+                android:src="@drawable/bg_bellw" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/bellView"
+                android:src="@drawable/circular2" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/userIconView"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_below="@+id/bellView"
+                android:layout_margin="@dimen/common_margin"
+                android:src="@drawable/avatar_w"
+                app:civ_border_color="@color/border_image"
+                app:civ_border_width="4dp" />
+
+            <TextView
+                android:id="@+id/nickNameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/userIconView"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:layout_toEndOf="@+id/userIconView"
+                android:textColor="@color/common_white" />
+
+            <TextView
+                android:id="@+id/professionView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/nickNameView"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:layout_toEndOf="@+id/nickNameView"
+                android:textColor="@color/common_white" />
+
+            <View
+                android:id="@+id/dividerView"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/professionView"
+                android:layout_alignBottom="@+id/professionView"
+                android:layout_marginEnd="@dimen/common_margin"
+                android:layout_toEndOf="@+id/professionView"
+                android:background="@color/common_white" />
+
+            <TextView
+                android:id="@+id/positionView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/dividerView"
+                android:layout_toEndOf="@id/dividerView"
+                android:textColor="@color/common_white" />
+
+            <TextView
+                android:id="@+id/nameView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nickNameView"
+                android:layout_alignStart="@+id/nickNameView"
+                android:layout_marginTop="@dimen/common_margin"
+                android:layout_marginBottom="@dimen/common_margin"
+                android:layout_toEndOf="@+id/userIconView"
+                android:textColor="@color/common_white" />
+
+            <TextView
+                android:id="@+id/phoneView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/nameView"
+                android:layout_marginStart="@dimen/common_margin"
+                android:layout_toEndOf="@+id/nameView"
+                android:textColor="@color/common_white" />
+
+            <TextView
+                android:id="@+id/locationView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/nameView"
+                android:layout_alignStart="@+id/nameView"
+                android:layout_toEndOf="@+id/userIconView"
+                android:textColor="@color/common_white" />
+
+
+            <TextView
+                android:id="@+id/workStatusView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/userIconView"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/reload"
+                android:gravity="center"
+                android:textColor="@color/common_white" />
+        </RelativeLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fadingEdge="none"
+        android:overScrollMode="never"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/fragment_me_part" />
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

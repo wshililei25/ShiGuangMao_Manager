@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/professionDescribeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="该老师职位为"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mProfessionTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/keyPosition"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mPositionView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/yRed"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/professionDescribeView"
+                android:layout_centerHorizontal="true"
+                android:text="TA的收费标准为"
+                android:textSize="@dimen/yTextMiddleLarSize"/>
+
+            <LinearLayout
+                android:id="@+id/chargingStandardView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/professionDescribeView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拍摄费用："
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mAmountTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/unitChargingStandard"
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/chargingStandardView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="资历费："
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/yTextMiddleLarSize"/>
+
+                <TextView
+                    android:id="@+id/mAmountRecordTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/common_red"
+                    android:textSize="@dimen/yTextHugeSize"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

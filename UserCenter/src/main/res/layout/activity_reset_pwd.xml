@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ssssss"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/titlePasswordModification" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_views"
+        android:background="@drawable/bg_round_rect_border_white_solid_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/mMobileEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableStart="@drawable/telephonew"
+            android:drawablePadding="@dimen/padding_drawable"
+            android:hint="@string/input_mobile"
+            android:inputType="phone"
+            android:padding="@dimen/padding_content"
+            android:singleLine="true"
+            android:textColor="@color/common_white"
+            android:textColorHint="@color/common_white"
+            android:textCursorDrawable="@drawable/bg_divider_w_1dp"
+            android:textSize="@dimen/text_middle_size" />
+
+        <ImageView
+            android:id="@+id/delPhoneBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_content"
+            android:src="@drawable/delet_zhaopian_1x" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_views"
+        android:layout_marginEnd="@dimen/margin_views"
+        android:background="@drawable/bg_round_rect_border_white_solid_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/mCodeEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableStart="@drawable/abw"
+            android:drawablePadding="@dimen/padding_drawable"
+            android:hint="@string/input_sms_code"
+            android:inputType="number"
+            android:padding="@dimen/padding_content"
+            android:singleLine="true"
+            android:textColor="@color/common_white"
+            android:textColorHint="@color/common_white"
+            android:textCursorDrawable="@drawable/bg_divider_w_1dp"
+            android:textSize="@dimen/text_middle_size" />
+
+        <TextView
+            android:id="@+id/mSendCodeTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_content"
+            android:text="@string/get_code"
+            android:textColor="@color/common_white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_views"
+        android:background="@drawable/bg_round_rect_border_white_solid_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/mPswEt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:drawableStart="@drawable/unlockw"
+            android:drawablePadding="@dimen/padding_drawable"
+            android:hint="@string/hint_type_password"
+            android:inputType="phone"
+            android:padding="@dimen/padding_content"
+            android:singleLine="true"
+            android:textColor="@color/common_white"
+            android:textColorHint="@color/common_white"
+            android:textCursorDrawable="@drawable/bg_divider_w_1dp"
+            android:textSize="@dimen/text_middle_size" />
+
+        <ImageView
+            android:id="@+id/delPasswordBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_content"
+            android:src="@drawable/delet_zhaopian_1x" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_views"
+        android:layout_marginEnd="@dimen/margin_views"
+        android:enabled="false"
+        android:background="@drawable/btn_common_selector"
+        android:gravity="center"
+        android:padding="@dimen/padding_content"
+        android:text="@string/reset_pwd"
+        android:textColor="@color/common_white" />
+</LinearLayout>

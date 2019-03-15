@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical.White">
+
+    <ImageView
+        android:id="@+id/mIv"
+        style="@style/MatchWrap"
+        android:layout_height="175dp"
+        android:scaleType="fitXY"
+        android:layout_marginLeft="@dimen/yPaddingMinSmall"
+        android:layout_marginRight="@dimen/yPaddingMinSmall"/>
+
+    <TextView
+        android:id="@+id/mNameTv"
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/yPaddingMiddle"
+        android:text="@string/creditScore"
+        android:textColor="@color/yBlack"
+        android:textSize="@dimen/yTextBigSize"/>
+
+</LinearLayout>

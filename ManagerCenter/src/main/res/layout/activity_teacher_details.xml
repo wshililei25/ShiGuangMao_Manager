@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical.White"
+    tools:ignore="MissingDefaultResource">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapse_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|snap">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:background="@drawable/mainphoto2"
+                android:padding="@dimen/yPadding">
+
+                <ImageView
+                    android:id="@+id/mBackIv"
+                    style="@style/WrapWrap"
+                    android:padding="@dimen/yPaddingMinSmall"
+                    android:src="@drawable/leftarrow3" />
+
+                <TextView
+                    android:id="@+id/mStatusTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextBigSize" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/mUserIv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@+id/mBackIv"
+                    android:layout_marginTop="@dimen/yPadding"
+                    android:src="@drawable/avatar_w"
+                    app:civ_border_color="@color/border_image"
+                    app:civ_border_width="4dp" />
+
+                <TextView
+                    android:id="@+id/mNameTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mBackIv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mUserIv"
+                    android:text="摄影师"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextLargeSize" />
+
+                <TextView
+                    android:id="@+id/mMobileTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mNameTv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="@dimen/yPaddingMiddle"
+                    android:layout_toRightOf="@+id/mUserIv"
+                    android:text="摄影师"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextMiddleLarSize" />
+
+                <TextView
+                    android:id="@+id/mAddressTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mMobileTv"
+                    android:layout_marginLeft="@dimen/yPadding"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:layout_toRightOf="@+id/mUserIv"
+                    android:drawableLeft="@drawable/coordinate"
+                    android:text="@string/lock_address"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextLargeSize" />
+
+                <TextView
+                    android:id="@+id/mOrderTv"
+                    style="@style/WrapWrap"
+                    android:layout_below="@+id/mMobileTv"
+                    android:layout_marginLeft="@dimen/yPaddingBigLar"
+                    android:layout_marginTop="@dimen/yPaddingBigLar"
+                    android:layout_toRightOf="@+id/mAddressTv"
+                    android:drawableLeft="@drawable/calendar_w"
+                    android:text="@string/lock_order"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextLargeSize" />
+            </RelativeLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mTab"
+            android:background="@color/yWhite"
+            style="@style/TabsStyle"
+            app:tabMode="scrollable" />
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mVp"
+        style="@style/MatchWrap"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

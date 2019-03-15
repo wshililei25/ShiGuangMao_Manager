@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/common_margin"
+        android:layout_marginRight="@dimen/common_margin"
+        android:background="@drawable/bg_round_rect__solid_white"
+        android:divider="@drawable/bg_h_05dp_solid_divider"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_content_middle"
+            android:text="@string/pickIcon" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/takePhotoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_content"
+            android:text="@string/takePhoto"
+            android:textColor="@color/common_blue_light" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/galleryBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/padding_content"
+            android:text="@string/choicePhotoFromGallery"
+            android:textColor="@color/common_blue_light" />
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/cancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contentView"
+        android:layout_margin="@dimen/common_margin"
+        android:background="@drawable/bg_round_rect__solid_white"
+        android:gravity="center"
+        android:textColor="@color/common_blue_light"
+        android:padding="@dimen/padding_content"
+        android:text="@string/cancel" />
+</RelativeLayout>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical.White">
+
+    <ScrollView style="@style/MatchWrap">
+
+        <LinearLayout
+            style="@style/MatchMatch.Vertical"
+            android:layout_marginTop="@dimen/yPadding">
+
+            <TextView
+                android:id="@+id/mShopNameTv"
+                style="@style/WrapWrap"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <RelativeLayout
+                style="@style/MatchMatch.Vertical"
+                android:layout_marginTop="@dimen/yPadding"
+                android:padding="@dimen/yPadding">
+
+                <TextView
+                    android:id="@+id/mTypeTv"
+                    style="@style/WrapWrap"
+                    android:layout_gravity="center_horizontal"
+                    android:drawableRight="@drawable/downarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:text="所有业务"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextBigSize" />
+
+                <TextView
+                    android:id="@+id/mDateTv"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_horizontal"
+                    android:drawableRight="@drawable/downarrow"
+                    android:drawablePadding="@dimen/yPaddingSmall"
+                    android:textColor="@color/yBlackLight"
+                    android:textSize="@dimen/yTextBigSize" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/mTv1"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv2"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv3"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv4"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv5"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv6"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/mTv7"
+                style="@style/WrapWrap"
+                android:layout_marginLeft="@dimen/yPaddingBigSmall"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackLight"
+                android:textSize="@dimen/yTextBigSize" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

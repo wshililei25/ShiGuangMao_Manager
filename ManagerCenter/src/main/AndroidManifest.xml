@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qi.management">
+
+    <application>
+        <activity
+            android:name=".store.common_detail.view.CommonDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".store.wedding_photography.comboslist.view.CombosListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".store.store_info_management.StoreInfoManagementActivity" />
+        <activity android:name=".store.production_management.view.ProductionListActivity" />
+        <activity android:name=".store.costume.list.view.CostumeListActivity" />
+        <activity android:name=".store.costume.CostumePavilionActivity" />
+        <activity android:name=".ui.activity.TeacherListActivity" />
+        <activity android:name=".ui.activity.TeacherDetailActivity" />
+        <activity android:name=".ui.activity.StaffListActivity" />
+        <activity android:name=".ui.activity.StaffDetailActivity" />
+        <activity android:name=".ui.activity.AddStaffActivity" />
+        <activity android:name=".ui.activity.StaffTypeActivity" />
+        <activity android:name=".ui.activity.CustomerListActivity" />
+        <activity android:name=".ui.activity.CustomerDetailActivity" />
+        <activity android:name=".ui.activity.ManagerOrderActivity" />
+        <activity android:name=".ui.activity.ManagerOrderDetailsActivity" />
+        <activity android:name=".ui.activity.WithdrawCashApplyActivity" />
+        <activity android:name=".ui.activity.ComplainActivity" />
+        <activity android:name=".ui.activity.RefundApplyActivity" />
+        <activity android:name=".ui.activity.NewsActivity" />
+        <activity android:name=".ui.activity.FinancialStatisticsActivity" />
+    </application>
+
+</manifest>

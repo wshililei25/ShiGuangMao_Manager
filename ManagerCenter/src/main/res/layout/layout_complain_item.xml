@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              style="@style/MatchWrap.Vertical.White">
+
+    <RelativeLayout
+        style="@style/WrapWrap"
+        android:padding="@dimen/yPaddingMiddle">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/mIv"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/avatar_w"
+            app:civ_border_color="@color/border_image"
+            app:civ_border_width="2dp"/>
+
+        <TextView
+            android:id="@+id/mNameTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mIv"
+            android:text="小文"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <TextView
+            android:id="@+id/mDateTv"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mNameTv"
+            android:text="2018-10-15"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextSmallLarSize"/>
+
+        <TextView
+            android:id="@+id/mContentTv"
+            style="@style/WrapWrap"
+            android:layout_below="@+id/mNameTv"
+            android:layout_marginLeft="@dimen/yPaddingMiddle"
+            android:layout_marginTop="@dimen/yPaddingMiddle"
+            android:layout_toRightOf="@+id/mIv"
+            android:text="2018-10-15"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextMiddleSize"/>
+
+        <View
+            android:id="@+id/line"
+            style="@style/DividerFixedWidth"
+            android:layout_alignBottom="@+id/mIv"
+            android:layout_marginRight="@dimen/yPaddingMiddle"
+            android:layout_toLeftOf="@+id/mRightView"/>
+    </RelativeLayout>
+
+    <View style="@style/DividerFixedHeight"/>
+</LinearLayout>

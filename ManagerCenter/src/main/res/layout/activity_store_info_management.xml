@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:rightText="@string/save"
+        app:titleText="@string/storeInformationManagement" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mHead"
+        android:layout_marginTop="@dimen/margin_views"
+        android:background="@color/yWhite"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/storeIconLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@drawable/bg_rect_solid_white_bottom_divider"
+            android:paddingTop="3dp"
+            android:paddingEnd="@dimen/padding_content"
+            android:paddingRight="@dimen/padding_content"
+            android:paddingBottom="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/keyStoreIcon" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/arrowIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_arrow" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/storeIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/margin_views"
+                android:layout_marginRight="@dimen/margin_views"
+                android:layout_toStartOf="@+id/arrowIcon"
+                android:layout_toLeftOf="@+id/arrowIcon"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mainicon2" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/storeNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@drawable/bg_rect_solid_white_bottom_divider"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keyStoreName" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/storeNameText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:padding="@dimen/padding_content"
+                android:textSize="@dimen/text_middle_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cityLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@drawable/bg_rect_solid_white_bottom_divider"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keyCity" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/storeCityText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:padding="@dimen/padding_content"
+                android:textColor="@color/text_light_dark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/addressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@drawable/bg_rect_solid_white_bottom_divider"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keyDetailAddress" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/storeAddressText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:padding="@dimen/padding_content"
+                android:textSize="@dimen/text_middle_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/storeProfileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_marginLeft="@dimen/margin_views"
+            android:background="@drawable/bg_rect_solid_white_bottom_divider"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/keyStoreProfile" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/storeProfileText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:drawableRight="@drawable/ic_right_arrow"
+                android:hint="@string/hintStoreProfile"
+                android:padding="@dimen/padding_content"
+                android:textColor="@color/text_light_dark" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

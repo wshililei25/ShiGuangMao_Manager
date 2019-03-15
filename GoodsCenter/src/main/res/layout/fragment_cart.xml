@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:isShowBack="false"
+        app:titleText="@string/cart" />
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/mMultiStateView"
+        style="@style/MultiStateStyle"
+        android:layout_below="@id/mHeaderBar">
+
+        <RelativeLayout style="@style/MatchWrap">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mCartRv"
+                style="@style/commonRecyclerView"
+                android:layout_above="@+id/mBottomView" />
+
+            <RelativeLayout
+                android:id="@+id/mBottomView"
+                style="@style/MatchWrap"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/border_all">
+
+                <CheckBox
+                    android:id="@+id/mAllCheckedCb"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/common_padding"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/common_check_selector"
+                    android:drawablePadding="@dimen/common_padding_middle"
+                    android:text="全选"
+                    android:textSize="@dimen/text_big_size" />
+
+                <RelativeLayout
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/yPaddingMiddle"
+                    android:layout_toLeftOf="@+id/mSettleAccountsBtn">
+
+                    <TextView
+                        android:id="@+id/subtotal"
+                        style="@style/WrapWrap"
+                        android:layout_alignBottom="@+id/mTotalPriceTv"
+                        android:layout_marginRight="@dimen/yPaddingSmall"
+                        android:text="@string/subtotal"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextMiddleSize" />
+
+                    <TextView
+                        android:id="@+id/mTotalPriceTv"
+                        style="@style/WrapWrap"
+                        android:layout_toRightOf="@+id/subtotal"
+                        android:text="¥ 0.0"
+                        android:textColor="@color/yRed"
+                        android:textSize="@dimen/yTextBigSize" />
+
+                    <TextView
+                        android:id="@+id/mPostageTv"
+                        style="@style/WrapWrap"
+                        android:layout_below="@+id/mTotalPriceTv"
+                        android:layout_alignRight="@+id/mTotalPriceTv"
+                        android:text="(含运费0.0元)"
+                        android:textColor="@color/yCategory"
+                        android:textSize="@dimen/yTextSmallSize" />
+                </RelativeLayout>
+
+                <Button
+                    android:id="@+id/mSettleAccountsBtn"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/yMain"
+                    android:text="@string/settle_account"
+                    android:textColor="@color/yWhite"
+                    android:textSize="@dimen/yTextLargeSize" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.kennyc.view.MultiStateView>
+</RelativeLayout>

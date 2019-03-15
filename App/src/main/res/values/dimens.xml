@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_content">16dp</dimen>
+    <dimen name="padding_content_middle">10dp</dimen>
+    <dimen name="padding_content_small">5dp</dimen>
+    <dimen name="icon_size">18dp</dimen>
+    <dimen name="margin_views">16dp</dimen>
+    <dimen name="padding_drawable">10dp</dimen>
+    <dimen name="padding_drawable_middle">10dp</dimen>
+    <dimen name="padding_drawable_little">5dp</dimen>
+</resources>

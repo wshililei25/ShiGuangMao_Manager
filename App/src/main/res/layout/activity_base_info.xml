@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/titleBaseInfo" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/headImg"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/avatar_w"
+        app:civ_border_color="@color/border_image"
+        app:civ_border_width="5dp" />
+
+    <TextView
+        android:id="@+id/uploadHeadBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/padding_content"
+        android:text="@string/uploadYourHead" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/nickNameEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_views"
+        android:background="@drawable/bg_round_rect_red_border_solid_gray"
+        android:drawableStart="@drawable/userw"
+        android:drawablePadding="@dimen/padding_content"
+        android:hint="@string/input_nickname"
+        android:padding="@dimen/padding_content"
+        android:textColorHint="#c2c3c3" />
+
+    <TextView
+        android:id="@+id/saveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_views"
+        android:background="@drawable/bg_round_rect_solid_red"
+        android:gravity="center"
+        android:padding="@dimen/padding_content"
+        android:text="@string/save"
+        android:textColor="@color/common_white" />
+</LinearLayout>

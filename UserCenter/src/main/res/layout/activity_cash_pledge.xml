@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/cashPledge" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:text="@string/welcome"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:text="您的审核已通过"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:text="缴纳押金后即正式入驻 [时光猫]"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextBigSize" />
+
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:text="@string/cashPledge"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextLargeSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPadding"
+        android:text="¥ 1000"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextLargeSize" />
+
+    <Button
+        android:id="@+id/mBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginTop="@dimen/yPaddingBigEven"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:layout_marginRight="@dimen/yPaddingMiddle"
+        android:enabled="true"
+        android:text="缴纳押金" />
+</LinearLayout>

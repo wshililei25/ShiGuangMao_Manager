@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/staff_add" />
+
+    <ScrollView
+        style="@style/MatchWrap.White"
+        android:layout_marginTop="@dimen/yPadding">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/bg_h_05dp_solid_divider"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/padding_content"
+                    android:text="员工手机号" />
+
+                <EditText
+                    android:id="@+id/mMobileEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/common_white"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawablePadding="@dimen/padding_drawable"
+                    android:hint="@string/hintType"
+                    android:inputType="phone"
+                    android:padding="@dimen/padding_content"
+                    android:textColor="@color/text_light_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/mJobView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/padding_content"
+                    android:text="员工职位" />
+
+                <TextView
+                    android:id="@+id/mJobEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/common_white"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawablePadding="@dimen/padding_drawable"
+                    android:hint="@string/please_select"
+                    android:padding="@dimen/padding_content"
+                    android:textColor="@color/text_light_dark" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/common_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="@dimen/padding_content"
+                    android:text="真实姓名" />
+
+                <EditText
+                    android:id="@+id/mNameEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:background="@color/common_white"
+                    android:drawableEnd="@drawable/ic_right_arrow"
+                    android:drawablePadding="@dimen/padding_drawable"
+                    android:hint="@string/hintType"
+                    android:padding="@dimen/padding_content"
+                    android:textColor="@color/text_light_dark" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/mBtn"
+                style="@style/FullBtnStyle"
+                android:layout_margin="@dimen/yPaddingBigEven"
+                android:enabled="true"
+                android:text="@string/add" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

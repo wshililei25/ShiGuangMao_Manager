@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap.Vertical.White">
+
+    <View style="@style/DividerFixedHeight_10" />
+
+    <LinearLayout style="@style/MatchWrap">
+
+        <RelativeLayout
+            style="@style/WrapWrap"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/mIv"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/avatarw" />
+
+            <TextView
+                android:id="@+id/mNumTv"
+                style="@style/WrapWrap"
+                android:layout_below="@id/mIv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:text="0"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                android:id="@+id/time_credit"
+                style="@style/WrapWrap"
+                android:layout_below="@id/mNumTv"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:text="@string/creditScore"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <CheckBox
+                android:id="@+id/mShopCb"
+                style="@style/WrapWrap"
+                android:layout_below="@+id/time_credit"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:button="@null"
+                android:drawableLeft="@drawable/common_check_selector"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingMiddle">
+
+            <TextView
+                android:id="@+id/mNameTv"
+                style="@style/WrapWrap"
+                android:text="店铺"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextBigSize" />
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_marginRight="@dimen/yPaddingMiddle"
+                android:layout_toLeftOf="@+id/mPriceTv"
+                android:text="指定费用："
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mPriceTv"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:text="￥ 0.00/套服装"
+                android:textColor="@color/yRed"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/mContentTv"
+                style="@style/WrapWrap"
+                android:layout_below="@id/mNameTv"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/mRv"
+                android:layout_below="@+id/mContentTv"
+                style="@style/MatchWrap"
+                android:layout_marginTop="@dimen/yPaddingMiddle" />
+
+            <TextView
+                android:id="@+id/collect_fees"
+                style="@style/WrapWrap"
+                android:layout_below="@id/mRv"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:id="@+id/collect_ees"
+                style="@style/WrapWrap"
+                android:layout_below="@id/mRv"
+                android:layout_marginTop="@dimen/yPaddingMiddle"
+                android:layout_marginRight="@dimen/yPaddingSmall"
+                android:layout_toLeftOf="@+id/mAmountTv"
+                android:textColor="@color/yBlackGray"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

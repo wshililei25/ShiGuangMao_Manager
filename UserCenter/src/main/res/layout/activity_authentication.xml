@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchMatch.Vertical.Common"
+    tools:ignore="MissingDefaultResource">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/real_name_authentication" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mHead"
+        android:layout_marginTop="@dimen/common_margin"
+        android:background="@color/common_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/keyName"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize" />
+
+            <EditText
+                android:id="@+id/mNameEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_card_name"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize" />
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding" />
+
+        <LinearLayout
+            style="@style/MatchWrap.Horizontal"
+            android:padding="@dimen/yPadding">
+
+            <TextView
+                style="@style/WrapMatch"
+                android:layout_width="95dp"
+                android:text="@string/keyIdentityCard"
+                android:textColor="@color/yBlack"
+                android:textSize="@dimen/yTextMiddleSize" />
+
+            <EditText
+                android:id="@+id/mCardEt"
+                style="@style/WeightMatch"
+                android:background="@null"
+                android:hint="@string/input_card_id"
+                android:textColor="@color/yBlack"
+                android:textColorHint="@color/yHint"
+                android:textSize="@dimen/yTextMiddleSize" />
+        </LinearLayout>
+
+        <View
+            style="@style/DividerFixedHeight"
+            android:layout_marginLeft="@dimen/yPadding" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/yPadding"
+            android:paddingRight="@dimen/yPadding">
+
+            <TextView
+                android:id="@+id/titleCard"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/common_item_height"
+                android:gravity="center_vertical"
+                android:text="@string/id_card_phonto" />
+
+            <RelativeLayout
+                android:id="@+id/frontCardGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleCard">
+
+                <ImageView
+                    android:id="@+id/mFrontCardPhoto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/bg_add_photo2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_item_height"
+                    android:layout_below="@id/mFrontCardPhoto"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/front" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleCard"
+                android:layout_marginStart="50dp"
+                android:layout_toEndOf="@id/frontCardGroup">
+
+                <ImageView
+                    android:id="@+id/reverseCardPhoto"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/bg_add_photo2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/common_item_height"
+                    android:layout_below="@id/reverseCardPhoto"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/card_reverse" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mBtn"
+        style="@style/FullBtnStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/next" />
+</RelativeLayout>

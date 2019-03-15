@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_white"
+        android:divider="@drawable/bg_divider_w_1dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:id="@+id/mBalanceView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/common_padding">
+
+            <RelativeLayout
+                android:id="@+id/remainingView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/remainingSumView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:textColor="@color/text_light_dark"
+                    android:textColorHint="@color/text_light_dark"
+                    android:textSize="@dimen/text_large_size"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/remainingSumView"
+                    android:layout_toEndOf="@+id/remainingSumView"
+                    android:text="@string/yuan"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/remainingView"
+                android:layout_centerHorizontal="true"
+                android:text="@string/remainingSum"
+                android:textColor="@color/text_normal" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mCreditView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/creditScoreView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/text_light_dark"
+                android:textSize="@dimen/text_large_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/creditScoreView"
+                android:layout_centerHorizontal="true"
+                android:text="@string/creditScore" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mInvitationCodeView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/invitationCodeView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/text_light_dark"
+                android:textSize="@dimen/text_large_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/invitationCodeView"
+                android:layout_centerHorizontal="true"
+                android:text="@string/invitationCode" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/secondLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/bg_divider_h05_paddingleft_50dp"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:id="@+id/chargeSettingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_margin"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/leftIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_controller" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/chargeSettingView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/leftIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyChargeSetting" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/cashPledgeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white">
+
+            <ImageView
+                android:id="@+id/cashPledgeIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:src="@drawable/coin" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/cashPledgeIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:paddingTop="@dimen/padding_content"
+                android:paddingEnd="@dimen/padding_content"
+                android:paddingBottom="@dimen/padding_content"
+                android:text="@string/keyCashPledge" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_views"
+        android:divider="@drawable/bg_divider_h05_paddingleft_50dp"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <RelativeLayout
+            android:id="@+id/profileLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <ImageView
+                android:id="@+id/cabinetIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/ic_cabinet" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dataView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/cabinetIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyDataProduction" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/attentionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <ImageView
+                android:id="@+id/heartIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/heart2" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/heartIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyAttention" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/shareCodeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <ImageView
+                android:id="@+id/shareCodeIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:src="@drawable/share" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/shareCodeIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyShareCode" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/workNoteLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <ImageView
+                android:id="@+id/questionIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_question" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/questionIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyWorkNotice" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/phoneLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_white"
+            android:padding="@dimen/padding_content">
+
+            <ImageView
+                android:id="@+id/telephoneIcon"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_centerVertical="true"
+                android:src="@drawable/telephone" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/margin_views"
+                android:layout_toEndOf="@+id/telephoneIcon"
+                android:drawableEnd="@drawable/ic_right_arrow"
+                android:text="@string/keyServiceTel" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/settingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_views"
+        android:background="@color/common_white"
+        android:padding="@dimen/padding_content">
+
+        <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:layout_centerVertical="true"
+            android:src="@drawable/settings" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/margin_views"
+            android:layout_toEndOf="@+id/settingsIcon"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            android:text="@string/keySystemSetting" />
+    </RelativeLayout>
+</LinearLayout>

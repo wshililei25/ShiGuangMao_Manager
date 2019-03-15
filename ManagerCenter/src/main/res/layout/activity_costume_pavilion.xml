@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_white">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/title_costume_pavilion" />
+
+
+    <ImageView
+        android:id="@+id/saleImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mHead"
+        android:layout_margin="@dimen/margin_views"
+        android:scaleType="centerCrop"
+        android:src="@drawable/salearea" />
+
+    <ImageView
+        android:id="@+id/shareImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/saleImage"
+        android:layout_marginLeft="@dimen/margin_views"
+        android:layout_marginRight="@dimen/margin_views"
+        android:layout_marginBottom="@dimen/margin_views"
+        android:scaleType="centerCrop"
+        android:src="@drawable/sharearea" />
+</RelativeLayout>

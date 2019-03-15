@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/rechargePledge" />
+
+    <LinearLayout
+        style="@style/WrapWrap"
+        android:padding="@dimen/yPaddingBigLar">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:text="@string/pay_amount"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/yPadding"
+            android:text="¥ 1000"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextHugeSize" />
+    </LinearLayout>
+
+    o
+
+    <View style="@style/DividerFixedHeight" />
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite">
+
+        <TextView
+            style="@style/MatchWrap"
+            android:padding="@dimen/yPaddingBigLar"
+            android:text="@string/pay_way"
+            android:textColor="@color/yBlackLight"
+            android:textSize="@dimen/yTextMiddleSize" />
+
+        <View style="@style/DividerFixedHeight" />
+
+        <com.yizhipin.base.widgets.PayRadioGroup
+            android:id="@+id/mPayRadioGroup"
+            style="@style/MatchWrap"
+            android:orientation="vertical">
+
+            <com.yizhipin.base.widgets.PayRadioPurified
+                android:id="@+id/mAliRadio"
+                style="@style/MatchWrap"
+                app:checked="true"
+                app:logo1="@drawable/alipay"
+                app:radio="@drawable/radio"
+                app:title1="@string/ali_pay" />
+
+            <com.yizhipin.base.widgets.PayRadioPurified
+                android:id="@+id/mWechatRadio"
+                style="@style/MatchWrap"
+                app:logo1="@drawable/wechatpay"
+                app:radio="@drawable/radio"
+                app:title1="@string/wechat_pay" />
+
+        </com.yizhipin.base.widgets.PayRadioGroup>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/confirmPayment"
+        android:textSize="@dimen/yTextBigSize" />
+</LinearLayout>

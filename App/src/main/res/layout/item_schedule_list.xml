@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/common_padding"
+    android:paddingTop="@dimen/common_padding"
+    android:paddingBottom="@dimen/common_padding">
+
+    <ImageView
+        android:id="@+id/leftIcon"
+        android:layout_width="76dp"
+        android:layout_height="76dp" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/leftIcon"
+        android:layout_alignBottom="@+id/leftIcon"
+        android:layout_marginStart="@dimen/common_margin"
+        android:layout_marginEnd="@dimen/common_margin"
+        android:layout_toStartOf="@+id/divider"
+        android:layout_toEndOf="@+id/leftIcon">
+
+        <TextView
+            android:id="@+id/photographyTitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/common_red" />
+
+        <TextView
+            android:id="@+id/priceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/price_photography"
+            android:textColor="@color/common_red" />
+
+        <TextView
+            android:id="@+id/photographySubTitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/photographyTitleView" />
+
+        <TextView
+            android:id="@+id/phaseView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/yCategory" />
+
+        <TextView
+            android:id="@+id/dateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/phaseView"
+            android:textColor="@color/yCategory"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/leftIcon"
+        android:layout_alignBottom="@+id/leftIcon"
+        android:layout_toLeftOf="@+id/rightIcon"
+        android:background="@color/bg_divider" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/rightIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="25dp"
+        android:src="@drawable/default_loading"
+        app:civ_border_color="@color/border_image"
+        app:civ_border_width="1dp" />
+</RelativeLayout>

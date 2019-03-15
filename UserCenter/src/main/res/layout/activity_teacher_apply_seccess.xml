@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/commit_success" />
+
+    <ImageView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:src="@drawable/checked3" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPadding"
+        android:text="@string/commit_success"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPadding"
+        android:text="请耐心等待平台审核"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:text="我们将在24小时通知您审核结果"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:text="请留意短信通知"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <TextView
+        android:id="@+id/mRebackTv"
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPadding"
+        android:text="@string/reback"
+        android:textColor="@color/yRed"
+        android:textSize="@dimen/yTextLargeSize" />
+</LinearLayout>

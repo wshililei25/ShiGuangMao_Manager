@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical"
+    android:background="@drawable/ssssss">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHead"
+        style="@style/MatchWrap"
+        app:titleText="@string/version_info" />
+
+    <ImageView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBigEven"
+        android:src="@drawable/ic_launcher_background" />
+
+    <View
+        android:layout_width="300dp"
+        android:layout_height="1dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="@dimen/margin_views"
+        android:background="@color/common_red" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/yWhite"
+        android:layout_gravity="center"
+        android:textSize="30sp"/>
+    <TextView
+        android:id="@+id/mAboutTv"
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:text="@string/version_info"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextBigSize" />
+
+</LinearLayout>

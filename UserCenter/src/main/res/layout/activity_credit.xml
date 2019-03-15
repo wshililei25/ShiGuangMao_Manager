@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.Common">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        style="@style/MatchWrap"
+        app:titleText="@string/creditScore" />
+
+    <View style="@style/DividerFixedHeight_10" />
+
+    <LinearLayout
+        style="@style/MatchWrap.Vertical"
+        android:background="@color/yWhite"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/yPaddingBigSmall"
+        android:paddingBottom="@dimen/yPaddingBigSmall">
+
+        <TextView
+            android:id="@+id/mIntegralTv"
+            style="@style/WrapWrap"
+            android:textColor="@color/text_light_dark"
+            android:textSize="@dimen/yTextHugeSize" />
+
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_marginTop="@dimen/yPaddingMinSmall"
+            android:text="时光信用总分"
+            android:textColor="@color/text_normal"
+            android:textSize="@dimen/yTextSmallLarSize" />
+
+        <TextView
+            android:id="@+id/mCreditTv"
+            style="@style/WrapWrap"
+            android:layout_marginTop="@dimen/yPaddingSmall"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextLargeSize" />
+
+        <LinearLayout
+            style="@style/MatchMatch"
+            android:paddingTop="@dimen/yPaddingSmall">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="技术 10.0"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="服务 9.9"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchMatch"
+            android:paddingTop="@dimen/yPaddingMiddle">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="形象 9.9"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="沟通 9.9"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/MatchMatch"
+            android:paddingTop="@dimen/yPaddingMiddle">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="守时 9.9"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:text="收入 9.9"
+                android:textColor="@color/text_normal"
+                android:textSize="@dimen/yTextSmallLarSize" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/MatchWrap"
+        android:layout_marginTop="@dimen/yPaddingMiddle"
+        android:background="@color/yWhite"
+        android:padding="@dimen/yPadding"
+        android:text="时光留言 - 全部评价"
+        android:textColor="@color/text_light_dark"
+        android:textSize="@dimen/yTextMiddleLarSize" />
+
+    <com.kennyc.view.MultiStateView
+        android:id="@+id/mMultiStateView"
+        style="@style/MultiStateStyle">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/mRecyclerView"
+            style="@style/commonRecyclerView" />
+    </com.kennyc.view.MultiStateView>
+
+</LinearLayout>

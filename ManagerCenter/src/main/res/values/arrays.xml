@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="tab_production">
+        <item>相册</item>
+        <item>修片</item>
+        <item>其他</item>
+        <item>摆台</item>
+        <item>放大</item>
+    </array>
+</resources>
