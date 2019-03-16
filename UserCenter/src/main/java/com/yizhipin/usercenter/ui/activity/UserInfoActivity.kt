@@ -13,7 +13,6 @@ import com.alibaba.sdk.android.oss.common.auth.OSSCustomSignerCredentialProvider
 import com.alibaba.sdk.android.oss.common.auth.OSSStsTokenCredentialProvider
 import com.alibaba.sdk.android.oss.model.PutObjectRequest
 import com.alibaba.sdk.android.oss.model.PutObjectResult
-import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
 import com.yizhipin.base.data.response.OssAddress
@@ -31,12 +30,14 @@ import com.yizhipin.usercenter.presenter.UserInfoPresenter
 import com.yizhipin.usercenter.presenter.view.UserInfoView
 import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
+import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.startActivity
 import java.io.File
 
+
 /**
  * Created by ${XiLei} on 2018/7/26.
- * 完善资料
+ * 基本信息
  */
 class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView, View.OnClickListener {
 
@@ -55,6 +56,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_info)
+
         initView()
         initOssInfo()
     }
@@ -64,7 +66,6 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         mBackIv.onClick(this)
         mUserIconView.onClick(this)
         mConfirmBtn.onClick(this)
-        mRightTv.onClick(this)
         mConfirmBtn.enable(mNickEt, { isBtnEnable() })
     }
 
@@ -122,14 +123,12 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     override fun onClick(v: View) {
 
         when (v.id) {
-            R.id.mRightTv, R.id.mBackIv -> {
-                startActivity<AuthenticationActivity>()
-                finish()
-            }
+            R.id.mRightTv, R.id.mBackIv -> finish()
 
             R.id.mUserIconView -> showAlertView()
 
             R.id.mConfirmBtn -> {
+
                 var map = mutableMapOf<String, String>()
                 map.put("nickname", mNickEt.text.toString())
                 map.put("imgurl", mResultUrl)
@@ -231,12 +230,14 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      * 获取用户信息成功
      */
     override fun getUserResult(result: UserInfo) {
-        mResultUrl = result.imgurl
+
         mNickEt.setText(result.nickname)
         mNickEt.setSelection(result.nickname.length)
+        mResultUrl = result.imgurl
         if (result.imgurl != "") {
             mUserIconIv.loadUrl(result.imgurl)
         }
+
     }
 
     /**
@@ -254,10 +255,10 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         return mConfirmBtn.text.isNullOrEmpty().not()
     }
 
-    override fun onGetCartSuccess(result: Int) {
+    override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
     }
 
-    override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {
+    override fun onGetCartSuccess(result: Int) {
     }
 
     override fun showWorkStatus(workStatusBean: WorkStatusBean) {

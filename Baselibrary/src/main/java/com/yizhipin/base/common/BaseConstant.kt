@@ -8,14 +8,25 @@ class BaseConstant {
 
         //接口地址
         const val SERVICE_ADDRESS = "https://nian.im/time-cat-api/"
+        //图片服务器地址
+        const val IMAGE_ADDRESS = "IMAGE_ADDRESS"
         //SP表名
         const val TABLE_PREFS = "ShiGuangMao"
         //user id
         const val KEY_SP_USER_ID = "id"
         //Token
         const val KEY_SP_TOKEN = "token"
-        //图片服务器地址
-        const val IMAGE_ADDRESS = "IMAGE_ADDRESS"
+        //真实姓名
+        const val KEY_SP_REAL_NAME = "realName"
+        //身份证号
+        const val KEY_SP_CARD = "idCard"
+        //身份证前照
+        const val KEY_SP_FRONT = "frontUrl"
+        //身份证反照
+        const val KEY_SP_REVERSE = "reverseUrl"
+        //押金
+        const val FOREGIFT = "foregift "
+
 
         const val KEY_BOOLEAN = "isTrue"
         //用户类型

@@ -135,4 +135,15 @@ open class UserServiceImpl @Inject constructor() : UserService {
     override fun getOssAddress(): Observable<OssAddress> {
         return mRepository.getOssAddress().convert()
     }
+
+    override fun updateUserInfo(map: MutableMap<String, String>): Observable<UserInfo> {
+        return mRepository.updateUserInfo(map).convert()
+    }
+
+    override fun addWork(map: MutableMap<String, String>): Observable<Works> {
+        return mRepository.addWork(map).convert()
+    }
+    override fun getWorksList(map: MutableMap<String, String>): Observable<MutableList<Works>> {
+        return mRepository.getWorksList(map).convert()
+    }
 }

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/addWork"/>
+
+    <LinearLayout
+        android:id="@+id/addressView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mHeaderBar"
+        android:background="@color/common_white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/padding_content"
+            android:text="@string/shoot"
+            android:textColor="@color/yBlack"
+            android:textSize="@dimen/yTextBigSize"/>
+
+        <EditText
+            android:id="@+id/mAddressDetailEv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@color/common_white"
+            android:drawableEnd="@drawable/ic_right_arrow"
+            android:drawablePadding="@dimen/padding_drawable"
+            android:hint="@string/hintType"
+            android:padding="@dimen/padding_content"
+            android:textColor="@color/yBlack"
+            android:textColorHint="@color/yBlackLight"
+            android:textSize="@dimen/yTextBigSize"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        style="@style/DividerFixedHeight"
+        android:layout_below="@+id/addressView"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mRv"
+        style="@style/MatchWrap"
+        android:layout_below="@+id/line"
+        android:layout_marginTop="@dimen/yPaddingMiddle"/>
+
+    <ImageView
+        android:id="@+id/mAddIv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/mRv"
+        android:layout_marginLeft="@dimen/yPaddingMiddle"
+        android:src="@drawable/bg_add_photo2"/>
+
+    <Button
+        android:id="@+id/mBtn"
+        style="@style/FullBtnStyle"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/yPaddingMiddle"
+        android:enabled="true"
+        android:text="@string/save"/>
+</RelativeLayout>

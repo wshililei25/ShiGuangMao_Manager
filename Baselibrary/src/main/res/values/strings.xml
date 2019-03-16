@@ -431,4 +431,6 @@
     <string name="women_dress">女装</string>
     <string name="man_dress">男装</string>
     <string name="refund_apply">退款申请</string>
+    <string name="upload_work">上传作品</string>
+    <string name="shoot">拍摄景点</string>
 </resources>

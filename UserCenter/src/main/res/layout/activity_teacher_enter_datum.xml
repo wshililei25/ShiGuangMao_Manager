@@ -50,6 +50,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mTeacherTypeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/common_white"
@@ -63,16 +64,14 @@
                     android:paddingStart="@dimen/padding_content"
                     android:text="@string/keyTeacherType" />
 
-                <EditText
+                <TextView
                     android:id="@+id/mTeacherTypeEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:background="@color/common_white"
-                    android:clickable="false"
                     android:drawableEnd="@drawable/ic_right_arrow"
                     android:drawablePadding="@dimen/padding_drawable"
-                    android:enabled="false"
                     android:hint="@string/hintType"
                     android:padding="@dimen/padding_content"
                     android:text="@string/cameraman"
@@ -80,6 +79,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/mQuartersTypeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/common_white"
@@ -93,16 +93,14 @@
                     android:paddingStart="@dimen/padding_content"
                     android:text="@string/keyPostType" />
 
-                <EditText
+                <TextView
                     android:id="@+id/mQuartersTypeEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:background="@color/common_white"
-                    android:clickable="false"
                     android:drawableEnd="@drawable/ic_right_arrow"
                     android:drawablePadding="@dimen/padding_drawable"
-                    android:enabled="false"
                     android:hint="@string/hintType"
                     android:padding="@dimen/padding_content"
                     android:text="@string/veil_photography"

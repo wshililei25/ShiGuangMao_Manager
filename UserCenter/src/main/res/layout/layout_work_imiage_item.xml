@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/MatchWrap.Vertical"
+              android:background="@color/yWhite">
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:paddingLeft="@dimen/yPaddingSmall"
+        android:paddingBottom="@dimen/yPaddingSmall">
+
+        <ImageView
+            android:id="@+id/mIv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/mRv"
+            android:src="@drawable/bg_add_photo2"/>
+    </RelativeLayout>
+
+</LinearLayout>

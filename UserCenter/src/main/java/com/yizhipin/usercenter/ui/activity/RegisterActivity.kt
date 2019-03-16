@@ -1,28 +1,21 @@
 package com.yizhipin.usercenter.ui.activity
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.content.pm.PackageManager
-import android.location.Location
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.util.Log
 import android.view.View
 import com.hyphenate.chat.EMClient
 import com.hyphenate.exceptions.HyphenateException
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.RegisterPresenter
 import com.yizhipin.usercenter.presenter.view.RegisterView
-import fr.quentinklein.slt.LocationTracker
-import fr.quentinklein.slt.TrackerSettings
+import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -42,7 +35,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
         setContentView(R.layout.activity_register)
 
         initView()
-        initLocation()
     }
 
     private fun initView() {
@@ -73,8 +65,6 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
                 map.put("smsCode", mCodeEt.text.toString())
                 map.put("password", mPswEt.text.toString())
                 map.put("type", "1")
-                map.put("lng", mLongitude.toString())
-                map.put("lat", mLatitude.toString())
                 mBasePresenter.register(map)
             }
         }
@@ -102,7 +92,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      * 注册成功
      */
     override fun onRegisterSuccess(result: UserInfo) {
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, result?.id ?: "")
+        UserPrefsUtils.putUserInfo(result)
         Thread(object : Runnable {
             override fun run() {
                 try {
@@ -119,32 +109,4 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
         finish()
     }
 
-    /**
-     * 获取经纬度
-     */
-    @SuppressLint("MissingPermission")
-    private fun initLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return
-        }
-        //允许GPS、WiFi、基站定位，设置超时时间5秒
-        val trackerSettings = TrackerSettings()
-        trackerSettings.setUseGPS(true).setUseNetwork(true).setUsePassive(true).timeout = 5000
-        val locationTracker = object : LocationTracker(this, trackerSettings) {
-            override fun onLocationFound(location: Location) {
-                //定位成功时回调
-                if (location != null) {
-                    mLongitude = location.longitude
-                    mLatitude = location.latitude
-                    Log.d("XiLei", "经纬度：" + location.longitude + "," + location.latitude)
-                }
-            }
-
-            override fun onTimeout() {
-                //定位超时回调
-                Log.d("XiLei", "定位超时")
-            }
-        }
-        locationTracker.startListening()
-    }
 }

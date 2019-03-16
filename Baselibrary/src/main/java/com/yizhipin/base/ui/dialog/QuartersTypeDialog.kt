@@ -8,7 +8,8 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import com.eightbitlab.rxbus.Bus
 import com.yizhipin.base.R
-import com.yizhipin.base.event.TakePhotoTypeCheckedEvent
+import com.yizhipin.base.common.QuartersType
+import com.yizhipin.base.event.QuartersTypeCheckedEvent
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.ui.adapter.TakePhotoTypeAdapter
 import com.yizhipin.usercenter.data.response.TakePhoteType
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.layout_dialog_type.*
 /**
  * Created by ${XiLei} on 2017/2/10.
  */
-class TakePhotoTypeDialog(context: Context) : Dialog(context, R.style.HB_Dialog) {
+class QuartersTypeDialog(context: Context) : Dialog(context, R.style.HB_Dialog) {
 
     private lateinit var mTypeAdapter: TakePhotoTypeAdapter
 
@@ -38,18 +39,17 @@ class TakePhotoTypeDialog(context: Context) : Dialog(context, R.style.HB_Dialog)
         window.attributes = params
 
         var list = mutableListOf<TakePhoteType>()
-        list.add(TakePhoteType("all", "所有业务"))
-        list.add(TakePhoteType("wedding", "婚纱摄影"))
-        list.add(TakePhoteType("photo", "写真摄影"))
-        list.add(TakePhoteType("baby", "宝宝摄影"))
+        list.add(TakePhoteType(QuartersType.QUARTERS_HUNSHA, "婚纱摄影"))
+        list.add(TakePhoteType(QuartersType.QUARTERS_XIEZHEN, "写真摄影"))
+        list.add(TakePhoteType(QuartersType.QUARTERS_BAOBAO, "宝宝摄影"))
         mRv.layoutManager = LinearLayoutManager(context)
         mTypeAdapter = TakePhotoTypeAdapter(context!!)
         mRv.adapter = mTypeAdapter
         mTypeAdapter.dataList = list
 
-        mTypeAdapter.setOnItemClickListener(object :BaseRecyclerViewAdapter.OnItemClickListener<TakePhoteType>{
+        mTypeAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<TakePhoteType> {
             override fun onItemClick(item: TakePhoteType, position: Int) {
-                Bus.send(TakePhotoTypeCheckedEvent(item))
+                Bus.send(QuartersTypeCheckedEvent(item))
                 dismiss()
             }
 

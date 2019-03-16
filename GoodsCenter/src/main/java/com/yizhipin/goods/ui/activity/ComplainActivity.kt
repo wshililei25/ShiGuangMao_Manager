@@ -6,7 +6,6 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
-import com.jph.takephoto.model.TResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Collect
 import com.yizhipin.base.data.response.Shop
@@ -26,6 +25,7 @@ import com.yizhipin.goods.presenter.ShopPresenter
 import com.yizhipin.goods.presenter.view.ShopView
 import com.yizhipin.goods.ui.adapter.ComplainImageAdapter
 import kotlinx.android.synthetic.main.activity_complain.*
+import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.toast
 import java.io.File
 
@@ -135,7 +135,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
     override fun onUploadDone(responseCode: Int, message: String) {
         runOnUiThread {
             hideLoading()
-            ToastUtils.INSTANCE.showToast(this,R.string.upload_success)
+            ToastUtils.INSTANCE.showToast(this, R.string.upload_success)
             mComplainImageAdapter.dataList.add(message)
             mComplainImageAdapter.setData(mComplainImageAdapter.dataList)
         }
@@ -174,6 +174,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
         super.onDestroy()
         ToastUtils.INSTANCE.cancelToast()//销毁页面时，取消掉toast
     }
+
     override fun oncollectShopSuccess(result: Collect) {
     }
 

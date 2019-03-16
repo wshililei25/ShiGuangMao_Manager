@@ -15,7 +15,7 @@ import javax.inject.Inject
 class ManagerRepository @Inject constructor() {
 
     fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>> {
-        return RetrofitFactoryGet().create(ManagerApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!, map["status"]!!)
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!)
     }
 
     fun getOrderList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ManagerOrder>>> {

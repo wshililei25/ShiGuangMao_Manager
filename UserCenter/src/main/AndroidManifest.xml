@@ -36,6 +36,7 @@
         <activity android:name=".ui.activity.InvitationActivity" />
         <activity android:name=".ui.activity.InvitationAddActivity" />
         <activity android:name=".ui.activity.CreditActivity" />
+        <activity android:name=".ui.activity.TeacherWorkAddActivity" />
 
     </application>
 </manifest>

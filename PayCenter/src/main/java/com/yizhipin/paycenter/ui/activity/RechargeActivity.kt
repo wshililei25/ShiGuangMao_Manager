@@ -98,8 +98,8 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-//                map.put("amount", "1000") //暂时注释
-                map.put("amount", "0.01")
+                map.put("amount", "1000") //暂时注释
+//                map.put("amount", "0.01")
                 map.put("payType", mPayType)
                 mBasePresenter.rechargeCashPledge(map)
             }

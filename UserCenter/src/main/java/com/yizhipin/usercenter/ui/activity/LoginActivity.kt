@@ -65,13 +65,17 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
         mBasePresenter.getOssAddress()
-        Log.d("XiLei","雷死了死了死了死了死了")
         if (isLogined()) {
             when (AppPrefsUtils.getInt(BaseConstant.KEY_USER_TYPE)) {
-                1 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()
+                1 -> {
+                    if (AppPrefsUtils.getString(BaseConstant.FOREGIFT).toDouble() <= 0) {
+                        startActivity<CashPledgeActivity>()
+                    } else {
+                        ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()
+                    }
+                }
                 2 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN_TEACHER).navigation()
             }
-            Log.d("XiLei","ssssssssss")
             finish()
         }
     }
@@ -131,7 +135,11 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         UserPrefsUtils.putUserInfo(result)
         when (result.type) {
             1 -> {
-                if (result.totalDeposit.toDouble() <= 0) {
+                if (result.realName.isNullOrBlank()) {
+                    startActivity<AuthenticationActivity>()
+                } else if (result.storeName.isNullOrBlank()) {
+                    startActivity<TeacherEnterDatumActivity>()
+                } else if (result.totalDeposit.toDouble() <= 0) {
                     startActivity<CashPledgeActivity>()
                 } else {
                     ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()

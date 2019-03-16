@@ -99,6 +99,8 @@ interface Api {
         const val NEWS_LIST = "api/PushRecord/Page" //推送列表
         const val FINANCIAL = "api/Finance" //财务统计
         const val OSS_SIGN = "api/OSS/Sign"//获取oss签名
+        const val ADD_WORK = "api/TeacherWorks"//添加作品
+        const val WORK_LIST = "api/TeacherWorks/List"//老师添加列表
     }
     /*押金*/
     /**获取用户押金*/

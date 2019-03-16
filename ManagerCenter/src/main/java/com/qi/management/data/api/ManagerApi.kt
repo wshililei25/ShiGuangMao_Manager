@@ -16,7 +16,7 @@ import retrofit2.http.Query
 interface ManagerApi {
 
     @GET(Api.CAMERAMAN_LIST)
-    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("status") status: String): Observable<BasePagingResp<MutableList<Teacher>>>
+    fun getCameramanList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String): Observable<BasePagingResp<MutableList<Teacher>>>
 
     @GET(Api.MANAGER_ORDER_LIST)
     fun getOrderList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("status") status: String): Observable<BasePagingResp<MutableList<ManagerOrder>>>

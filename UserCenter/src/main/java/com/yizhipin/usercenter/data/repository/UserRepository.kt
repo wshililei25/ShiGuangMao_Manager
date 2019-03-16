@@ -140,4 +140,13 @@ class UserRepository @Inject constructor() : BaseModel {
     fun getOssAddress(): Observable<BaseResp<OssAddress>> {
         return RetrofitFactoryGet().create(UserApi::class.java).getOssAddress()
     }
+    fun updateUserInfo(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
+        return RetrofitFactoryPut(map).create(UserApi::class.java).updateUserInfo(map["id"]!!)
+    }
+    fun addWork(map: MutableMap<String, String>): Observable<BaseResp<Works>> {
+        return RetrofitFactoryPost(map).create(UserApi::class.java).addWork()
+    }
+    fun getWorksList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Works>>> {
+        return RetrofitFactoryGet().create(UserApi::class.java).getWorksList(map["uid"]!!)
+    }
 }

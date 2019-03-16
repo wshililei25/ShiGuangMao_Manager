@@ -1,6 +1,5 @@
 package com.yizhipin.usercenter.data.api
 
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.usercenter.bean.WorkStatusBean
@@ -96,4 +95,13 @@ interface UserApi {
 
     @GET(Api.IMAGE_ADDRESS)
     fun getOssAddress(): Observable<BaseResp<OssAddress>>
+
+    @PUT("${Api.EDIT_USER_INFO}${"/{id}"}")
+    fun updateUserInfo(@Path("id") id: String): Observable<BaseResp<UserInfo>>
+
+    @POST(Api.ADD_WORK)
+    fun addWork(): Observable<BaseResp<Works>>
+
+    @GET(Api.WORK_LIST)
+    fun getWorksList(@Query("uid") uid: String): Observable<BaseResp<MutableList<Works>>>
 }

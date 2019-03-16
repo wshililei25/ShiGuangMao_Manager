@@ -2,16 +2,23 @@ package com.yizhipin.usercenter.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupWindow
+import com.eightbitlab.rxbus.Bus
+import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.common.QuartersType
+import com.yizhipin.base.common.TeacherType
 import com.yizhipin.base.data.response.Store
 import com.yizhipin.base.data.response.Teacher
+import com.yizhipin.base.event.QuartersTypeCheckedEvent
+import com.yizhipin.base.event.TeacherTypeCheckedEvent
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.ui.dialog.QuartersTypeDialog
+import com.yizhipin.base.ui.dialog.TeacherTypeDialog
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.base.widgets.AddressPickerView
 import com.yizhipin.provider.common.ProvideReqCode
@@ -36,17 +43,22 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
     private var mProvice = ""
     private var mCity = ""
     private var mDistrict = ""
+    private var mTeacherType = TeacherType.TEACHER_SHEYING
+    private var mQuartersType = QuartersType.QUARTERS_HUNSHA
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher_enter_datum)
 
         initView()
+        initObserve()
     }
 
     private fun initView() {
         mShopView.onClick(this)
         mAddressView.onClick(this)
+        mTeacherTypeView.onClick(this)
+        mQuartersTypeView.onClick(this)
         mBtn.onClick(this)
     }
 
@@ -77,6 +89,14 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                 popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
                 popupWindow.showAsDropDown(mHead)
             }
+            R.id.mTeacherTypeView -> {
+                var customDialog = TeacherTypeDialog(this)
+                customDialog.show()
+            }
+            R.id.mQuartersTypeView -> {
+                var customDialog = QuartersTypeDialog(this)
+                customDialog.show()
+            }
             R.id.mBtn -> {
                 if (mShopTv.text.isNullOrEmpty() || mAddressTv.text.isNullOrEmpty() || mAddressDetailEv.text.isNullOrEmpty()
                         || mContactsEt.text.isNullOrEmpty() || mContactsMobileEt.text.isNullOrEmpty()
@@ -88,8 +108,8 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                 map.put("storeId", mStore.id)
-                map.put("teacherType", mTeacherTypeEt.text.toString())
-                map.put("applyType", mQuartersTypeEt.text.toString())
+                map.put("teacherType", mTeacherType)
+                map.put("applyType", mQuartersType)
                 map.put("provice", mProvice)
                 map.put("city", mCity)
                 map.put("area", mDistrict)
@@ -105,6 +125,7 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
 
     override fun applyEnterDatumSucccess(result: Teacher) {
         startActivity<TeacherWorksActivity>()
+        finish()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -116,5 +137,23 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                 mShopTv.setText(mStore.storeName)
             }
         }
+    }
+
+    private fun initObserve() {
+        Bus.observe<TeacherTypeCheckedEvent>()
+                .subscribe { t: TeacherTypeCheckedEvent ->
+                    run {
+                        mTeacherType = t.takePhoteType.type
+                        mTeacherTypeEt.text = t.takePhoteType.name
+                    }
+                }.registerInBus(this)
+
+        Bus.observe<QuartersTypeCheckedEvent>()
+                .subscribe { t: QuartersTypeCheckedEvent ->
+                    run {
+                        mQuartersType = t.takePhoteType.type
+                        mQuartersTypeEt.text = t.takePhoteType.name
+                    }
+                }.registerInBus(this)
     }
 }

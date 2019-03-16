@@ -1,6 +1,7 @@
 package com.yizhipin.usercenter.ui.activity
 
 import android.os.Bundle
+import android.support.v7.widget.GridLayoutManager
 import android.util.Log
 import android.view.View
 import com.alibaba.sdk.android.oss.*
@@ -14,33 +15,33 @@ import com.alibaba.sdk.android.oss.model.PutObjectRequest
 import com.alibaba.sdk.android.oss.model.PutObjectResult
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.OssAddress
-import com.yizhipin.base.data.response.UserInfo
-import com.yizhipin.base.ext.loadUrl
+import com.yizhipin.base.data.response.Works
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
-import com.yizhipin.usercenter.presenter.AuthenticationPresenter
-import com.yizhipin.usercenter.presenter.view.AuthenticationView
-import kotlinx.android.synthetic.main.activity_authentication.*
+import com.yizhipin.usercenter.presenter.TeacherWorkPresenter
+import com.yizhipin.usercenter.presenter.view.TeacherWorkView
+import com.yizhipin.usercenter.ui.adapter.TeacherWorkImageAdapter
+import kotlinx.android.synthetic.main.activity_teacher_work_add.*
 import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 import java.io.File
 
 /**
- * Creator Qi
- * Date 2018/12/18
- * 实名认证
+ * Created by ${XiLei} on 2018/9/24.
+ * 添加作品
  */
-class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(), AuthenticationView, View.OnClickListener {
+
+class TeacherWorkAddActivity : BaseTakePhotoActivity<TeacherWorkPresenter>(), TeacherWorkView, View.OnClickListener {
+
+    private lateinit var mAdapter: TeacherWorkImageAdapter
 
     private var mLocalFileUrl = ""
-    private var mResultFrontUrl: String = ""
-    private var mResultReverseUrl: String = ""
-    private var mIsFront: Boolean = false
+    private var mResultUrl: String = ""
 
     private var mOssSign = ""
     private lateinit var mOssAddress: OssAddress
@@ -49,10 +50,23 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_authentication)
+        setContentView(R.layout.activity_teacher_work_add)
 
         initView()
         initOssInfo()
+    }
+
+    private fun initView() {
+
+        mAddIv.onClick(this)
+        mBtn.onClick(this)
+        mRv.layoutManager = GridLayoutManager(this, 4)
+        mAdapter = TeacherWorkImageAdapter(this!!)
+        mRv.adapter = mAdapter
+
+        mHeaderBar.getRightTv().onClick {
+            startActivity<TeacherApplySuccessActivity>()
+        }
     }
 
     override fun injectComponent() {
@@ -60,11 +74,6 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
         mPresenter.mView = this
     }
 
-    private fun initView() {
-        mFrontCardPhoto.onClick(this)
-        mReverseCardPhoto.onClick(this)
-        mBtn.onClick(this)
-    }
 
     /**
      * 初始化oss云存储
@@ -103,51 +112,26 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.mFrontCardPhoto -> {
-                mIsFront = true
-                showAlertView()
-            }
-            R.id.mReverseCardPhoto -> {
-                mIsFront = false
-                showAlertView()
-            }
+            R.id.mAddIv -> showAlertView()
             R.id.mBtn -> {
-
-                if (mNameEt.text.toString().isNullOrBlank()) {
-                    toast("请输入您的真实姓名")
+                if (mAddressDetailEv.text.toString().isNullOrBlank()) {
+                    toast("请输入拍摄地点")
                     return
                 }
-                if (mCardEt.text.toString().isNullOrBlank()) {
-                    toast("请输入您的身份证号码")
+                if (mResultUrl.isNullOrBlank()) {
+                    toast("请添加图片")
                     return
                 }
-                if (mResultFrontUrl.isNullOrBlank()) {
-                    toast("请上传身份证正面照")
-                    return
-                }
-                if (mResultReverseUrl.isNullOrBlank()) {
-                    toast("请上传身份证返面照")
-                    return
-                }
-
                 var map = mutableMapOf<String, String>()
-                map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-                map.put("realName", mNameEt.text.toString().trim())
-                map.put("idCard", mCardEt.text.toString().trim())
-                map.put("cardBefore", mResultFrontUrl)
-                map.put("cardAfter", mResultReverseUrl)
-                mPresenter.updateUserInfo(map)
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                map.put("address", mAddressDetailEv.text.toString())
+                map.put("imgurls", mResultUrl!!.take(mResultUrl.length - 1))
+                mPresenter.addWork(map)
             }
         }
     }
 
-    override fun onUpdateUserInfoSuccess(result: UserInfo) {
-
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_REAL_NAME, result?.realName  ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_CARD, result?.idCard   ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_FRONT, result?.cardBefore   ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_REVERSE, result?.cardAfter   ?: "")
-        startActivity<TeacherEnterDatumActivity>()
+    override fun onAddWorkSuccess(result: Works) {
         finish()
     }
 
@@ -196,20 +180,18 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
                 Log.d("XiLei", "result.getETag=" + result.eTag)
                 Log.d("XiLei", "result.getRequestId=" + result.requestId)
                 Log.d("XiLei", "result.getServerCallbackReturnBody=" + result.serverCallbackReturnBody)
-                if (mIsFront) {
-                    mResultFrontUrl = mOss.presignPublicObjectURL(mOssAddress.bucketName, objectKey)
-                } else {
-                    mResultReverseUrl = mOss.presignPublicObjectURL(mOssAddress.bucketName, objectKey)
-                }
-                Log.d("XiLei", "mResultFrontUrl=" + mResultFrontUrl)
-                Log.d("XiLei", "mResultReverseUrl=" + mResultReverseUrl)
+
+                mResultUrl = mOss.presignPublicObjectURL(mOssAddress.bucketName, objectKey) + "," + mResultUrl
+                Log.d("XiLei", "mResultUrl=" + mResultUrl)
                 runOnUiThread(object : Runnable {
                     override fun run() {
-                        if (mIsFront) {
-                            mFrontCardPhoto.loadUrl(mResultFrontUrl)
-                        } else {
-                            mReverseCardPhoto.loadUrl(mResultReverseUrl)
+                        var listResult = mutableListOf<String>()
+                        var list = mResultUrl!!.take(mResultUrl.length - 1).split(",").toMutableList()
+                        for (l in list) {
+                            listResult.add(l)
                         }
+                        mAdapter.setData(listResult)
+                        mAdapter.notifyDataSetChanged()
                     }
                 })
             }
@@ -248,12 +230,6 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
         Log.d("XiLei", "initOss======")
     }
 
-    override fun showLoading() {
-    }
-
-    override fun hideLoading() {
-    }
-
-    override fun onError(mes: String) {
+    override fun onGetWorkListSuccess(result: MutableList<Works>) {
     }
 }

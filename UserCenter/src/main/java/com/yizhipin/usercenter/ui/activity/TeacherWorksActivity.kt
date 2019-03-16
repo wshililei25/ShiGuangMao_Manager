@@ -3,27 +3,29 @@ package com.yizhipin.usercenter.ui.activity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.kennyc.view.MultiStateView
-import com.yizhipin.base.data.response.Store
+import com.yizhipin.base.common.BaseConstant
+import com.yizhipin.base.data.response.OssAddress
+import com.yizhipin.base.data.response.Works
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.ui.adapter.SelectTextAdapter
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
-import com.yizhipin.usercenter.presenter.ShopPresenter
-import com.yizhipin.usercenter.presenter.view.ShopView
+import com.yizhipin.usercenter.presenter.TeacherWorkPresenter
+import com.yizhipin.usercenter.presenter.view.TeacherWorkView
+import com.yizhipin.usercenter.ui.adapter.TeacherWorkAdapter
 import kotlinx.android.synthetic.main.activity_teacher_works.*
 import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2018/9/24.
- * 添加作品
+ * 上传作品
  */
 
-class TeacherWorksActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.OnClickListener {
+class TeacherWorksActivity : BaseMvpActivity<TeacherWorkPresenter>(), TeacherWorkView, View.OnClickListener {
 
-    private lateinit var mShopAdapter: SelectTextAdapter
+    private lateinit var mAdapter: TeacherWorkAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +36,15 @@ class TeacherWorksActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.On
 
     private fun initView() {
 
+        mBtn.onClick(this)
         mRv.layoutManager = LinearLayoutManager(this)
-        mShopAdapter = SelectTextAdapter(this)
-        mRv.adapter = mShopAdapter
+        mAdapter = TeacherWorkAdapter(this)
+        mRv.adapter = mAdapter
 
         mHeaderBar.getRightTv().onClick {
             startActivity<TeacherApplySuccessActivity>()
+            finish()
         }
-    }
-
-    private fun loadData() {
-        mBasePresenter.getShopList()
     }
 
     override fun injectComponent() {
@@ -52,19 +52,40 @@ class TeacherWorksActivity : BaseMvpActivity<ShopPresenter>(), ShopView, View.On
         mBasePresenter.mView = this
     }
 
-    override fun onGetShopListSuccess(result: MutableList<Store>) {
-        mRefreshLayout.endLoadingMore()
-        mRefreshLayout.endRefreshing()
-        if (result != null) {
-            mShopAdapter.setData(result)
-            mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
-        } else {
-            mMultiStateView.viewState = MultiStateView.VIEW_STATE_EMPTY
+    override fun onStart() {
+        super.onStart()
+        initData()
+    }
+
+    private fun initData() {
+        var map = mutableMapOf<String, String>()
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+        mBasePresenter.getWorksList(map)
+    }
+
+
+    override fun onGetWorkListSuccess(result: MutableList<Works>) {
+        mAdapter.setData(result)
+    }
+
+    override fun onClick(v: View) {
+        when (v.id) {
+            R.id.mBtn -> {
+                startActivity<TeacherWorkAddActivity>()
+            }
         }
     }
 
-    override fun onClick(v: View?) {
+    override fun onGetOssSignSuccess(result: String) {
+    }
 
+    override fun onGetOssSignFileSuccess(result: String) {
+    }
+
+    override fun onGetOssAddressSuccess(result: OssAddress) {
+    }
+
+    override fun onAddWorkSuccess(result: Works) {
     }
 
 }
