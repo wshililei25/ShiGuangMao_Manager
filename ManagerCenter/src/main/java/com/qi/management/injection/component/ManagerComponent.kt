@@ -32,5 +32,6 @@ interface ManagerComponent {
     fun inject(activity: ComplainFragment)
     fun inject(activity: NewFragment)
     fun inject(activity: FinancialStatisticsFragment)
+    fun inject(activity: StoreInfoManagementActivity)
 
 }

@@ -48,7 +48,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
         mRechargeTv.onClick(this)
         mWithdrawTv.onClick(this)
 
-        mRecyclerView.layoutManager = LinearLayoutManager(this)
+        mRecyclerView.layoutManager = LinearLayoutManager(this!!)
         mFeeRecordAdapter = FeeRecordAdapter(this)
         mRecyclerView.adapter = mFeeRecordAdapter
     }
@@ -60,9 +60,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     }
 
     private fun loadBalance() {
-        var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-        mPresenter.getUserInfo(map)
+        mPresenter.getUserInfo()
     }
 
     /**

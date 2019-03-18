@@ -6,10 +6,8 @@ package com.yizhipin.usercenter.bean
  * 工作状态
  */
 data class WorkStatusBean(
-        /**上下班记录时间*/
         val createTime: String,
         val id: Int,
         val uid: Int,
-        /**是否上班*/
         val work: Boolean
 )

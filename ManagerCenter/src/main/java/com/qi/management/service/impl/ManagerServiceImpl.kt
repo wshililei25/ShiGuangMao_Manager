@@ -63,12 +63,17 @@ open class ManagerServiceImpl @Inject constructor() : ManagerService {
     override fun addStaff(map: MutableMap<String, String>): Observable<UserInfo> {
         return mRepository.addStaff(map).convert()
     }
+
     override fun getFinancial(map: MutableMap<String, String>): Observable<Financial> {
         return mRepository.getFinancial(map).convert()
     }
 
     override fun getManagerOrderDetails(map: MutableMap<String, String>): Observable<ManagerOrderDetails> {
         return mRepository.getManagerOrderDetails(map).convert()
+    }
+
+    override fun getStoreInfo(map: MutableMap<String, String>): Observable<Store> {
+        return mRepository.getStoreInfo(map).convert()
     }
 
     override fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>> {

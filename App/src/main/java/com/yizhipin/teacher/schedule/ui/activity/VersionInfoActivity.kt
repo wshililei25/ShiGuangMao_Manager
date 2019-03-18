@@ -20,7 +20,6 @@ class VersionInfoActivity : BaseActivity() {
     }
 
     private fun initView() {
-//        titleView.setOnLeftIconClickListener { onBackPressed() }
         mAboutTv.text = getString(R.string.system_version).plus(BuildConfig.VERSION_NAME)
     }
 

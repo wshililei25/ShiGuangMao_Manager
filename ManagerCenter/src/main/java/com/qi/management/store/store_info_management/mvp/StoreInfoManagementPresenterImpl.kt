@@ -2,13 +2,7 @@ package com.qi.management.store.store_info_management.mvp
 
 import android.text.TextUtils
 import com.qi.management.R
-import com.qi.management.bean.StoreBean
-import com.yizhipin.base.data.response.UserInfo
-import com.yizhipin.base.ext.execute
 import com.yizhipin.base.mvp.presenter.BasePresenter
-import com.yizhipin.base.rx.CodeHandlerSubscriber
-import com.yizhipin.base.utils.ToastUtils
-import com.yizhipin.usercenter.utils.UserPrefsUtils
 import javax.inject.Inject
 
 /**
@@ -37,15 +31,15 @@ class StoreInfoManagementPresenterImpl @Inject constructor(val model: StoresMode
     /**
      * 请求获取门店信息
      */
-    fun getStoreInfo() {
-        val userInfo: UserInfo? = UserPrefsUtils.getUserInfo() ?: return
-        model.getStore(userInfo!!.shopId).execute(object : CodeHandlerSubscriber<StoreBean>(mView) {
-            override fun onSucceed(data: StoreBean) {
-                model.storeBean = data
-                mView.showData(data)
-            }
-        }, mLifecycleProvider)
-    }
+    /*   fun getStoreInfo() {
+           val userInfo: UserInfo? = UserPrefsUtils.getUserInfo() ?: return
+           model.getStore(userInfo!!.shopId).execute(object : CodeHandlerSubscriber<StoreBean>(mView) {
+               override fun onSucceed(data: StoreBean) {
+                   model.storeBean = data
+                   mView.showData(data)
+               }
+           }, mLifecycleProvider)
+       }*/
 
     /**
      * 设置URL
@@ -57,25 +51,25 @@ class StoreInfoManagementPresenterImpl @Inject constructor(val model: StoresMode
     /**
      * 保存门店信息
      */
-    fun saveStoreInfo() {
-        model.storeBean.storeName = mView.getStoreName()
-        model.storeBean.city = mView.getCity()
-        model.storeBean.detail = mView.getDetailAddress()
-        model.storeBean.content = mView.getStoreContent()
-        model.storeBean.uid = if (UserPrefsUtils.getUserInfo() == null) "" else UserPrefsUtils.getUserInfo()!!.id
-        val legal = legal()
-        if (legal != 0) {
-            ToastUtils.INSTANCE.showToast(mView.getContext(), legal)
-            return
-        }
-        model.storeBean.province = model.storeBean.city.split(" ")[0]
-        model.saveStoreInfo(model.storeBean).execute(object : CodeHandlerSubscriber<StoreBean>(mView) {
-            override fun onSucceed(data: StoreBean) {
-                model.storeBean = data
-                ToastUtils.INSTANCE.showToast(mView.getContext(), R.string.saveSuccess)
-            }
-        }, mLifecycleProvider)
-    }
+    /* fun saveStoreInfo() {
+         model.storeBean.storeName = mView.getStoreName()
+         model.storeBean.city = mView.getCity()
+         model.storeBean.detail = mView.getDetailAddress()
+         model.storeBean.content = mView.getStoreContent()
+         model.storeBean.uid = if (UserPrefsUtils.getUserInfo() == null) "" else UserPrefsUtils.getUserInfo()!!.id
+         val legal = legal()
+         if (legal != 0) {
+             ToastUtils.INSTANCE.showToast(mView.getContext(), legal)
+             return
+         }
+         model.storeBean.province = model.storeBean.city.split(" ")[0]
+         model.saveStoreInfo(model.storeBean).execute(object : CodeHandlerSubscriber<StoreBean>(mView) {
+             override fun onSucceed(data: StoreBean) {
+                 model.storeBean = data
+                 ToastUtils.INSTANCE.showToast(mView.getContext(), R.string.saveSuccess)
+             }
+         }, mLifecycleProvider)
+     }*/
 
     private fun legal(): Int {
         return when {

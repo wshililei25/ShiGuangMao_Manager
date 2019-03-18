@@ -1,7 +1,5 @@
 package com.yizhipin.ui.activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -15,7 +13,6 @@ import com.yizhipin.ui.fragment.ChatListFragment
 import com.yizhipin.ui.fragment.FinancialAffairsFragment
 import com.yizhipin.ui.fragment.MeFragment
 import com.yizhipin.ui.fragment.PersonnelFragment
-import com.yizhipin.usercenter.common.IntentParams.EXIST
 import kotlinx.android.synthetic.main.activity_home.*
 import org.jetbrains.anko.toast
 import java.util.*
@@ -79,14 +76,6 @@ class MainTeacherActivity : BaseActivity() {
         }
         manager.show(mStack[position])
         manager.commit()
-    }
-
-    companion object {
-        fun startActivity(context: Context, isExistsLogin: Boolean) {
-            val intent = Intent(context, MainTeacherActivity::class.java)
-            intent.putExtra(EXIST, isExistsLogin)
-            context.startActivity(intent)
-        }
     }
 
     private var mPressTime: Long = 0

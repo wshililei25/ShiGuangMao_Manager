@@ -1,6 +1,6 @@
 package com.qi.management.store.store_info_management.dagger
 
-import com.qi.management.store.store_info_management.StoreInfoManagementActivity
+import com.qi.management.ui.activity.StoreInfoManagementActivity
 import com.qi.management.store.store_info_management.mvp.StoresContract
 import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent

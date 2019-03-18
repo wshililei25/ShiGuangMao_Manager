@@ -65,19 +65,6 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun initData(savedInstanceState: Bundle?) {
         super.initData(savedInstanceState)
         mBasePresenter.getOssAddress()
-        if (isLogined()) {
-            when (AppPrefsUtils.getInt(BaseConstant.KEY_USER_TYPE)) {
-                1 -> {
-                    if (AppPrefsUtils.getString(BaseConstant.FOREGIFT).toDouble() <= 0) {
-                        startActivity<CashPledgeActivity>()
-                    } else {
-                        ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()
-                    }
-                }
-                2 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN_TEACHER).navigation()
-            }
-            finish()
-        }
     }
 
     override fun onClick(v: View) {
@@ -148,15 +135,6 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
             2 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN_TEACHER).navigation()
         }
         finish()
-    }
-
-    companion object {
-        fun startActivity(activity: Activity) {
-            UserPrefsUtils.putUserInfo(null)
-            val intent = Intent()
-            intent.setClass(activity, LoginActivity::class.java)
-            activity.startActivity(intent)
-        }
     }
 
 }

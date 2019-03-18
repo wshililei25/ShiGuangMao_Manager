@@ -63,8 +63,6 @@ class SystemSettingActivity : BaseMvpActivity<SystemSettingPresenterImpl>(), Sys
 
     private fun onLoginOutBtnClickListener(view: View) {
         //退出登录
-//        MainActivity.startActivity(view.context, true)
-
         EMClient.getInstance().logout(false, object : EMCallBack {
             override fun onSuccess() {
                 Log.d("XiLei", "环信退出登录成功")

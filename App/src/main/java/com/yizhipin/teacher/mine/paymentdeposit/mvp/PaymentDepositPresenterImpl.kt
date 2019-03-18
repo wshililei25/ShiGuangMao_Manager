@@ -3,10 +3,12 @@ package com.yizhipin.teacher.mine.paymentdeposit.mvp
 import android.app.Activity
 import android.text.TextUtils
 import com.yizhipin.R
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.BeanRechargeDeposit
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.mvp.presenter.BasePresenter
 import com.yizhipin.base.rx.CodeHandlerSubscriber
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.utils.UserPrefsUtils
 import javax.inject.Inject
 
@@ -35,7 +37,7 @@ class PaymentDepositPresenterImpl @Inject constructor(val model: PaymentDepositM
      */
     fun recharge(payType: String) {
         if (!verify(payType, amount)) return
-        model.recharge(UserPrefsUtils.getUserId(), amount, payType).execute(object : CodeHandlerSubscriber<BeanRechargeDeposit>(mView) {
+        model.recharge(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID), amount, payType).execute(object : CodeHandlerSubscriber<BeanRechargeDeposit>(mView) {
             override fun onSucceed(data: BeanRechargeDeposit) {
                 if (data.paySuccess && mView != null && mView is Activity)
                     (mView as Activity).finish()

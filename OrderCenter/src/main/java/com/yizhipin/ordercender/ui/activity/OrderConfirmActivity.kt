@@ -100,8 +100,8 @@ class OrderConfirmActivity : BaseMvpActivity<OrderConfirmPresenter>(), OrderConf
             mShipView.isEnabled = false
             mSelectShipTv.setVisible(false)
             mShipView.setVisible(true)
-            mShipNameTv.text = getString(R.string.check_in_person) + AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
-            mShipMobileTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_MOBILE)
+//            mShipNameTv.text = getString(R.string.check_in_person) + AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
+//            mShipMobileTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_MOBILE)
             mShipAddressTv.setVisible(false)
         } else { //其他
             var map = mutableMapOf<String, String>()

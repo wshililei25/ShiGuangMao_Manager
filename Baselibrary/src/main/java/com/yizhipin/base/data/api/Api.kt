@@ -76,6 +76,7 @@ interface Api {
         const val WORK_STATUS_LIST = "api/UserWorkStatus/List"
         const val WORK_STATUS_POST = "api/UserWorkStatus"
         const val SHOP_LIST = "api/Store/List"//门店列表
+        const val SHOP_DETAILS = "api/Store"//门店详情
         const val APPLY_ENTER_DATUM = "api/TeacherInfo"//老师入驻资料申请
         const val RECHERGE_CASH_PLEDGE = "api/UserDeposit" //押金支付
         const val CASH_PLEDGE = "api/UserDeposit/User" //押金

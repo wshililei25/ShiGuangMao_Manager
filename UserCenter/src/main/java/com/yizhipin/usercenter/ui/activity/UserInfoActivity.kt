@@ -32,6 +32,7 @@ import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
 import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 import java.io.File
 
 
@@ -110,9 +111,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     }
 
     private fun initData() {
-        var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-        mPresenter.getUserInfo(map)
+        mPresenter.getUserInfo()
     }
 
     override fun injectComponent() {
@@ -128,7 +127,10 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
             R.id.mUserIconView -> showAlertView()
 
             R.id.mConfirmBtn -> {
-
+                if (mNickEt.text.toString().isNullOrEmpty()) {
+                    toast("请输入昵称")
+                    return
+                }
                 var map = mutableMapOf<String, String>()
                 map.put("nickname", mNickEt.text.toString())
                 map.put("imgurl", mResultUrl)
@@ -244,7 +246,6 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      * 编辑用户资料成功
      */
     override fun onEditUserResult(result: UserInfo) {
-        UserPrefsUtils.putUserInfo(result)
         if (!mIsFormMe) {
             startActivity<AuthenticationActivity>()
         }

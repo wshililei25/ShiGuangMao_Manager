@@ -1,6 +1,5 @@
 package com.yizhipin.usercenter.ui.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,10 +25,9 @@ import org.jetbrains.anko.toast
  */
 class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, View.OnClickListener {
 
-    private var mLongitude: Double = 0.00
-    private var mLatitude: Double = 0.00
+    private var mCurrentNum = 60
+    private val TIME: Long = 1000
 
-    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -54,6 +52,8 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
                     toast(R.string.input_mobile)
                     return
                 }
+                mCurrentNum = 60
+                mSendCodeTv.postDelayed(mRefreshRunnable, TIME);
                 var map = mutableMapOf<String, String>()
                 map.put("mobile", mMobileEt.text.toString())
                 mBasePresenter.getCode(map)
@@ -109,4 +109,19 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
         finish()
     }
 
+    private val mRefreshRunnable: Runnable = object : Runnable {
+        override fun run() {
+            mSendCodeTv.text = mCurrentNum.toString() + "s"
+
+            if (mCurrentNum == 0) {
+                mSendCodeTv.removeCallbacks(this)
+                mSendCodeTv.isEnabled = true
+                mSendCodeTv.text = "重发验证码"
+            } else {
+                mCurrentNum -= 1
+                mSendCodeTv.isEnabled = false
+                mSendCodeTv.postDelayed(this, TIME);
+            }
+        }
+    }
 }

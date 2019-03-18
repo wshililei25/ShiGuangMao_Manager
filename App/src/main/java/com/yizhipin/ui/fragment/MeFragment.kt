@@ -16,7 +16,9 @@ import com.yizhipin.base.data.response.UserType
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.common.afterLogin
+import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.ui.activity.ChargeSetActivity
 import com.yizhipin.ui.activity.CustomServiceActivity
@@ -57,7 +59,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         workNoteLayout.setOnClickListener(this::onWorkNoteLayoutClickListener)//工作须知
         phoneLayout.setOnClickListener(this::onPhoneLayoutListener)//客服电话
         settingLayout.setOnClickListener(this::onSettingLayoutListener)//系统设置
-        workStatusView.setOnClickListener(this::onWorkStatusViewListener)//上下班
+        mWorkStatusView.setOnClickListener(this)//上下班
     }
 
     private fun initViews() {
@@ -66,13 +68,28 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mInvitationCodeView.onClick(this)
         shareCodeLayout.onClick(this)
         userIconView.onClick(this)
-
-        mBasePresenter.getUserInfo()
     }
 
     override fun injectComponent() {
         DaggerMainComponent.builder().activityComponent(mActivityComponent).mianModule(MianModule()).build().inject(this)
         mBasePresenter.mView = this
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        loadData()
+    }
+
+    private fun loadData() {
+        if (isLogined()) {
+            mBasePresenter.getUserInfo()
+        }
+    }
+
+    override fun getUserResult(userInfo: UserInfo) {
+        mUserInfo = userInfo
+        updateViews(userInfo)
     }
 
     override fun onClick(v: View) {
@@ -102,7 +119,23 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     startActivity<InvitationActivity>(BaseConstant.KEY_INCITATION_CODE to mUserInfo.requestCode)
                 }
             }
+            R.id.mWorkStatusView -> {
+                afterLogin {
+                    var map = mutableMapOf<String,String>()
+                    map.put("uid",AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                    map.put("work",mUserInfo.work.toString())
+                    mBasePresenter.postWorkStatus(map)
+                }
+            }
         }
+    }
+
+    /**
+     * 上下班打卡成功
+     */
+    override fun showWorkStatus(workStatusBean: WorkStatusBean) {
+        mWorkStatusView.setText(if (workStatusBean.work) R.string.onDuty else R.string.offDuty)
+        mUserInfo.work = workStatusBean.work
     }
 
     /**点击收费设置*/
@@ -140,16 +173,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         ARouter.getInstance().build(RouterPath.UserCenter.SYSTEM_SETTING).navigation()
     }
 
-    private fun onWorkStatusViewListener(view: View) {
-        mBasePresenter.postWorkStatus()
-    }
-
-    override fun getUserResult(userInfo: UserInfo) {
-        mUserInfo = userInfo
-        UserPrefsUtils.putUserInfo(userInfo)
-        updateViews(userInfo)
-    }
-
     private fun updateViews(userInfo: UserInfo) {
         if (userInfo.type == UserType.Management) {
             topLayout.visibility = GONE
@@ -170,20 +193,13 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         remainingSumView.text = userInfo.amount//余额
         creditScoreView.text = userInfo.credit//信用
         invitationCodeView.text = userInfo.requestCode//邀请码
-        workStatusView.setText(if (userInfo.work) R.string.onDuty else R.string.offDuty)//工作状态
+        mWorkStatusView.setText(if (userInfo.work) R.string.onDuty else R.string.offDuty)//工作状态
     }
 
     override fun onEditUserResult(result: UserInfo) {
     }
 
     override fun onGetCartSuccess(result: Int) {
-    }
-
-    override fun showWorkStatus(workStatusBean: WorkStatusBean) {
-        val userInfo = UserPrefsUtils.getUserInfo()
-        userInfo?.work = workStatusBean.work
-        UserPrefsUtils.putUserInfo(userInfo)
-        workStatusView.setText(if (workStatusBean.work) R.string.onDuty else R.string.offDuty)
     }
 
     override fun getFeeRecordListSuccess(result: MutableList<FeeRecord>) {

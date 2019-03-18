@@ -15,9 +15,6 @@ import com.yizhipin.provider.router.RouterPath
  */
 object UserPrefsUtils {
 
-    /**
-     *  退出登录时，传入null,清空存储
-     */
     fun putUserInfo(userInfo: UserInfo?) {
         AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, userInfo?.id ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.token.toString() ?: "")
@@ -29,12 +26,6 @@ object UserPrefsUtils {
         AppPrefsUtils.putString(BaseConstant.KEY_SHOP_NAME, userInfo?.storeName ?: "")
         AppPrefsUtils.putString(BaseConstant.FOREGIFT, userInfo?.totalDeposit  ?: "0")
         AppPrefsUtils.putInt(BaseConstant.KEY_USER_TYPE, userInfo?.type ?: 0)
-
-        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_MOBILE, userInfo?.mobile ?: "")
-        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_ICON, userInfo?.imgurl ?: "")
-        AppPrefsUtils.putString(ProviderConstant.KEY_SP_USER_NICKNAME, userInfo?.nickname ?: "")
-        AppPrefsUtils.putString(ProviderConstant.KEY_AMOUNT, userInfo?.amount ?: "0")
-        AppPrefsUtils.putString(ProviderConstant.KEY_USER_INFO, Gson().toJson(userInfo))
     }
 
     /**
@@ -47,26 +38,9 @@ object UserPrefsUtils {
         AppPrefsUtils.remove(BaseConstant.KEY_SP_CARD)
         AppPrefsUtils.remove(BaseConstant.KEY_SP_FRONT)
         AppPrefsUtils.remove(BaseConstant.KEY_SP_REVERSE)
+        AppPrefsUtils.remove(BaseConstant.KEY_SHOP_ID)
         AppPrefsUtils.remove(BaseConstant.KEY_SHOP_NAME)
+        AppPrefsUtils.remove(BaseConstant.FOREGIFT)
         AppPrefsUtils.remove(BaseConstant.KEY_USER_TYPE)
-
-        AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_MOBILE)
-        AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_ICON)
-        AppPrefsUtils.remove(ProviderConstant.KEY_SP_USER_NICKNAME)
-        AppPrefsUtils.remove(ProviderConstant.KEY_AMOUNT)
-        AppPrefsUtils.remove(ProviderConstant.KEY_USER_INFO)
-    }
-
-    fun getUserInfo(): UserInfo? {
-        val userInfo = Gson().fromJson<UserInfo?>(AppPrefsUtils.getString(ProviderConstant.KEY_USER_INFO), object : TypeToken<UserInfo>() {}.type)
-        if (userInfo == null) {
-            ARouter.getInstance().build(RouterPath.UserCenter.PATH_LOGIN).navigation()
-            AppManager.instance.finishAllExcludeCurrent()
-        }
-        return userInfo
-    }
-
-    fun getUserId(): String {
-        return AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID)
     }
 }

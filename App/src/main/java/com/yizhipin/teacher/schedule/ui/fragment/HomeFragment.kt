@@ -58,7 +58,6 @@ class HomeFragment : BaseMvpFragment<HomePresenter>(), HomeView, View.OnClickLis
         initRecommendRv()
     }
 
-
     override fun injectComponent() {
         DaggerMainComponent.builder().activityComponent(mActivityComponent).mianModule(MianModule()).build().inject(this)
         mBasePresenter.mView = this

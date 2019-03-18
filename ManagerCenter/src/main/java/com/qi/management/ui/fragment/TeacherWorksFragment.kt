@@ -44,7 +44,7 @@ class TeacherWorksFragment : BaseMvpFragment<TeacherWorksPresenter>(), TeacherWo
     }
 
     private fun initView() {
-        mRv.layoutManager = GridLayoutManager(activity,2)
+        mRv.layoutManager = GridLayoutManager(activity!!,2)
         mAdapter = TeacherWorksAdapter(activity!!)
         mRv.adapter = mAdapter
     }

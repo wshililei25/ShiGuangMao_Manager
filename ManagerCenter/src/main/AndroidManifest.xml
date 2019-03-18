@@ -9,7 +9,7 @@
         <activity
             android:name=".store.wedding_photography.comboslist.view.CombosListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".store.store_info_management.StoreInfoManagementActivity" />
+        <activity android:name=".ui.activity.StoreInfoManagementActivity" />
         <activity android:name=".store.production_management.view.ProductionListActivity" />
         <activity android:name=".store.costume.list.view.CostumeListActivity" />
         <activity android:name=".store.costume.CostumePavilionActivity" />

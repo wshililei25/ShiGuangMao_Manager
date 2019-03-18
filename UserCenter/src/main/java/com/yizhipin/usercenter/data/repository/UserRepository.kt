@@ -52,8 +52,7 @@ class UserRepository @Inject constructor() : BaseModel {
      * 获取用户信息
      */
     fun getUserInfo(uid: String): Observable<BaseResp<UserInfo>> {
-        return RetrofitFactoryGet().create(UserApi::class.java)
-                .getUserInfo(uid)
+        return RetrofitFactoryGet().create(UserApi::class.java).getUserInfo(uid)
     }
 
     /**
@@ -99,10 +98,7 @@ class UserRepository @Inject constructor() : BaseModel {
                 .resetPayPwd()
     }
 
-    fun postUserWorkStatus(uid: String, workStatus: Boolean): Observable<BaseResp<WorkStatusBean>> {
-        val map = mutableMapOf<String, String>()
-        map["uid"] = uid
-        map["work"] = "" + workStatus
+    fun postUserWorkStatus(map: MutableMap<String, String>): Observable<BaseResp<WorkStatusBean>> {
         return RetrofitFactoryPost(map).create(UserApi::class.java).postUserWorkStatus()
     }
 

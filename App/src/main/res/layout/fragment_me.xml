@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/background">
+            android:background="@drawable/user_bg">
 
             <ImageView
                 android:id="@+id/bellView"
@@ -107,7 +107,7 @@
 
 
             <TextView
-                android:id="@+id/workStatusView"
+                android:id="@+id/mWorkStatusView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/userIconView"

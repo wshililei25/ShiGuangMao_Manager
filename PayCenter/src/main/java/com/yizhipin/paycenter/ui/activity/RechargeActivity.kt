@@ -58,8 +58,8 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     }
 
     override fun injectComponent() {
-         DaggerPayComponent.builder().activityComponent(mActivityComponent).payModule(PayModule()).build().inject(this)
-         mBasePresenter.mView = this
+        DaggerPayComponent.builder().activityComponent(mActivityComponent).payModule(PayModule()).build().inject(this)
+        mBasePresenter.mView = this
     }
 
     private fun initView() {
@@ -98,8 +98,8 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-                map.put("amount", "1000") //暂时注释
-//                map.put("amount", "0.01")
+//                map.put("amount", "1000") //暂时注释
+                map.put("amount", "0.01")
                 map.put("payType", mPayType)
                 mBasePresenter.rechargeCashPledge(map)
             }
@@ -158,6 +158,9 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
                         Log.d("XiLei", "payResult=" + payResult);
 //                        showAlert(this@RechargeActivity, getString(R.string.pay_success) + payResult)
                         var gson = Gson().fromJson<AliPayResult>(resultInfo, AliPayResult::class.java)
+                        AppPrefsUtils.putString(BaseConstant.FOREGIFT, gson.alipay_trade_app_pay_response.total_amount) //本地保存支付的押金用作判断
+                        Log.d("XiLei", "yayay0000=" + gson.alipay_trade_app_pay_response.total_amount)
+                        Log.d("XiLei", "yayay11111=" + AppPrefsUtils.getString(BaseConstant.FOREGIFT))
                         startActivity<PaySuccessActivity>(BaseConstant.KEY_PAY_CONTENT to "成功支付押金" + gson.alipay_trade_app_pay_response.total_amount + "元")
                         finish()
                     } else {

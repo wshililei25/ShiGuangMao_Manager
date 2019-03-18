@@ -77,17 +77,21 @@
         <!-- 环信End -->
 
         <activity
+            android:name="com.yizhipin.ui.activity.WeclomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.yizhipin.ui.activity.MainActivity">
 
         </activity>
-        <activity android:name="com.yizhipin.teacher.schedule.ui.activity.SettingActivity" />
         <activity android:name="com.yizhipin.teacher.schedule.ui.activity.VersionInfoActivity" />
         <activity android:name=".base.ui.web.WebViewActivity" />
         <activity
             android:name=".teacher.mine.baseinfo.BaseInfoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".teacher.mine.cashpledge.DepositActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".teacher.mine.depositrefund.DepositRefundActivity"

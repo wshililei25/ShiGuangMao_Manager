@@ -56,8 +56,8 @@ class ManagerOrderDetailsActivity : BaseMvpActivity<ManagerOrderDetailsPresenter
 
         mManagerOrder = intent.getParcelableExtra(BaseConstant.KEY_ORDER)
 
-        mUserNameIv.loadUrl(AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON))
-        mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
+//        mUserNameIv.loadUrl(AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_ICON))
+//        mUserNameTv.text = AppPrefsUtils.getString(ProviderConstant.KEY_SP_USER_NICKNAME)
 
         //指定服装
         var linearLayoutManager = LinearLayoutManager(this!!)

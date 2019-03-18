@@ -27,7 +27,6 @@ class BaseConstant {
         //押金
         const val FOREGIFT = "foregift "
 
-
         const val KEY_BOOLEAN = "isTrue"
         //用户类型
         const val KEY_USER_TYPE = "userType"

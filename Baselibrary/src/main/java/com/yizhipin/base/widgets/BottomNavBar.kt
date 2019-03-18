@@ -25,9 +25,9 @@ class BottomNavBar @JvmOverloads constructor(
 
         //消息
         val categoryItem = BottomNavigationItem(
-                R.drawable.ic_msg_checked,
+                R.drawable.speech_bubble2,
                 resources.getString(R.string.navMsg))
-                .setInactiveIconResource(R.drawable.ic_msg_unchecked)
+                .setInactiveIconResource(R.drawable.speech_bubble)
                 .setActiveColorResource(R.color.yRed)
                 .setInActiveColorResource(R.color.yBlackDeep)
         //我的

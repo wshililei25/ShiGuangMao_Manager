@@ -9,6 +9,7 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.CalendarView
 import com.yizhipin.R
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.common.BaseConstant.Companion.KEY_SP_USER_ID
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.ui.pop.TimeUtils
@@ -89,7 +90,7 @@ class ScheduleCalendarFragment : BaseMvpFragment<ScheduleCalendarPresenter>(), S
             calendarTitleView.text = String.format(resources.getString(R.string.titleCalendar), year, month)
         }
         //获取老师日程列表
-        mBasePresenter.getScheduleListFromNet(UserPrefsUtils.getUserId())
+        mBasePresenter.getScheduleListFromNet(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
     }
 
     override fun uploadSchedule(scheduleMap: HashMap<String, ScheduleItemBean>) {

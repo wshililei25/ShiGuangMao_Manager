@@ -74,4 +74,8 @@ class ManagerRepository @Inject constructor() {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getManagerOrderDetails(map["orderType"]!!, map["id"]!!)
     }
 
+    fun getStoreInfo(map: MutableMap<String, String>): Observable<BaseResp<Store>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getStoreInfo(map["id"]!!)
+    }
+
 }

@@ -61,4 +61,7 @@ interface ManagerApi {
     @GET("${Api.MANAGER_ORDER_DETAILS}${"/{orderType}"}${"/{id}"}")
     fun getManagerOrderDetails(@Path("orderType") orderType: String, @Path("id") id: String): Observable<BaseResp<ManagerOrderDetails>>
 
+    @GET("${Api.SHOP_DETAILS}${"/{id}"}")
+    fun getStoreInfo(@Path("id") id: String): Observable<BaseResp<Store>>
+
 }

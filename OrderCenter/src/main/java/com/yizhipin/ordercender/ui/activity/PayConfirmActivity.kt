@@ -86,9 +86,9 @@ class PayConfirmActivity : BaseMvpActivity<PayConfirmPresenter>(), PayConfirmVie
         mPostageTv.text = getString(R.string.rmb).plus(mAmount.toString())
         mPaymentTv.text = getString(R.string.rmb).plus(mAmount.toString())
 
-        if (AppPrefsUtils.getString(ProviderConstant.KEY_AMOUNT).toDouble() < mAmount) {
+     /*   if (AppPrefsUtils.getString(ProviderConstant.KEY_AMOUNT).toDouble() < mAmount) {
             mBalanceRadio.setTextDesc(getString(R.string.balance_insufficient))
-        }
+        }*/
 
         mPayRadioGroup.setOnCheckedChangeListener(object : PayRadioGroup.OnCheckedChangeListener {
             override fun onCheckedChanged(group: PayRadioGroup, checkedId: Int) {

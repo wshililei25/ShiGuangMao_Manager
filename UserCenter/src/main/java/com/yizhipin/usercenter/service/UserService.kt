@@ -23,7 +23,6 @@ interface UserService {
     fun updatePayPwd(map: MutableMap<String, String>): Observable<Boolean>
     fun resetPayPwd(map: MutableMap<String, String>): Observable<Boolean>
     fun getUserWorkStatusList(uid: String): Observable<BaseResp<List<WorkStatusBean>>>
-    fun postUserWorkStatus(uid: String, workStatus: Boolean): Observable<BaseResp<WorkStatusBean>>
     fun getShopList(): Observable<MutableList<Store>>
     fun applyEnterDatum(map: MutableMap<String, String>): Observable<Teacher>
     fun loadFeeRecordList(map: MutableMap<String, String>): Observable<MutableList<FeeRecord>>
@@ -35,4 +34,5 @@ interface UserService {
     fun updateUserInfo(map: MutableMap<String, String>): Observable<UserInfo>
     fun addWork(map: MutableMap<String, String>): Observable<Works>
     fun getWorksList(map: MutableMap<String, String>): Observable<MutableList<Works>>
+    fun postUserWorkStatus(map: MutableMap<String, String>): Observable<WorkStatusBean>
 }

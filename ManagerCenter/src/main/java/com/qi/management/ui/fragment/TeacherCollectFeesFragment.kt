@@ -35,9 +35,7 @@ class TeacherCollectFeesFragment : BaseMvpFragment<UserInfoPresenter>(), UserInf
     }
 
     private fun initData() {
-        var map = mutableMapOf<String, String>()
-        map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-        mBasePresenter.getUserInfo(map)
+        mBasePresenter.getUserInfo()
     }
 
     override fun injectComponent() {

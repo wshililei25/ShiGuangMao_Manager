@@ -58,7 +58,7 @@
                 android:layout_toStartOf="@+id/arrowIcon"
                 android:layout_toLeftOf="@+id/arrowIcon"
                 android:scaleType="centerCrop"
-                android:src="@drawable/mainicon2" />
+                android:src="@drawable/avatar_w" />
         </RelativeLayout>
 
         <LinearLayout
