@@ -9,7 +9,6 @@
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHead"
         style="@style/MatchWrap"
-        app:rightText="@string/save"
         app:titleText="@string/storeInformationManagement" />
 
     <LinearLayout
@@ -21,7 +20,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/storeIconLayout"
+            android:id="@+id/mStoreView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_views"

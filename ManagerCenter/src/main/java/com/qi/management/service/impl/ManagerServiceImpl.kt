@@ -20,6 +20,10 @@ open class ManagerServiceImpl @Inject constructor() : ManagerService {
     @Inject
     lateinit var mRepository: ManagerRepository
 
+    override fun getUserInfo(uid: String): Observable<UserInfo> {
+        return mRepository.getUserInfo(uid).convert()
+    }
+
     override fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>> {
         return mRepository.getCameramanList(map).convertPaging()
     }
@@ -82,5 +86,21 @@ open class ManagerServiceImpl @Inject constructor() : ManagerService {
 
     override fun getTeacherEvaluate(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>> {
         return mRepository.getTeacherEvaluate(map).convertPaging()
+    }
+
+    override fun getTeacherDatum(map: MutableMap<String, String>): Observable<Teacher> {
+        return mRepository.getTeacherDatum(map).convert()
+    }
+
+    override fun getOssSign(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.getOssSign(map).convert()
+    }
+
+    override fun getOssSignFile(map: MutableMap<String, String>): Observable<String> {
+        return mRepository.getOssSignFile(map).convert()
+    }
+
+    override fun getOssAddress(): Observable<OssAddress> {
+        return mRepository.getOssAddress().convert()
     }
 }

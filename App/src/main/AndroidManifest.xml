@@ -94,12 +94,6 @@
             android:name=".teacher.mine.baseinfo.BaseInfoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".teacher.mine.depositrefund.DepositRefundActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.activity.ProfileActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".teacher.mine.attention.AttentionActivity"
             android:screenOrientation="portrait" />
         <activity

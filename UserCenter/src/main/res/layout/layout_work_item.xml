@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch.Vertical.Common">
+    style="@style/MatchWrap.Vertical">
+
+    <View style="@style/DividerFixedHeight_10" />
 
     <TextView
         android:id="@+id/mNameTv"
         style="@style/MatchWrap"
+        android:background="@color/yWhite"
         android:padding="@dimen/yPaddingSmall"
         android:textColor="@color/yBlack"
-        android:textSize="@dimen/yTextBigSize"/>
+        android:textSize="@dimen/yTextBigSize" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mRv"
         style="@style/MatchWrap"
-        android:background="@color/yWhite"/>
+        android:background="@color/yWhite" />
 </LinearLayout>

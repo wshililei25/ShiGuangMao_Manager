@@ -62,7 +62,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
     private fun initData() {
         var map = mutableMapOf<String, String>()
         map.put("id", mShopId)
-        mPresenter.getShopDetails(map)
+        mBasePresenter.getShopDetails(map)
     }
 
     /*
@@ -70,7 +70,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
      */
     override fun injectComponent() {
         DaggerGoodsComponent.builder().activityComponent(mActivityComponent).goodsModule(GoodsModule()).build().inject(this)
-        mPresenter.mView = this
+        mBasePresenter.mView = this
     }
 
     override fun onClick(v: View) {
@@ -87,7 +87,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
                 map.put("shopId", mShopId)
                 map.put("content", mEt.text.toString())
                 map.put("imgurls", imgurls)
-                mPresenter.getComplainShop(map)
+                mBasePresenter.getComplainShop(map)
             }
         }
     }
@@ -114,7 +114,7 @@ class ComplainActivity : BaseTakePhotoActivity<ShopPresenter>(), ShopView, View.
      */
     override fun takeSuccess(result: TResult?) {
 
-        if (!mPresenter.checkNetWork()) {
+        if (!mBasePresenter.checkNetWork()) {
             return
         }
         for (list in result!!.images) {

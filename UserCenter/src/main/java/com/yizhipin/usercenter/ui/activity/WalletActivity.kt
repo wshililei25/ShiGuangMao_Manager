@@ -41,7 +41,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     override fun injectComponent() {
         DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
-        mPresenter.mView = this
+        mBasePresenter.mView = this
     }
 
     private fun initView() {
@@ -60,7 +60,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     }
 
     private fun loadBalance() {
-        mPresenter.getUserInfo()
+        mBasePresenter.getUserInfo()
     }
 
     /**
@@ -76,7 +76,7 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     private fun loadFeeRecordList() {
         var map = mutableMapOf<String, String>()
         map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-        mPresenter.loadFeeRecordList(map)
+        mBasePresenter.loadFeeRecordList(map)
     }
 
     /**
@@ -89,9 +89,8 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mRechargeTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE).navigation()
-        }
-        when (v.id) {
-            R.id.mWithdrawTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW).navigation()
+            R.id.mWithdrawTv -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_WITHDRAW)
+                    .withBoolean(BaseConstant.KEY_IS_CASH, false).navigation()
         }
     }
 

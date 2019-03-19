@@ -85,13 +85,13 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
                 var map = mutableMapOf<String, String>()
                 map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                 map.put("content", content)
-                mPresenter.getOssSign(map)
+                mBasePresenter.getOssSign(map)
                 return mOssSign
             }
         }
 
         //获取oss配置数据
-        mPresenter.getOssAddress()
+        mBasePresenter.getOssAddress()
     }
 
     override fun onGetOssSignSuccess(result: String) {
@@ -111,12 +111,12 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
     }
 
     private fun initData() {
-        mPresenter.getUserInfo()
+        mBasePresenter.getUserInfo()
     }
 
     override fun injectComponent() {
         DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
-        mPresenter.mView = this
+        mBasePresenter.mView = this
     }
 
     override fun onClick(v: View) {
@@ -134,7 +134,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
                 var map = mutableMapOf<String, String>()
                 map.put("nickname", mNickEt.text.toString())
                 map.put("imgurl", mResultUrl)
-                mPresenter.editUserInfo(map)
+                mBasePresenter.editUserInfo(map)
             }
 
         }
@@ -144,7 +144,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
      * 获取本地图片成功回调
      */
     override fun takeSuccess(result: TResult?) {
-        if (!mPresenter.checkNetWork()) {
+        if (!mBasePresenter.checkNetWork()) {
             return
         }
         val localFileUrl = result?.image?.compressPath
@@ -156,7 +156,7 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
         var map = mutableMapOf<String, String>()
         map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         map.put("content", File(mLocalFileUrl).name)
-        mPresenter.getOssSignFile(map)
+        mBasePresenter.getOssSignFile(map)
     }
 
     override fun onGetOssSignFileSuccess(result: String) {

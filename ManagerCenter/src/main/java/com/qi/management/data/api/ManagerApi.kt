@@ -8,12 +8,12 @@ import com.yizhipin.usercenter.data.api.Api
 import com.yizhipin.usercenter.data.response.ManagerOrderDetails
 import com.yizhipin.usercenter.data.response.StaffType
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ManagerApi {
+
+    @GET("${Api.EDIT_USER_INFO}/{id}") //获取用户信息
+    fun getUserInfo(@Path("id") id: String): Observable<BaseResp<UserInfo>>
 
     @GET(Api.CAMERAMAN_LIST)
     fun getCameramanList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String): Observable<BasePagingResp<MutableList<Teacher>>>
@@ -64,4 +64,15 @@ interface ManagerApi {
     @GET("${Api.SHOP_DETAILS}${"/{id}"}")
     fun getStoreInfo(@Path("id") id: String): Observable<BaseResp<Store>>
 
+    @GET("${Api.TEACHER_DATUM}/{uid}")
+    fun getTeacherDatum(@Path("uid") uid: String): Observable<BaseResp<Teacher>>
+
+    @GET(Api.OSS_SIGN)
+    fun getOssSign(@Header("access-token") token: String, @Query("content") content: String): Observable<BaseResp<String>>
+
+    @GET(Api.OSS_SIGN)
+    fun getOssSignFile(@Header("access-token") token: String, @Query("content") content: String): Observable<BaseResp<String>>
+
+    @GET(Api.IMAGE_ADDRESS)
+    fun getOssAddress(): Observable<BaseResp<OssAddress>>
 }

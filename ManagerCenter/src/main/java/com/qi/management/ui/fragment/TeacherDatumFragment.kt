@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_teacher_datum.*
 
 /**
  * Created by ${XiLei} on 2018/8/19.
- * 老师资料
+ * 老师资料(查看)
  */
 class TeacherDatumFragment : BaseMvpFragment<TeacherDatumPresenter>(), TeacherDatumView {
 

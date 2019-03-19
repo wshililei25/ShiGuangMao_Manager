@@ -312,7 +312,7 @@
     <string name="actualPayment">实际支付</string>
     <string name="moneyRMB">¥%.2f</string>
     <string name="confirmPayment">确认支付</string>
-    <string name="titleDepositRefund">退押金</string>
+   <!-- <string name="titleDepositRefund">退押金</string>-->
     <string name="refundedAmount">退还金额</string>
     <string name="hintRefundedAmount">可退￥0</string>
     <string name="allRefund"><u>全部退还</u></string>
@@ -433,4 +433,10 @@
     <string name="refund_apply">退款申请</string>
     <string name="upload_work">上传作品</string>
     <string name="shoot">拍摄景点</string>
+    <string name="cash_pledge_hint">退还押金后您的账号将无法使用</string>
+    <string name="cash_pledge_hint2">您的订单数据与资料不会清除，</string>
+    <string name="cash_pledge_hint3">再次缴纳押金后可继续使用！</string>
+    <string name="reback_amount">退还金额</string>
+    <string name="reback_all">全部退还</string>
+    <string name="reback_channel">退还渠道</string>
 </resources>

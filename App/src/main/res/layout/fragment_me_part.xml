@@ -140,7 +140,7 @@
 
 
         <RelativeLayout
-            android:id="@+id/cashPledgeLayout"
+            android:id="@+id/mCashView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/common_white">
@@ -176,7 +176,7 @@
         android:showDividers="middle">
 
         <RelativeLayout
-            android:id="@+id/profileLayout"
+            android:id="@+id/mProfileView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/common_white"

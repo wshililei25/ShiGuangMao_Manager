@@ -4,6 +4,7 @@ import com.yizhipin.base.injection.PerComponentScope
 import com.yizhipin.base.injection.component.ActivityComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.ui.activity.*
+import com.yizhipin.usercenter.ui.fragment.TeacherWorksFragment
 import dagger.Component
 
 /**
@@ -24,7 +25,7 @@ interface UserComponent {
     fun inject(activity: AuthenticationActivity)
     fun inject(activity: TeacherEnterDatumActivity)
     fun inject(activity: ShopActivity)
-    fun inject(activity: TeacherWorksActivity)
+    fun inject(activity: TeacherWorksFragment)
     fun inject(activity: WalletActivity)
     fun inject(activity: InvitationActivity)
     fun inject(activity: InvitationAddActivity)

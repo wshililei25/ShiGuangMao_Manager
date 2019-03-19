@@ -34,8 +34,7 @@ interface MainApi {
     @GET(Api.IMAGE_ADDRESS)
     fun getOssAddress(): Observable<BaseResp<OssAddress>>
 
-    @GET("${Api.TEACHER_DATUM}/{uid}")
-    fun getTeacherDatum(@Path("uid") uid:String): Observable<BaseResp<Teacher>>
+
 
     /**
      * 获取订单列表

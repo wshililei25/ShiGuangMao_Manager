@@ -16,24 +16,6 @@ open class ManagerOrderDetailsPresenter @Inject constructor() : BasePresenter<Ma
     @Inject
     lateinit var mServiceImpl: ManagerServiceImpl
 
-    /*   fun getMealDetails(map: MutableMap<String, String>) {
-           mView.showLoading()
-           mServiceImpl.getMealDetails(map).execute(object : BaseSubscriber<SetMealDetails>(mView) {
-               override fun onNext(t: SetMealDetails) {
-                   mView.onGetMealDetailsSuccess(t)
-               }
-           }, mLifecycleProvider)
-       }
-
-       fun order(map: MutableMap<String, String>) {
-           mView.showLoading()
-           mServiceImpl.order(map).execute(object : BaseSubscriber<OrderDetails>(mView) {
-               override fun onNext(t: OrderDetails) {
-                   mView.onOrderSuccess(t)
-               }
-           }, mLifecycleProvider)
-       }*/
-
     fun getManagerOrderDetails(map: MutableMap<String, String>) {
         mView.showLoading()
         mServiceImpl.getManagerOrderDetails(map).execute(object : BaseSubscriber<ManagerOrderDetails>(mView) {
@@ -42,32 +24,5 @@ open class ManagerOrderDetailsPresenter @Inject constructor() : BasePresenter<Ma
             }
         }, mLifecycleProvider)
     }
-
-    /*fun getEvaluateData(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getEvaluateData(map).execute(object : BaseSubscriber<MutableList<Evaluate>>(mView) {
-            override fun onNext(t: MutableList<Evaluate>) {
-                mView.onGetEvaluateSuccess(t)
-            }
-        }, mLifecycleProvider)
-    }
-
-    fun getBasicServicesData(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getBasicServicesData(map).execute(object : BaseSubscriber<MutableList<BasicServices>>(mView) {
-            override fun onNext(t: MutableList<BasicServices>) {
-                mView.onGetBasicServicesSuccess(t)
-            }
-        }, mLifecycleProvider)
-    }
-
-    fun getFollow(map: MutableMap<String, String>) {
-        mView.showLoading()
-        mServiceImpl.getFollow(map).execute(object : BaseSubscriber<Boolean>(mView) {
-            override fun onNext(t: Boolean) {
-                mView.onFollowSuccess(t)
-            }
-        }, mLifecycleProvider)
-    }*/
 }
 

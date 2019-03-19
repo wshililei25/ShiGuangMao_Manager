@@ -9,7 +9,7 @@
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHead"
         style="@style/MatchWrap"
-        app:titleText="@string/titleProlie" />
+        app:titleText="我的资料、作品" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/mTabLayout"

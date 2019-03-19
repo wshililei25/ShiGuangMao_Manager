@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
+
+    <com.yizhipin.base.widgets.HeaderBar
+        android:id="@+id/mHeaderBar"
+        style="@style/MatchWrap"
+        app:titleText="@string/keyCashPledge" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:background="@drawable/shape_red_round"
+        android:gravity="center"
+        android:text="@string/titleCashPledge"
+        android:textColor="@color/yWhite"
+        android:textSize="@dimen/yTextBigSize" />
+
+    <RelativeLayout
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBig">
+
+        <TextView
+            android:id="@+id/mAmountTv"
+            style="@style/WrapWrap"
+            android:text="¥ 1000.00"
+            android:textColor="@color/yRed"
+            android:textSize="@dimen/yTextLargeSize" />
+
+    </RelativeLayout>
+
+    <View
+        style="@style/DividerFixedHeight"
+        android:layout_marginTop="@dimen/yPaddingBig" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingBigSmall"
+        android:text="@string/cash_pledge_hint"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleLarSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMinSmall"
+        android:text="@string/cash_pledge_hint2"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleLarSize" />
+
+    <TextView
+        style="@style/WrapWrap"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/yPaddingMinSmall"
+        android:text="@string/cash_pledge_hint3"
+        android:textColor="@color/yBlackLight"
+        android:textSize="@dimen/yTextMiddleLarSize" />
+
+    <Button
+        android:id="@+id/mRebackBtn"
+        style="@style/FullBtnStyle"
+        android:layout_marginLeft="@dimen/yPadding"
+        android:layout_marginTop="@dimen/yPaddingBig"
+        android:layout_marginRight="@dimen/yPadding"
+        android:enabled="true"
+        android:text="@string/depositRefund"
+        android:textSize="@dimen/yTextBigSize" />
+</LinearLayout>

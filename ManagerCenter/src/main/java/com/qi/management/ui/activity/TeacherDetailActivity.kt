@@ -12,6 +12,7 @@ import com.qi.management.presenter.view.TeacherView
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Teacher
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
@@ -90,5 +91,8 @@ class TeacherDetailActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, 
     }
 
     override fun onGetTeacherListSuccess(result: BasePagingResp<MutableList<Teacher>>) {
+    }
+
+    override fun getUserResult(result: UserInfo) {
     }
 }

@@ -57,7 +57,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
 
     override fun injectComponent() {
         DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
-        mPresenter.mView = this
+        mBasePresenter.mView = this
     }
 
     private fun initView() {
@@ -81,13 +81,13 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
                 var map = mutableMapOf<String, String>()
                 map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
                 map.put("content", content)
-                mPresenter.getOssSign(map)
+                mBasePresenter.getOssSign(map)
                 return mOssSign
             }
         }
 
         //获取oss配置数据
-        mPresenter.getOssAddress()
+        mBasePresenter.getOssAddress()
     }
 
     override fun onGetOssSignSuccess(result: String) {
@@ -136,7 +136,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
                 map.put("idCard", mCardEt.text.toString().trim())
                 map.put("cardBefore", mResultFrontUrl)
                 map.put("cardAfter", mResultReverseUrl)
-                mPresenter.updateUserInfo(map)
+                mBasePresenter.updateUserInfo(map)
             }
         }
     }
@@ -155,7 +155,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
      * 获取本地图片成功回调
      */
     override fun takeSuccess(result: TResult?) {
-        if (!mPresenter.checkNetWork()) {
+        if (!mBasePresenter.checkNetWork()) {
             return
         }
         val localFileUrl = result?.image?.compressPath
@@ -167,7 +167,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
         var map = mutableMapOf<String, String>()
         map.put("access-token", AppPrefsUtils.getString(BaseConstant.KEY_SP_TOKEN))
         map.put("content", File(mLocalFileUrl).name)
-        mPresenter.getOssSignFile(map)
+        mBasePresenter.getOssSignFile(map)
     }
 
     override fun onGetOssSignFileSuccess(result: String) {

@@ -14,6 +14,7 @@ import io.reactivex.Observable
  */
 interface ManagerService {
 
+    fun getUserInfo(uid: String): Observable<UserInfo>
     fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>>
     fun getCameramanDetails(map: MutableMap<String, String>): Observable<Teacher>
     fun getTeacherWorks(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<TeacherWorks>>>
@@ -30,4 +31,8 @@ interface ManagerService {
     fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>>
     fun getFinancial(map: MutableMap<String, String>): Observable<Financial>
     fun getStoreInfo(map: MutableMap<String, String>): Observable<Store>
+    fun getTeacherDatum(map: MutableMap<String, String>): Observable<Teacher>
+    fun getOssSign(map: MutableMap<String, String>): Observable<String>
+    fun getOssSignFile(map: MutableMap<String, String>): Observable<String>
+    fun getOssAddress(): Observable<OssAddress>
 }

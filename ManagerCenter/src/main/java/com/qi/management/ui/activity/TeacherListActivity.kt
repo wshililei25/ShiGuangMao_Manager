@@ -14,6 +14,7 @@ import com.qi.management.ui.adapter.TeacherAdapter
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Teacher
+import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.startLoading
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
@@ -49,7 +50,7 @@ class TeacherListActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, BG
         mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<Teacher> {
             override fun onItemClick(item: Teacher, position: Int) {
                 startActivity<TeacherDetailActivity>(BaseConstant.KEY_TEACHER_ID to item.id
-                        ,BaseConstant.KEY_TEACHER_UID to item.uid)
+                        , BaseConstant.KEY_TEACHER_UID to item.uid)
             }
 
         })
@@ -120,6 +121,9 @@ class TeacherListActivity : BaseMvpActivity<TeacherPresenter>(), TeacherView, BG
     }
 
     override fun onGetCameramanDetailsSuccess(result: Teacher) {
+    }
+
+    override fun getUserResult(result: UserInfo) {
     }
 }
 

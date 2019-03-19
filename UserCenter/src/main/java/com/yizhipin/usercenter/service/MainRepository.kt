@@ -33,10 +33,6 @@ class MainRepository @Inject constructor() {
                 .getOssAddress()
     }
 
-    fun getTeacherDatum(map: MutableMap<String, String>): Observable<BaseResp<Teacher>> {
-        return RetrofitFactoryGet().create(MainApi::class.java).getTeacherDatum(map["uid"]!!)
-    }
-
     /*   fun getOrderList(): Observable<MutableList<ScheduleItemBean>> {
            return RetrofitFactoryGet.create(MainApi::class.java).getOrderList()
        }*/

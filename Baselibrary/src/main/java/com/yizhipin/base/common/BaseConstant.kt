@@ -75,6 +75,7 @@ class BaseConstant {
         const val KEY_SCENIC_IMAGE = "scenicImage"
         //景点金额
         const val KEY_SCENIC_AMOUNT = "scenicAmount"
-
+        //是提现还是退押金
+        const val KEY_IS_CASH = "isCash"
     }
 }

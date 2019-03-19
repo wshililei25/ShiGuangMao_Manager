@@ -33,9 +33,6 @@ open class MainServiceImpl @Inject constructor() : MainService {
         return mRepository.getOssAddress().convert()
     }
 
-    override fun getTeacherDatum(map: MutableMap<String, String>): Observable<Teacher> {
-        return mRepository.getTeacherDatum(map).convert()
-    }
 
     /**
      * 抢单获取订单列表

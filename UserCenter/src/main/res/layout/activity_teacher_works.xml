@@ -1,24 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                style="@style/MatchMatch.Vertical.White">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchMatch.Vertical.White">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
         app:rightText="@string/commit"
-        app:titleText="@string/upload_work"/>
+        app:titleText="@string/upload_work" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/mRv"
-        style="@style/commonRecyclerView"
-        android:layout_below="@+id/mHeaderBar"/>
+    <FrameLayout
+        android:id="@+id/mFramelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/mHeaderBar" />
 
-    <Button
-        android:id="@+id/mBtn"
-        style="@style/FullBtnStyle"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/yPaddingMiddle"
-        android:enabled="true"
-        android:text="@string/addWork"/>
 </RelativeLayout>

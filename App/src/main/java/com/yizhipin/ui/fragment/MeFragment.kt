@@ -7,6 +7,8 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import com.alibaba.android.arouter.launcher.ARouter
+import com.qi.management.ui.activity.MyCashPledgeActivity
+import com.qi.management.ui.activity.ProfileActivity
 import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.FeeRecord
@@ -31,7 +33,6 @@ import com.yizhipin.usercenter.ui.activity.CreditActivity
 import com.yizhipin.usercenter.ui.activity.InvitationActivity
 import com.yizhipin.usercenter.ui.activity.UserInfoActivity
 import com.yizhipin.usercenter.ui.activity.WalletActivity
-import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.fragment_me.*
 import kotlinx.android.synthetic.main.fragment_me_part.*
 import org.jetbrains.anko.support.v4.startActivity
@@ -53,8 +54,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         //设置Views默认样式
         initViews()
         chargeSettingLayout.setOnClickListener(this::onChargeSettingLayoutListener)//收费设置
-        cashPledgeLayout.setOnClickListener(this::onDepositLayoutClickListener)//我的押金
-        profileLayout.setOnClickListener(this::onProfileLayoutClickListener)//我的资料、作品
         attentionLayout.setOnClickListener(this::onAttentionLayoutClickListener)//我的关注
         workNoteLayout.setOnClickListener(this::onWorkNoteLayoutClickListener)//工作须知
         phoneLayout.setOnClickListener(this::onPhoneLayoutListener)//客服电话
@@ -68,6 +67,8 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mInvitationCodeView.onClick(this)
         shareCodeLayout.onClick(this)
         userIconView.onClick(this)
+        mProfileView.setOnClickListener(this)
+        mCashView.setOnClickListener(this)
     }
 
     override fun injectComponent() {
@@ -119,11 +120,21 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     startActivity<InvitationActivity>(BaseConstant.KEY_INCITATION_CODE to mUserInfo.requestCode)
                 }
             }
+            R.id.mProfileView -> {
+                afterLogin {
+                    startActivity<ProfileActivity>(BaseConstant.KEY_TEACHER_UID to AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                }
+            }
+            R.id.mCashView -> {
+                afterLogin {
+                    startActivity<MyCashPledgeActivity>()
+                }
+            }
             R.id.mWorkStatusView -> {
                 afterLogin {
-                    var map = mutableMapOf<String,String>()
-                    map.put("uid",AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-                    map.put("work",mUserInfo.work.toString())
+                    var map = mutableMapOf<String, String>()
+                    map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                    map.put("work", (!mUserInfo.work).toString())
                     mBasePresenter.postWorkStatus(map)
                 }
             }
@@ -141,16 +152,6 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
     /**点击收费设置*/
     private fun onChargeSettingLayoutListener(view: View) {
         startActivity<ChargeSetActivity>()
-    }
-
-    //押金
-    private fun onDepositLayoutClickListener(view: View) {
-        ARouter.getInstance().build(RouterPath.UserCenter.DEPOSIT).navigation()
-    }
-
-    //我的资料、作品
-    private fun onProfileLayoutClickListener(view: View) {
-        ARouter.getInstance().build(RouterPath.UserCenter.PROFILE).navigation()
     }
 
     //我的关注
@@ -177,7 +178,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         if (userInfo.type == UserType.Management) {
             topLayout.visibility = GONE
             secondLayout.visibility = GONE
-            profileLayout.visibility = GONE
+            mProfileView.visibility = GONE
             attentionLayout.visibility = GONE
             shareCodeLayout.visibility = VISIBLE
         } else if (userInfo.type == UserType.Teacher) {

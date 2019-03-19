@@ -14,6 +14,10 @@ import javax.inject.Inject
 
 class ManagerRepository @Inject constructor() {
 
+    fun getUserInfo(uid: String): Observable<BaseResp<UserInfo>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getUserInfo(uid)
+    }
+
     fun getCameramanList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Teacher>>> {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getCameramanList(map["currentPage"]!!, map["storeId"]!!)
     }
@@ -78,4 +82,19 @@ class ManagerRepository @Inject constructor() {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getStoreInfo(map["id"]!!)
     }
 
+    fun getTeacherDatum(map: MutableMap<String, String>): Observable<BaseResp<Teacher>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getTeacherDatum(map["uid"]!!)
+    }
+
+    fun getOssSign(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getOssSign(map["access-token"]!!, map["content"]!!)
+    }
+
+    fun getOssSignFile(map: MutableMap<String, String>): Observable<BaseResp<String>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getOssSignFile(map["access-token"]!!, map["content"]!!)
+    }
+
+    fun getOssAddress(): Observable<BaseResp<OssAddress>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getOssAddress()
+    }
 }

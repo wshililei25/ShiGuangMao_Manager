@@ -16,5 +16,5 @@ interface MainService {
     fun getGoodsList(): Observable<MutableList<Goods>>
     fun getOssAddress(): Observable<OssAddress>
     //    fun getOrderList():Observable<MutableList<ScheduleItemBean>>
-    fun getTeacherDatum(map: MutableMap<String, String>): Observable<Teacher>
+
 }

@@ -8,7 +8,6 @@ import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.teacher.mine.attention.teacher.TeacherFragment
 import com.yizhipin.teacher.mine.attention.user.UserFragment
-import com.yizhipin.teacher.mine.profile.adapter.ProfilePagerAdapter
 import com.yizhipin.ui.fragment.MeFragment
 import kotlinx.android.synthetic.main.activity_profile.*
 
@@ -26,7 +25,7 @@ class AttentionActivity : BaseActivity(){
         mTabLayout.addTab(mTabLayout.newTab())
         mTabLayout.addTab(mTabLayout.newTab())
         mTabLayout.setupWithViewPager(viewPager)
-        viewPager.adapter = ProfilePagerAdapter(arrayOf(TeacherFragment(), UserFragment()), supportFragmentManager)
+//        viewPager.adapter = ProfilePagerAdapter(arrayOf(TeacherFragment(), UserFragment()), supportFragmentManager)
         mTabLayout.getTabAt(0)!!.setText(R.string.teacher)
         mTabLayout.getTabAt(1)!!.setText(R.string.user)
     }

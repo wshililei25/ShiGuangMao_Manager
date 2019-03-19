@@ -39,7 +39,7 @@ import javax.inject.Inject
 abstract class BaseTakePhotoActivity<T : BasePresenter<*>> : BaseActivity(), BaseView, TakePhoto.TakeResultListener, InvokeListener {
 
     @Inject
-    lateinit var mPresenter: T
+    lateinit var mBasePresenter: T
 
     private var mTakePhoto: TakePhoto? = null
     private lateinit var mTempFile: File

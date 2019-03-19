@@ -20,10 +20,6 @@ object RouterPath {
             const val SET_PAY_PWD = "/userCenter/setPayPwd" //设置支付密码
             const val UPDATE_PAY_PWD = "/userCenter/updatePayPwd" //修改支付密码
             const val RESET_PAY_PWD = "/userCenter/resetPayPwd" //重置支付密码
-            /**押金*/
-            const val DEPOSIT = "/home/me/deposit"
-            /**个人资料*/
-            const val PROFILE = "/home/me/profile"
             /**我的关注*/
             const val ATTENTION = "/home/me/attention"
             /**新手帮助*/
@@ -31,6 +27,7 @@ object RouterPath {
             /**系统设置*/
             const val SYSTEM_SETTING = "/home/me/system_setting"
             const val BALANCE = "/userCenter/balance" //余额
+            const val TEACHER_WORKS = "/userCenter/TeacherWorks" //老师作品
         }
     }
 

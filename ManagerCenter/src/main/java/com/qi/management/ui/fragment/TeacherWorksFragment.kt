@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_recyclerview.*
 
 /**
  * Created by ${XiLei} on 2018/9/25.
- * 老师作品
+ * 老师作品列表(老师详情中的)
  */
 class TeacherWorksFragment : BaseMvpFragment<TeacherWorksPresenter>(), TeacherWorksView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
