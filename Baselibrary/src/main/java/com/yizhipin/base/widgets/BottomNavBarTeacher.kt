@@ -18,14 +18,14 @@ class BottomNavBarTeacher @JvmOverloads constructor(
 
         //门店
         val storeItem = BottomNavigationItem(
-                R.drawable.ic_nav_bottom_store_checked,
+                R.drawable.store,
                 resources.getString(R.string.navStore))
-                .setInactiveIconResource(R.drawable.ic_nav_bottom_store_checked)
+                .setInactiveIconResource(R.drawable.store1)
                 .setActiveColorResource(R.color.yRed)
                 .setInActiveColorResource(R.color.yBlackDeep)
         //人员
-        val personItem = BottomNavigationItem(R.drawable.ic_nav_bottom_person, resources.getString(R.string.navPerson))
-                .setInactiveIconResource(R.drawable.ic_nav_bottom_person)
+        val personItem = BottomNavigationItem(R.drawable.user1, resources.getString(R.string.navPerson))
+                .setInactiveIconResource(R.drawable.user)
                 .setActiveColorResource(R.color.yRed)
                 .setInActiveColorResource(R.color.yBlackDeep)
 
@@ -37,8 +37,8 @@ class BottomNavBarTeacher @JvmOverloads constructor(
                 .setActiveColorResource(R.color.yRed)
                 .setInActiveColorResource(R.color.yBlackDeep)
         //财务
-        val financeItem = BottomNavigationItem(R.drawable.ic_nav_bottom_finance, resources.getString(R.string.titleFinance))
-                .setInactiveIconResource(R.drawable.ic_nav_bottom_finance)
+        val financeItem = BottomNavigationItem(R.drawable.invoice1, resources.getString(R.string.titleFinance))
+                .setInactiveIconResource(R.drawable.invoice)
                 .setActiveColorResource(R.color.yRed)
                 .setInActiveColorResource(R.color.yBlackDeep)
         //我的
