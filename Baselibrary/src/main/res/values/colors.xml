@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <color name="colorAccent">#3d3d3d</color>
-    <color name="colorPrimary">#03a9f4</color>
-    <color name="colorPrimaryDark">#03a9f4</color>
+    <color name="colorAccent">#F83244</color>
+    <color name="colorPrimary">#F83244</color>
+    <color name="colorPrimaryDark">#333333</color>
 
     <color name="yRed">#F83244</color>
     <color name="yRedLight">#E4464B</color>
@@ -29,6 +29,7 @@
     <color name="yCategoryBg">#f7f7f7</color>
     <color name="yShopTv">#fffefe</color>
     <color name="yBlue">#5093ef</color>
+    <color name="yGray">#B2B2B2</color>
 
     <color name="common_black">#000000</color>
     <color name="common_blue">#03a9f4</color>

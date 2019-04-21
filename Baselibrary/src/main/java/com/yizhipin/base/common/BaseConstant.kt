@@ -13,6 +13,8 @@ class BaseConstant {
         //SP表名
         const val TABLE_PREFS = "ShiGuangMao"
         //user id
+        const val KEY_SP_REGISTER_USER_ID = "registerUserId"
+        //user id
         const val KEY_SP_USER_ID = "id"
         //Token
         const val KEY_SP_TOKEN = "token"
@@ -77,5 +79,7 @@ class BaseConstant {
         const val KEY_SCENIC_AMOUNT = "scenicAmount"
         //是提现还是退押金
         const val KEY_IS_CASH = "isCash"
+        //可退还押金
+        const val KEY_DEPOSIT = "deposit"
     }
 }

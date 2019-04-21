@@ -9,7 +9,6 @@ import com.hyphenate.easeui.EaseUI
 import com.yizhipin.base.injection.component.AppComponent
 import com.yizhipin.base.injection.component.DaggerAppComponent
 import com.yizhipin.base.injection.moudule.AppModule
-import com.yizhipin.base.utils.CityUtil
 
 /**
  * Created by ${XiLei} on 2018/8/4.
@@ -27,7 +26,6 @@ open class BaseApplication : MultiDexApplication() {
 
         initRouter()
         initHuanXin()
-        CityUtil.getInstance(this)
     }
 
     private fun initAppInjection() {

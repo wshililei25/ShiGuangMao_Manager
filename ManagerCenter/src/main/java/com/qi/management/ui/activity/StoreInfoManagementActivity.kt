@@ -2,7 +2,10 @@ package com.qi.management.ui.activity
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.PopupWindow
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.sdk.android.oss.*
 import com.alibaba.sdk.android.oss.callback.OSSCompletedCallback
@@ -25,7 +28,7 @@ import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseTakePhotoActivity
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.base.utils.CityUtil
+import com.yizhipin.base.widgets.AddressPickerView
 import com.yizhipin.provider.router.RouterPath
 import kotlinx.android.synthetic.main.activity_store_info_management.*
 import org.devio.takephoto.model.TResult
@@ -41,6 +44,10 @@ class StoreInfoManagementActivity : BaseTakePhotoActivity<StoreInfoPresenter>(),
 
     private var mLocalFileUrl = ""
     private var mResultUrl: String = ""
+    private var mPopupWindow: PopupWindow? = null
+    private var mProvice = ""
+    private var mCity = ""
+    private var mDistrict = ""
 
     private var mOssSign = ""
     private lateinit var mOssAddress: OssAddress
@@ -62,10 +69,7 @@ class StoreInfoManagementActivity : BaseTakePhotoActivity<StoreInfoPresenter>(),
     private fun initView() {
 
         mStoreView.onClick(this)
-        cityLayout.setOnClickListener {
-            hideSoftInput()
-            CityUtil.getInstance(this).showPickerView(this) { province, city, district -> storeCityText.text = "$province  $city  $district" }
-        }
+        cityLayout.onClick(this)
     }
 
     /**
@@ -125,6 +129,26 @@ class StoreInfoManagementActivity : BaseTakePhotoActivity<StoreInfoPresenter>(),
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mStoreView -> showAlertView()
+            R.id.cityLayout->{
+                mPopupWindow = PopupWindow(this)
+                val rootView = LayoutInflater.from(this).inflate(R.layout.pop_address_picker, null, false)
+                val addressView = rootView.findViewById<AddressPickerView>(R.id.apvAddress)
+                addressView.setOnAddressPickerSure(object : AddressPickerView.OnAddressPickerSureListener {
+                    override fun onSureClick(provice: String?, city: String?, district: String?, provinceCode: String?, cityCode: String?, districtCode: String?) {
+                        storeCityText.setText(provice + city + district)
+                        mProvice = provice!!
+                        mCity = city!!
+                        mDistrict = district!!
+                        mPopupWindow!!.dismiss()
+                    }
+                })
+                mPopupWindow!!.setContentView(rootView)
+                mPopupWindow!!.setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
+                mPopupWindow!!.setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
+                mPopupWindow!!.isOutsideTouchable = true
+                mPopupWindow!!.isTouchable = true
+                mPopupWindow!!.showAsDropDown(mHead)
+            }
         }
     }
 

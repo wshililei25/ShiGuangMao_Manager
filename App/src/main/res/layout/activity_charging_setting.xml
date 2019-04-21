@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <com.yizhipin.base.widgets.HeaderBar
         android:id="@+id/mHead"
         style="@style/MatchWrap"
-        app:titleText="@string/titleChargingSetting" />
+        app:titleText="@string/titleChargingSetting"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -32,24 +32,24 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yourPositionIs" />
+                    android:text="@string/yourPositionIs"/>
 
                 <TextView
                     android:id="@+id/mProfessionTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/common_red" />
+                    android:textColor="@color/common_red"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/keyPosition" />
+                    android:text="@string/keyPosition"/>
 
                 <TextView
                     android:id="@+id/mPositionView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/common_red" />
+                    android:textColor="@color/common_red"/>
             </LinearLayout>
 
             <TextView
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/professionDescribeView"
                 android:layout_centerHorizontal="true"
-                android:text="@string/yourChargingStandardIs" />
+                android:text="@string/yourChargingStandardIs"/>
 
             <LinearLayout
                 android:id="@+id/chargingStandardView"
@@ -72,14 +72,14 @@
                     android:id="@+id/mAmountTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/common_red" />
+                    android:textColor="@color/common_red"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/unitChargingStandard"
                     android:textColor="@color/common_red"
-                    android:textSize="10sp" />
+                    android:textSize="10sp"/>
             </LinearLayout>
 
             <View
@@ -87,7 +87,7 @@
                 android:layout_height="1dp"
                 android:layout_below="@+id/chargingStandardView"
                 android:layout_marginTop="30dp"
-                android:background="@color/common_divider" />
+                android:background="@color/common_divider"/>
 
             <TextView
                 android:id="@+id/lableChargingStandardView"
@@ -96,7 +96,7 @@
                 android:layout_below="@+id/chargingStandardView"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="60dp"
-                android:text="@string/describeChargingStand" />
+                android:text="@string/describeChargingStand"/>
 
             <LinearLayout
                 android:id="@+id/chargingStandardListView"
@@ -104,29 +104,28 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/lableChargingStandardView"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
-                android:divider="@drawable/divider_charging_standard"
-                android:dividerPadding="@dimen/margin_views"
-                android:orientation="horizontal"
-                android:showDividers="middle">
+                android:layout_marginTop="30dp">
 
                 <TextView
+                    android:id="@+id/mLeftTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_circle_solid_red"
                     android:gravity="center"
                     android:text="¥ 0"
                     android:textColor="@color/yWhite"
-                    android:textSize="@dimen/yTextBigSize" />
+                    android:textSize="@dimen/yTextBigSize"/>
 
                 <TextView
+                    android:id="@+id/mEightTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
                     android:background="@drawable/bg_circle_solid_white_border_red"
                     android:gravity="center"
                     android:text="¥ 88"
                     android:textColor="@color/yRed"
-                    android:textSize="@dimen/yTextBigSize" />
+                    android:textSize="@dimen/yTextBigSize"/>
             </LinearLayout>
 
             <TextView
@@ -135,11 +134,12 @@
                 android:layout_below="@+id/chargingStandardListView"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:text="@string/hintChargingStandard" />
+                android:text="@string/hintChargingStandard"/>
         </RelativeLayout>
     </ScrollView>
 
     <TextView
+        android:id="@+id/mBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_views"
@@ -147,5 +147,5 @@
         android:gravity="center"
         android:padding="@dimen/padding_content"
         android:text="@string/sure"
-        android:textColor="@color/common_white" />
+        android:textColor="@color/common_white"/>
 </LinearLayout>

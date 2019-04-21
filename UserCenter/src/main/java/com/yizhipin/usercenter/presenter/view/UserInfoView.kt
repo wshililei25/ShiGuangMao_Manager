@@ -18,4 +18,5 @@ interface UserInfoView : BaseView {
     fun onGetOssSignSuccess(result: String)
     fun onGetOssSignFileSuccess(result: String)
     fun onGetOssAddressSuccess(result: OssAddress)
+    fun getUnReadNewCount(result: Int)
 }

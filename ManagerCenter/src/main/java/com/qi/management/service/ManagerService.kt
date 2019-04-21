@@ -2,7 +2,6 @@ package com.qi.management.service
 
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
-import com.yizhipin.base.ext.convert
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.usercenter.data.response.ManagerOrderDetails
 import com.yizhipin.usercenter.data.response.StaffType
@@ -28,7 +27,7 @@ interface ManagerService {
     fun getManagerOrderDetails(map: MutableMap<String, String>): Observable<ManagerOrderDetails>
     fun getWithdrawCashApplyList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<WithdrawCashApply>>>
     fun getComplainList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<Complain>>>
-    fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>>
+    fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ManagerNews>>>
     fun getFinancial(map: MutableMap<String, String>): Observable<Financial>
     fun getStoreInfo(map: MutableMap<String, String>): Observable<Store>
     fun getTeacherDatum(map: MutableMap<String, String>): Observable<Teacher>

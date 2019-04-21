@@ -9,7 +9,6 @@ import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import kotlinx.android.synthetic.main.activity_cash_pledge.*
-import org.jetbrains.anko.startActivity
 
 /**
  * Created by ${XiLei} on 2018/9/24.
@@ -32,7 +31,7 @@ class CashPledgeActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.mBtn -> ARouter.getInstance().build(RouterPath.PayCenter.PATH_PAY_RECHARGE)
-                    .withBoolean(BaseConstant.KEY_IS_FIRST,true).navigation()
+                    .withBoolean(BaseConstant.KEY_IS_FIRST, true).navigation()
         }
     }
 

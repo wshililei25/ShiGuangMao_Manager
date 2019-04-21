@@ -26,7 +26,7 @@
         <activity android:name=".ui.activity.WithdrawCashApplyActivity" />
         <activity android:name=".ui.activity.ComplainActivity" />
         <activity android:name=".ui.activity.RefundApplyActivity" />
-        <activity android:name=".ui.activity.NewsActivity" />
+        <activity android:name=".ui.activity.ManagerNewsActivity" />
         <activity android:name=".ui.activity.FinancialStatisticsActivity" />
         <activity android:name=".ui.activity.ProfileActivity" />
         <activity android:name=".ui.activity.MyCashPledgeActivity" />

@@ -28,7 +28,6 @@ import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.UserInfoPresenter
 import com.yizhipin.usercenter.presenter.view.UserInfoView
-import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_user_info.*
 import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.startActivity
@@ -264,5 +263,6 @@ class UserInfoActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoVie
 
     override fun showWorkStatus(workStatusBean: WorkStatusBean) {
     }
-
+    override fun getUnReadNewCount(result: Int) {
+    }
 }

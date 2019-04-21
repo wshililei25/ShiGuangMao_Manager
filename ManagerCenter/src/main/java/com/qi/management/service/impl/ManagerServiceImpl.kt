@@ -32,7 +32,7 @@ open class ManagerServiceImpl @Inject constructor() : ManagerService {
         return mRepository.getOrderList(map).convertPaging()
     }
 
-    override fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+    override fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ManagerNews>>> {
         return mRepository.getNewsList(map).convertPaging()
     }
 

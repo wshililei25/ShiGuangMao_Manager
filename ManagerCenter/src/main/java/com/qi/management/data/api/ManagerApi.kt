@@ -21,8 +21,8 @@ interface ManagerApi {
     @GET(Api.MANAGER_ORDER_LIST)
     fun getOrderList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("status") status: String): Observable<BasePagingResp<MutableList<ManagerOrder>>>
 
-    @GET(Api.NEWS_LIST)
-    fun getNewsList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("type") status: String): Observable<BasePagingResp<MutableList<News>>>
+    @GET(Api.MANAGER_NEWS_LIST)
+    fun getNewsList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("type") status: String): Observable<BasePagingResp<MutableList<ManagerNews>>>
 
     @GET(Api.COMPLAIN_LIST)
     fun getComplainList(@Query("currentPage") currentPage: String, @Query("storeId") storeId: String, @Query("questionType") status: String): Observable<BasePagingResp<MutableList<Complain>>>

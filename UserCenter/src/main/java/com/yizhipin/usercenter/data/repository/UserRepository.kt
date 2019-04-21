@@ -68,7 +68,7 @@ class UserRepository @Inject constructor() : BaseModel {
      */
     fun editUserInfo(map: MutableMap<String, String>): Observable<BaseResp<UserInfo>> {
         return RetrofitFactoryPut(map).create(UserApi::class.java)
-                .editUserInfo(AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                .editUserInfo(AppPrefsUtils.getString(BaseConstant.KEY_SP_REGISTER_USER_ID))
     }
 
     fun getCartCount(map: MutableMap<String, String>): Observable<BaseResp<Int>> {
@@ -144,5 +144,9 @@ class UserRepository @Inject constructor() : BaseModel {
     }
     fun getWorksList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Works>>> {
         return RetrofitFactoryGet().create(UserApi::class.java).getWorksList(map["uid"]!!)
+    }
+    fun getUnreadNewCount(map: MutableMap<String, String>): Observable<BaseResp<Int>> {
+        return RetrofitFactoryGet().create(UserApi::class.java)
+                .getUnreadNewCount(map["uid"]!!)
     }
 }

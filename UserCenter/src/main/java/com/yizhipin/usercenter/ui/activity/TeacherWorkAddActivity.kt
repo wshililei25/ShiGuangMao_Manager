@@ -123,7 +123,7 @@ class TeacherWorkAddActivity : BaseTakePhotoActivity<TeacherWorkPresenter>(), Te
                     return
                 }
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_REGISTER_USER_ID))
                 map.put("address", mAddressDetailEv.text.toString())
                 map.put("imgurls", mResultUrl!!.take(mResultUrl.length - 1))
                 mBasePresenter.addWork(map)

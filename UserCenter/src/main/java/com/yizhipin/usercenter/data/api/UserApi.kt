@@ -104,4 +104,7 @@ interface UserApi {
 
     @GET(Api.WORK_LIST)
     fun getWorksList(@Query("uid") uid: String): Observable<BaseResp<MutableList<Works>>>
+
+    @GET(Api.UNREAD_NEWS_COUNT) //获取未读消息数
+    fun getUnreadNewCount(@Query("uid") uid: String): Observable<BaseResp<Int>>
 }

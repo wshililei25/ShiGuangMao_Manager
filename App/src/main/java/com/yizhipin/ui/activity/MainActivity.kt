@@ -2,8 +2,8 @@ package com.yizhipin.ui.activity
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.ashokvarma.bottomnavigation.BottomNavigationBar
 import com.eightbitlab.rxbus.Bus
 import com.eightbitlab.rxbus.registerInBus
 import com.yizhipin.R
@@ -15,6 +15,7 @@ import com.yizhipin.teacher.schedule.ui.fragment.ScheduleFragment
 import com.yizhipin.ui.fragment.ChatListFragment
 import com.yizhipin.ui.fragment.MeFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener
 import org.jetbrains.anko.toast
 import java.util.*
 
@@ -24,7 +25,7 @@ import java.util.*
 @Route(path = RouterPath.App.PATH_MAIN)
 class MainActivity : BaseActivity() {
 
-    private val mStack = Stack<Fragment>()
+    private var mFragments: MutableList<Fragment>? = null
     private val mScheduleFragment by lazy { ScheduleFragment() }
     private val mChatListFragment by lazy { ChatListFragment() }
     private val mMeFragment by lazy { MeFragment() }
@@ -34,45 +35,55 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
         initFragment()
         initBottomNav()
-        changeFragment(0)
+//        changeFragment(0)
         initObserve()
     }
 
     private fun initFragment() {
-        val manager = supportFragmentManager.beginTransaction()
-        manager.add(R.id.mContaier, mScheduleFragment)
-        manager.add(R.id.mContaier, mChatListFragment)
-        manager.add(R.id.mContaier, mMeFragment)
-        manager.commit()
 
-        mStack.add(mScheduleFragment)
-        mStack.add(mChatListFragment)
-        mStack.add(mMeFragment)
+
+        mFragments = ArrayList()
+        mFragments!!.add(mScheduleFragment)
+        mFragments!!.add(mChatListFragment)
+        mFragments!!.add(mMeFragment)
+        if (mScheduleFragment != null) { //默认选中第一个
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.add(R.id.mFrameLayout, mScheduleFragment)
+            transaction.commit()
+        }
     }
 
     private fun initBottomNav() {
-        mBottomNavBar.setTabSelectedListener(object : BottomNavigationBar.OnTabSelectedListener {
-            override fun onTabReselected(position: Int) {
+        var navigationController = mBottomNavBar.material()
+                .addItem(R.drawable.ic_schedule_checked, getString(R.string.navSchedule))
+                .addItem(R.drawable.speech_bubble2, getString(R.string.navMsg))
+                .addItem(R.drawable.ic_mine_checked, getString(R.string.nav_bar_user))
+                .setDefaultColor(ContextCompat.getColor(this, R.color.yGray))
+                .build()
+
+        //底部按钮的点击事件监听
+        navigationController.addTabItemSelectedListener(object : OnTabItemSelectedListener {
+            override fun onSelected(index: Int, old: Int) {
+                val currentFragment = mFragments!!.get(index)
+                if (currentFragment != null) {
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.mFrameLayout, currentFragment!!)
+                    transaction.commit()
+                }
             }
 
-            override fun onTabUnselected(position: Int) {
-            }
-
-            override fun onTabSelected(position: Int) {
-                changeFragment(position)
-            }
-
+            override fun onRepeat(index: Int) {}
         })
     }
 
-    private fun changeFragment(position: Int) {
-        val manager = supportFragmentManager.beginTransaction()
-        for (fragment in mStack) {
-            manager.hide(fragment)
-        }
-        manager.show(mStack[position])
-        manager.commit()
-    }
+    /* private fun changeFragment(position: Int) {
+         val manager = supportFragmentManager.beginTransaction()
+         for (fragment in mStack) {
+             manager.hide(fragment)
+         }
+         manager.show(mStack[position])
+         manager.commit()
+     }*/
 
     private fun initObserve() {
         Bus.observe<HomeIntentEvent>()
@@ -80,11 +91,11 @@ class MainActivity : BaseActivity() {
                     run {
 
                         if (t.position == 3) {
-                            changeFragment(2)
-                            mBottomNavBar.selectTab(2)
+//                            changeFragment(2)
+//                            mBottomNavBar.selectTab(2)
                         } else {
-                            changeFragment(1)
-                            mBottomNavBar.selectTab(1)
+//                            changeFragment(1)
+//                            mBottomNavBar.selectTab(1)
                         }
                     }
                 }.registerInBus(this)

@@ -23,10 +23,6 @@ open class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
     lateinit var mServiceImpl: MainServiceImpl
 
     fun login(map: MutableMap<String, String>) {
-
-        if (!checkNetWork()) {
-            return
-        }
         mView.showLoading()
         mUserServiceImpl.login(map)
                 .execute(object : BaseSubscriber<UserInfo>(mView) {

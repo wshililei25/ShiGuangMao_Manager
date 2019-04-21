@@ -89,5 +89,13 @@ open class UserInfoPresenter @Inject constructor() : BasePresenter<UserInfoView>
         }, mLifecycleProvider)
 
     }
+
+    fun getUnreadNewCount(map: MutableMap<String, String>) {
+        mServiceImpl.getUnreadNewCount(map).execute(object : BaseSubscriber<Int>(mView) {
+            override fun onNext(t: Int) {
+                mView.getUnReadNewCount(t)
+            }
+        }, mLifecycleProvider)
+    }
 }
 

@@ -1,13 +1,5 @@
 package com.yizhipin.usercenter.data.api
 
-import com.yizhipin.base.data.protocol.BaseResp
-import com.yizhipin.base.data.response.BeanDeposit
-import com.yizhipin.base.data.response.BeanRechargeDeposit
-import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
-
 /**
  * Created by ${XiLei} on 2018/7/27.
  */
@@ -97,22 +89,13 @@ interface Api {
         const val MANAGER_ORDER_DETAILS = "api/ManagementOrder/Detail" //管理端订单详情
         const val WITHDRAW_CASH_APPLY_LIST = "api/Withdraw/Page" //提现申请列表
         const val COMPLAIN_LIST = "api/Feedback/Page" //投诉建议列表
-        const val NEWS_LIST = "api/PushRecord/Page" //推送列表
+        const val MANAGER_NEWS_LIST = "api/PushRecord/Page" //推送列表
         const val FINANCIAL = "api/Finance" //财务统计
         const val OSS_SIGN = "api/OSS/Sign"//获取oss签名
         const val ADD_WORK = "api/TeacherWorks"//添加作品
         const val WORK_LIST = "api/TeacherWorks/List"//老师添加列表
+        const val UNREAD_NEWS_COUNT = "api/UserMsg/UnRead" //获取未读消息数
+        const val NEWS_LIST = "api/UserMsg/Page" //消息列表
+        const val APPLY_WITHDRAW = "api/Withdraw"//申请提现
     }
-    /*押金*/
-    /**获取用户押金*/
-    @GET("api/UserDeposit/User")
-    fun getDepositByUID(@Query("uid") uid: String): Observable<BaseResp<BeanDeposit>>
-
-    /**
-     * @param uid 用户token
-     * @param amount 充值金额
-     * @param payType 支付方式
-     */
-    @POST("api/UserDeposit")
-    fun recharge(@Query("uid") uid: String, @Query("amount") amount: Double, @Query("payType") payType: String): Observable<BaseResp<BeanRechargeDeposit>>
 }

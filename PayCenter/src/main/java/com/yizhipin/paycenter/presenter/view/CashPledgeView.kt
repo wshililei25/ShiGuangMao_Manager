@@ -8,5 +8,4 @@ import com.yizhipin.base.mvp.view.BaseView
  */
 interface CashPledgeView : BaseView {
     fun onGetCashPledgeSuccess(result: CashPledge)
-    fun onRechargeSuccess(result: String)
 }

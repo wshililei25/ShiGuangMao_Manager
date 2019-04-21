@@ -1,9 +1,12 @@
 package com.yizhipin.usercenter.service.impl
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.News
 import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.ext.convert
+import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.usercenter.bean.Banner
 import com.yizhipin.usercenter.data.repository.MainRepository
 import com.yizhipin.usercenter.service.MainService
@@ -32,7 +35,9 @@ open class MainServiceImpl @Inject constructor() : MainService {
 
         return mRepository.getOssAddress().convert()
     }
-
+    override fun getNews(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+        return mRepository.getNews(map).convertPaging()
+    }
 
     /**
      * 抢单获取订单列表

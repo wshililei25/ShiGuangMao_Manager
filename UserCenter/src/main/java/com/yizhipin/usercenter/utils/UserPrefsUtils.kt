@@ -1,14 +1,8 @@
 package com.yizhipin.usercenter.utils
 
-import com.alibaba.android.arouter.launcher.ARouter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.yizhipin.base.common.AppManager
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.utils.AppPrefsUtils
-import com.yizhipin.provider.common.ProviderConstant
-import com.yizhipin.provider.router.RouterPath
 
 /**
  *本地存储用户相关信息
@@ -17,6 +11,7 @@ object UserPrefsUtils {
 
     fun putUserInfo(userInfo: UserInfo?) {
         AppPrefsUtils.putString(BaseConstant.KEY_SP_USER_ID, userInfo?.id ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_REGISTER_USER_ID, userInfo?.id ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, userInfo?.token.toString() ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_REAL_NAME, userInfo?.realName ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_CARD, userInfo?.idCard ?: "")

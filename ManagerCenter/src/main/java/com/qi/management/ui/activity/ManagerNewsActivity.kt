@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_news.*
  * Created by ${XiLei} on 2018/9/25.
  * 推送
  */
-class NewsActivity : BaseActivity() {
+class ManagerNewsActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

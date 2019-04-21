@@ -1,8 +1,10 @@
 package com.yizhipin.usercenter.data.repository
 
 import com.yizhipin.base.data.net.RetrofitFactoryGet
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.News
 import com.yizhipin.base.data.response.OssAddress
 import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.usercenter.api.MainApi
@@ -31,6 +33,9 @@ class MainRepository @Inject constructor() {
     fun getOssAddress(): Observable<BaseResp<OssAddress>> {
         return RetrofitFactoryGet().create(MainApi::class.java)
                 .getOssAddress()
+    }
+    fun getNews(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+        return RetrofitFactoryGet().create(MainApi::class.java).getNews(map["currentPage"]!!, map["uid"]!!)
     }
 
     /*   fun getOrderList(): Observable<MutableList<ScheduleItemBean>> {

@@ -54,7 +54,7 @@ class FinancialAffairsFragment : BaseFragment() {
                     1 -> startActivity<WithdrawCashApplyActivity>()
                     2 -> startActivity<ComplainActivity>()
                     3 -> startActivity<RefundApplyActivity>()
-                    4 -> startActivity<NewsActivity>()
+                    4 -> startActivity<ManagerNewsActivity>()
                     5 -> startActivity<FinancialStatisticsActivity>()
                 }
             }

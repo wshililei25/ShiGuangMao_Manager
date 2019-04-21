@@ -62,7 +62,7 @@ class TeacherWorksFragment : BaseMvpFragment<TeacherWorkPresenter>(), TeacherWor
 
     private fun initData() {
         var map = mutableMapOf<String, String>()
-        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_REGISTER_USER_ID))
         mBasePresenter.getWorksList(map)
     }
 

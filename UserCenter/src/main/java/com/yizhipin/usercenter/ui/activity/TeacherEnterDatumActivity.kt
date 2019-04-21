@@ -106,7 +106,7 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                 }
 
                 var map = mutableMapOf<String, String>()
-                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_REGISTER_USER_ID))
                 map.put("storeId", mStore.id)
                 map.put("teacherType", mTeacherType)
                 map.put("applyType", mQuartersType)

@@ -131,7 +131,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
                 }
 
                 var map = mutableMapOf<String, String>()
-                map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+                map.put("id", AppPrefsUtils.getString(BaseConstant.KEY_SP_REGISTER_USER_ID))
                 map.put("realName", mNameEt.text.toString().trim())
                 map.put("idCard", mCardEt.text.toString().trim())
                 map.put("cardBefore", mResultFrontUrl)

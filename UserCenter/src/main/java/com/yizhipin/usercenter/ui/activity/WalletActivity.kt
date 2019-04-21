@@ -111,5 +111,6 @@ class WalletActivity : BaseTakePhotoActivity<UserInfoPresenter>(), UserInfoView,
 
     override fun onGetOssAddressSuccess(result: OssAddress) {
     }
-
+    override fun getUnReadNewCount(result: Int) {
+    }
 }

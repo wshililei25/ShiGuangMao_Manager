@@ -15,7 +15,7 @@
             android:background="@drawable/user_bg">
 
             <ImageView
-                android:id="@+id/bellView"
+                android:id="@+id/mNewIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/common_padding"
@@ -24,17 +24,19 @@
                 android:src="@drawable/bg_bellw" />
 
             <ImageView
+                android:id="@+id/mNewCountIv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@+id/bellView"
+                android:layout_toEndOf="@+id/mNewIv"
+                android:visibility="gone"
                 android:src="@drawable/circular2" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userIconView"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_below="@+id/bellView"
+                android:layout_below="@+id/mNewIv"
                 android:layout_margin="@dimen/common_margin"
                 android:src="@drawable/avatar_w"
                 app:civ_border_color="@color/border_image"

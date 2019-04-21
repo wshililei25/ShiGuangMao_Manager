@@ -26,7 +26,7 @@ class ManagerRepository @Inject constructor() {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getOrderList(map["currentPage"]!!, map["storeId"]!!, map["status"]!!)
     }
 
-    fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<News>>> {
+    fun getNewsList(map: MutableMap<String, String>): Observable<BasePagingResp<MutableList<ManagerNews>>> {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getNewsList(map["currentPage"]!!, map["storeId"]!!, map["type"]!!)
     }
 

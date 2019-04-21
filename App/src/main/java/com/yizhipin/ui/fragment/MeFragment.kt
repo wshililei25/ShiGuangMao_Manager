@@ -17,6 +17,7 @@ import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.data.response.UserType
 import com.yizhipin.base.ext.loadUrl
 import com.yizhipin.base.ext.onClick
+import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.fragment.BaseMvpFragment
 import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.common.afterLogin
@@ -24,6 +25,7 @@ import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.ui.activity.ChargeSetActivity
 import com.yizhipin.ui.activity.CustomServiceActivity
+import com.yizhipin.ui.activity.NewsActivity
 import com.yizhipin.usercenter.bean.WorkStatusBean
 import com.yizhipin.usercenter.injection.component.DaggerMainComponent
 import com.yizhipin.usercenter.injection.module.MianModule
@@ -69,6 +71,7 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         userIconView.onClick(this)
         mProfileView.setOnClickListener(this)
         mCashView.setOnClickListener(this)
+        mNewIv.setOnClickListener(this)
     }
 
     override fun injectComponent() {
@@ -85,6 +88,10 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
     private fun loadData() {
         if (isLogined()) {
             mBasePresenter.getUserInfo()
+
+            var mapCount = mutableMapOf<String, String>()
+            mapCount.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
+            mBasePresenter.getUnreadNewCount(mapCount)
         }
     }
 
@@ -92,6 +99,17 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
         mUserInfo = userInfo
         updateViews(userInfo)
     }
+
+
+    /**
+     * 获取未读消息数成功
+     */
+    override fun getUnReadNewCount(result: Int) {
+        if (result > 0) {
+            mNewCountIv.setVisible(true)
+        }
+    }
+
 
     override fun onClick(v: View) {
         when (v.id) {
@@ -136,6 +154,11 @@ class MeFragment : BaseMvpFragment<UserInfoPresenter>(), UserInfoView, View.OnCl
                     map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
                     map.put("work", (!mUserInfo.work).toString())
                     mBasePresenter.postWorkStatus(map)
+                }
+            }
+            R.id.mNewIv -> {
+                afterLogin {
+                    startActivity<NewsActivity>()
                 }
             }
         }

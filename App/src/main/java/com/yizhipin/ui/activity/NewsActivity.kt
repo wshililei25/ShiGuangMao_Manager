@@ -1,42 +1,38 @@
-package com.qi.management.ui.fragment
+package com.yizhipin.ui.activity
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import cn.bingoogolapple.refreshlayout.BGANormalRefreshViewHolder
 import cn.bingoogolapple.refreshlayout.BGARefreshLayout
 import com.kennyc.view.MultiStateView
-import com.qi.management.R
-import com.qi.management.injection.component.DaggerManagerComponent
-import com.qi.management.injection.module.ManagerModule
-import com.qi.management.presenter.NewsPresenter
-import com.qi.management.presenter.view.NewsView
-import com.qi.management.ui.adapter.NewsAdapter
+import com.yizhipin.R
 import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.protocol.BasePagingResp
-import com.yizhipin.base.data.response.ManagerNews
+import com.yizhipin.base.data.response.News
 import com.yizhipin.base.ext.startLoading
-import com.yizhipin.base.ui.fragment.BaseMvpFragment
+import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.ui.adapter.BaseRecyclerViewAdapter
 import com.yizhipin.base.utils.AppPrefsUtils
-import kotlinx.android.synthetic.main.fragment_recyclerview.*
+import com.yizhipin.presenter.NewsPresenter
+import com.yizhipin.presenter.view.NewsView
+import com.yizhipin.ui.adapter.NewsAdapter
+import com.yizhipin.usercenter.injection.component.DaggerMainComponent
+import com.yizhipin.usercenter.injection.module.MianModule
+import kotlinx.android.synthetic.main.activity_recyclerview.*
 
 /**
  * Created by ${XiLei} on 2018/9/25.
+ * 消息
  */
-class NewFragment : BaseMvpFragment<NewsPresenter>(), NewsView, BGARefreshLayout.BGARefreshLayoutDelegate {
+class NewsActivity : BaseMvpActivity<NewsPresenter>(), NewsView, BGARefreshLayout.BGARefreshLayoutDelegate {
 
     private var mMaxPage: Int = 1
     private var mCurrentPage: Int = 1
-    private lateinit var mOrderAdapter: NewsAdapter
+    private lateinit var mAdapter: NewsAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_recyclerview, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_recyclerview)
 
         initView()
         initRefreshLayout()
@@ -44,15 +40,22 @@ class NewFragment : BaseMvpFragment<NewsPresenter>(), NewsView, BGARefreshLayout
     }
 
     private fun initView() {
-        mRv.layoutManager = LinearLayoutManager(activity!!)
-        mOrderAdapter = NewsAdapter(activity!!)
-        mRv.adapter = mOrderAdapter
+        mHeaderBar.getTiTleTv().text = getString(R.string.system_news)
+        mRv.layoutManager = LinearLayoutManager(this!!)
+        mAdapter = NewsAdapter(this!!)
+        mRv.adapter = mAdapter
+        mAdapter.setOnItemClickListener(object : BaseRecyclerViewAdapter.OnItemClickListener<News> {
+            override fun onItemClick(item: News, position: Int) {
+//                startActivity<InformationDetailsActivity>(BaseConstant.KEY_INFORMATION_ID to item.id)
+            }
+        })
+
     }
 
     private fun initRefreshLayout() {
         mRefreshLayout.setDelegate(this)
         mRefreshLayout.setPullDownRefreshEnable(false) //禁止下拉刷新
-        val viewHolder = BGANormalRefreshViewHolder(activity, true)
+        val viewHolder = BGANormalRefreshViewHolder(this, true)
         viewHolder.setRefreshViewBackgroundDrawableRes(R.color.yBgGray)
         viewHolder.setLoadMoreBackgroundColorRes(R.color.yBgGray)
         mRefreshLayout.setRefreshViewHolder(viewHolder)
@@ -61,28 +64,27 @@ class NewFragment : BaseMvpFragment<NewsPresenter>(), NewsView, BGARefreshLayout
     private fun loadData() {
         var map = mutableMapOf<String, String>()
         map.put("currentPage", mCurrentPage.toString())
-        map.put("storeId", AppPrefsUtils.getString(BaseConstant.KEY_SHOP_ID))
-        map.put("type", arguments!!.getString(BaseConstant.KEY_ORDER_STATUS, "-1").toString())
+        map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
         mMultiStateView.startLoading()
-        mBasePresenter.getNewsList(map)
+        mBasePresenter.getNews(map)
     }
 
     override fun injectComponent() {
-        DaggerManagerComponent.builder().activityComponent(mActivityComponent).managerModule(ManagerModule()).build().inject(this)
+        DaggerMainComponent.builder().activityComponent(mActivityComponent).mianModule(MianModule()).build().inject(this)
         mBasePresenter.mView = this
     }
 
-    override fun onGetNewsListResult(result: BasePagingResp<MutableList<ManagerNews>>) {
+    override fun onGetNewsSuccess(result: BasePagingResp<MutableList<News>>) {
 
         mRefreshLayout.endLoadingMore()
         mRefreshLayout.endRefreshing()
         if (result != null && result.data != null && result.data!!.size > 0) {
             mMaxPage = result!!.pi.totalPage
             if (mCurrentPage == 1) {
-                mOrderAdapter.setData(result.data!!)
+                mAdapter.setData(result.data!!)
             } else {
-                mOrderAdapter.dataList.addAll(result.data!!)
-                mOrderAdapter.notifyDataSetChanged()
+                mAdapter.dataList.addAll(result.data!!)
+                mAdapter.notifyDataSetChanged()
             }
             mMultiStateView.viewState = MultiStateView.VIEW_STATE_CONTENT
         } else {
@@ -111,5 +113,4 @@ class NewFragment : BaseMvpFragment<NewsPresenter>(), NewsView, BGARefreshLayout
         mCurrentPage = 1
         loadData()
     }
-
 }

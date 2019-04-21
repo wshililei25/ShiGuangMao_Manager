@@ -5,16 +5,17 @@ import android.util.Log
 import android.view.View
 import com.hyphenate.chat.EMClient
 import com.hyphenate.exceptions.HyphenateException
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.RegisterPresenter
 import com.yizhipin.usercenter.presenter.view.RegisterView
-import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -92,7 +93,9 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      * 注册成功
      */
     override fun onRegisterSuccess(result: UserInfo) {
-        UserPrefsUtils.putUserInfo(result)
+//        UserPrefsUtils.putUserInfo(result)
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_REGISTER_USER_ID, result?.id ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, result?.token.toString() ?: "")
         Thread(object : Runnable {
             override fun run() {
                 try {

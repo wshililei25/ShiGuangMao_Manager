@@ -10,6 +10,7 @@ import android.os.Message
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alipay.sdk.app.PayTask
 import com.google.gson.Gson
@@ -48,6 +49,10 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
     private var mPayType = "Alipay" //支付方式
     private val SDK_PAY_FLAG = 1
     private lateinit var mIWXAPI: IWXAPI
+
+    @Autowired(name = BaseConstant.KEY_IS_FIRST) //注解接收上个页面的传参
+    @JvmField
+    var mIsFirst: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,8 +103,8 @@ class RechargeActivity : BaseMvpActivity<PayPresenter>(), PayView, View.OnClickL
 
                 var map = mutableMapOf<String, String>()
                 map.put("uid", AppPrefsUtils.getString(BaseConstant.KEY_SP_USER_ID))
-//                map.put("amount", "1000") //暂时注释
-                map.put("amount", "0.01")
+                map.put("amount", "1000") //暂时注释
+//                map.put("amount", "0.01")
                 map.put("payType", mPayType)
                 mBasePresenter.rechargeCashPledge(map)
             }

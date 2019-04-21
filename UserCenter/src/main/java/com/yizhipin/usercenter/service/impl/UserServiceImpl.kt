@@ -145,4 +145,9 @@ open class UserServiceImpl @Inject constructor() : UserService {
     override fun getWorksList(map: MutableMap<String, String>): Observable<MutableList<Works>> {
         return mRepository.getWorksList(map).convert()
     }
+    override fun getUnreadNewCount(map: MutableMap<String, String>): Observable<Int> {
+        return mRepository.getUnreadNewCount(map)
+                .convert()
+    }
+
 }

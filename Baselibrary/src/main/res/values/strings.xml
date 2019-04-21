@@ -439,4 +439,6 @@
     <string name="reback_amount">退还金额</string>
     <string name="reback_all">全部退还</string>
     <string name="reback_channel">退还渠道</string>
+    <string name="system_news">系统消息</string>
+    <string name="reback_recharge">退押金</string>
 </resources>

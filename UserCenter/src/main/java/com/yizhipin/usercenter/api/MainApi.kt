@@ -1,14 +1,14 @@
 package com.yizhipin.usercenter.api
 
+import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.protocol.BaseResp
 import com.yizhipin.base.data.response.Goods
+import com.yizhipin.base.data.response.News
 import com.yizhipin.base.data.response.OssAddress
-import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.usercenter.bean.Banner
 import com.yizhipin.usercenter.data.api.Api
 import io.reactivex.Observable
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 
@@ -34,6 +34,8 @@ interface MainApi {
     @GET(Api.IMAGE_ADDRESS)
     fun getOssAddress(): Observable<BaseResp<OssAddress>>
 
+    @GET(Api.NEWS_LIST)
+    fun getNews(@Query("currentPage") currentPage: String, @Query("uid") uid: String): Observable<BasePagingResp<MutableList<News>>>
 
 
     /**
