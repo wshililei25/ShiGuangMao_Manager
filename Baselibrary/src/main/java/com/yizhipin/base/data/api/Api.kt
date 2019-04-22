@@ -97,5 +97,7 @@ interface Api {
         const val UNREAD_NEWS_COUNT = "api/UserMsg/UnRead" //获取未读消息数
         const val NEWS_LIST = "api/UserMsg/Page" //消息列表
         const val APPLY_WITHDRAW = "api/Withdraw"//申请提现
+        const val TEACHER_APPLY_LIST = "api/TeacherInfo/List" //员老师申请列表
+        const val APPROVE_TEACHER_APPLY = "api/TeacherInfo/Audit" //老师审核
     }
 }

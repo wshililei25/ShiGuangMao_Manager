@@ -6,8 +6,9 @@
     android:background="@color/common_white">
 
     <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHead"
+        android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
+        app:rightText="@string/add_dress"
         app:titleText="@string/title_costume_pavilion" />
 
 
@@ -15,7 +16,7 @@
         android:id="@+id/saleImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mHead"
+        android:layout_below="@+id/mHeaderBar"
         android:layout_margin="@dimen/margin_views"
         android:scaleType="centerCrop"
         android:src="@drawable/salearea" />

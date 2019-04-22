@@ -41,6 +41,12 @@ class ManagerRepository @Inject constructor() {
     fun getStaffList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<UserInfo>>> {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getStaffList(map["shopId"]!!)
     }
+    fun getTeacherApplyList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<Teacher>>> {
+        return RetrofitFactoryGet().create(ManagerApi::class.java).getTeacherApplyList(map["storeId"]!!)
+    }
+    fun approveTeacherApply(map: MutableMap<String, String>): Observable<BaseResp<Boolean>> {
+        return RetrofitFactoryPost(map).create(ManagerApi::class.java).approveTeacherApply()
+    }
 
     fun getCustomerList(map: MutableMap<String, String>): Observable<BaseResp<MutableList<UserInfo>>> {
         return RetrofitFactoryGet().create(ManagerApi::class.java).getCustomerList(map["shopId"]!!)

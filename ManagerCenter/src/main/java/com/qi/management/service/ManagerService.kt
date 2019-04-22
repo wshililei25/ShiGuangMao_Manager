@@ -34,4 +34,6 @@ interface ManagerService {
     fun getOssSign(map: MutableMap<String, String>): Observable<String>
     fun getOssSignFile(map: MutableMap<String, String>): Observable<String>
     fun getOssAddress(): Observable<OssAddress>
+    fun getTeacherApplyList(map: MutableMap<String, String>): Observable<MutableList<Teacher>>
+    fun approveTeacherApply(map: MutableMap<String, String>): Observable<Boolean>
 }

@@ -9,10 +9,13 @@ import com.qi.management.store.production_management.dagger.DaggerProductionList
 import com.qi.management.store.production_management.dagger.ProductionListModule
 import com.qi.management.store.production_management.presenter.ProductionListPresenterImpl
 import com.qi.management.store.wedding_photography.comboslist.adapter.CombosPagerAdapter
+import com.qi.management.ui.activity.AddHintActivity
 import com.yizhipin.base.data.protocol.BasePagingResp
+import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
 import com.yizhipin.provider.router.RouterPath.Management.PRODUCTION_LIST
-import kotlinx.android.synthetic.main.activity_combos_list.*
+import kotlinx.android.synthetic.main.activity_tablayout.*
+import org.jetbrains.anko.startActivity
 
 /**
  * 产品管理列表页
@@ -33,13 +36,16 @@ class ProductionListActivity : BaseMvpActivity<ProductionListPresenterImpl>(), P
 
 
     override fun onCreateView(): Int {
-        return R.layout.activity_combos_list
+        return R.layout.activity_tablayout
     }
 
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
-//        titleView.setTitle(R.string.title_production_manage)
-//        titleView.setOnLeftIconClickListener { onBackPressed() }
+        mHeaderBar.getTiTleTv().text = getString(R.string.title_production_manage)
+        mHeaderBar.getRightTv().text = getString(R.string.add_production)
+        mHeaderBar.getRightTv().onClick {
+            startActivity<AddHintActivity>("title" to getString(R.string.add_production))
+        }
     }
 
     override fun initData(savedInstanceState: Bundle?) {
@@ -49,11 +55,11 @@ class ProductionListActivity : BaseMvpActivity<ProductionListPresenterImpl>(), P
 
     override fun showCategory(data: MutableList<ProductionCategoryBean>) {
         for (i in 0 until data.size) {
-            tabLayout.addTab(tabLayout.newTab().setText(data[i].name))
+            mTab.addTab(mTab.newTab().setText(data[i].name))
             pagerItems.add(CombosPagerAdapter.CombosPagerItem(ProductionListFragment().setCategoryID(data[i].id),data[i].name))
         }
-        tabLayout.setupWithViewPager(viewPager)
-        viewPager.adapter = CombosPagerAdapter(supportFragmentManager,pagerItems)
+        mTab.setupWithViewPager(mVp)
+        mVp.adapter = CombosPagerAdapter(supportFragmentManager,pagerItems)
     }
 
     override fun addList(data: BasePagingResp<MutableList<CommonDetailBean>>) {

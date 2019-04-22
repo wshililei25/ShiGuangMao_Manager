@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
-import com.qi.management.ui.activity.AddStaffActivity
-import com.qi.management.ui.activity.CustomerListActivity
-import com.qi.management.ui.activity.StaffListActivity
-import com.qi.management.ui.activity.TeacherListActivity
+import com.qi.management.ui.activity.*
 import com.yizhipin.R
 import com.yizhipin.base.data.response.GridItem
 import com.yizhipin.base.recyclerview.GridItemDecoration
@@ -54,7 +51,7 @@ class PersonnelFragment : BaseFragment() {
             override fun onItemClick(item: GridItem, position: Int) {
                 when (position) {
                     0 -> startActivity<TeacherListActivity>()
-                    1 -> startActivity<TeacherEnterDatumActivity>()
+                    1 -> startActivity<TeacherApplyActivity>()
                     2 -> startActivity<StaffListActivity>()
                     3 -> startActivity<AddStaffActivity>()
                     4 -> startActivity<CustomerListActivity>()

@@ -35,4 +35,6 @@
     <string name="title_costume_pavilion">服装馆</string>
     <string name="man">男人</string>
     <string name="woman">女人</string>
+    <string name="add_production">添加产品</string>
+    <string name="add_dress">添加服装</string>
 </resources>

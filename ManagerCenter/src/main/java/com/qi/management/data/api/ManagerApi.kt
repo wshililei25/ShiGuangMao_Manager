@@ -33,6 +33,12 @@ interface ManagerApi {
     @GET(Api.STAFF_LIST)
     fun getStaffList(@Query("shopId") storeId: String): Observable<BaseResp<MutableList<UserInfo>>>
 
+    @GET(Api.TEACHER_APPLY_LIST)
+    fun getTeacherApplyList(@Query("storeId") storeId: String): Observable<BaseResp<MutableList<Teacher>>>
+
+    @POST(Api.APPROVE_TEACHER_APPLY)
+    fun approveTeacherApply(): Observable<BaseResp<Boolean>>
+
     @GET(Api.CUSTOMER_LIST)
     fun getCustomerList(@Query("shopId") storeId: String): Observable<BaseResp<MutableList<UserInfo>>>
 

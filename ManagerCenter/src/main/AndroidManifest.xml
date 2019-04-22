@@ -29,7 +29,8 @@
         <activity android:name=".ui.activity.ManagerNewsActivity" />
         <activity android:name=".ui.activity.FinancialStatisticsActivity" />
         <activity android:name=".ui.activity.ProfileActivity" />
-        <activity android:name=".ui.activity.MyCashPledgeActivity" />
+        <activity android:name=".ui.activity.AddHintActivity" />
+        <activity android:name=".ui.activity.TeacherApplyActivity" />
     </application>
 
 </manifest>

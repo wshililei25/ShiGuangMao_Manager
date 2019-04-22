@@ -31,8 +31,8 @@ android {
         config {
             keyAlias 'sgmmanager2019'
             keyPassword 'sgmmanager2019'
-            storeFile file('D://android/workspace_jianzhi/keystore/shiguangmao_manager.jks')
-//            storeFile file('F://workspace_xilei/keyStore/shiguangmao_manager.jks')
+//            storeFile file('D://android/workspace_jianzhi/keystore/shiguangmao_manager.jks')
+            storeFile file('F://workspace_xilei/keyStore/shiguangmao_manager.jks')
             storePassword 'sgmmanager2019'
         }
     }

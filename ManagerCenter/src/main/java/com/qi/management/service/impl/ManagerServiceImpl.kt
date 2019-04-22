@@ -5,6 +5,7 @@ import com.qi.management.service.ManagerService
 import com.yizhipin.base.data.protocol.BasePagingResp
 import com.yizhipin.base.data.response.*
 import com.yizhipin.base.ext.convert
+import com.yizhipin.base.ext.convertBoolean
 import com.yizhipin.base.ext.convertPaging
 import com.yizhipin.goods.data.response.Complain
 import com.yizhipin.usercenter.data.response.ManagerOrderDetails
@@ -46,6 +47,12 @@ open class ManagerServiceImpl @Inject constructor() : ManagerService {
 
     override fun getStaffList(map: MutableMap<String, String>): Observable<MutableList<UserInfo>> {
         return mRepository.getStaffList(map).convert()
+    }
+    override fun getTeacherApplyList(map: MutableMap<String, String>): Observable<MutableList<Teacher>> {
+        return mRepository.getTeacherApplyList(map).convert()
+    }
+    override fun approveTeacherApply(map: MutableMap<String, String>): Observable<Boolean> {
+        return mRepository.approveTeacherApply(map).convertBoolean()
     }
 
     override fun getCustomerList(map: MutableMap<String, String>): Observable<MutableList<UserInfo>> {

@@ -7,7 +7,7 @@
     tools:context=".store.wedding_photography.comboslist.view.CombosListActivity">
 
     <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHead"
+        android:id="@+id/mHeaderBar"
         style="@style/MatchWrap"
         app:rightText="@string/addCombos"
         app:titleText="@string/choiceCombos" />
@@ -17,7 +17,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/mHead"
+        android:layout_below="@+id/mHeaderBar"
         android:background="@color/common_white"
         app:tabIndicatorColor="@color/yRedLight"
         app:tabIndicatorFullWidth="false"
