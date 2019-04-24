@@ -1,6 +1,7 @@
 package com.yizhipin.usercenter.presenter
 
 import com.yizhipin.base.data.response.OssAddress
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.execute
 import com.yizhipin.base.mvp.presenter.BasePresenter
@@ -28,6 +29,15 @@ open class LoginPresenter @Inject constructor() : BasePresenter<LoginView>() {
                 .execute(object : BaseSubscriber<UserInfo>(mView) {
                     override fun onNext(t: UserInfo) {
                         mView.onLoginSuccess(t)
+                    }
+                }, mLifecycleProvider)
+
+    }
+    fun getTeacherIofo(map: MutableMap<String, String>) {
+        mUserServiceImpl.getTeacherIofo(map)
+                .execute(object : BaseSubscriber<Teacher>(mView) {
+                    override fun onNext(t: Teacher) {
+                        mView.onGetTeahcerInfoSuccess(t)
                     }
                 }, mLifecycleProvider)
 

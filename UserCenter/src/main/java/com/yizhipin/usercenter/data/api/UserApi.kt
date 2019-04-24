@@ -26,6 +26,9 @@ interface UserApi {
     @POST(Api.LOGIN) //登录
     fun login(): Observable<BaseResp<UserInfo>>
 
+    @GET("${Api.TEACHER_DATUM}/{uid}")//老师信息
+    fun getTeacherIofo(@Path("uid") uid: String): Observable<BaseResp<Teacher>>
+
     @GET("${Api.EDIT_USER_INFO}/{id}") //获取用户信息
     fun getUserInfo(@Path("id") id: String): Observable<BaseResp<UserInfo>>
 

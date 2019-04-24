@@ -47,6 +47,11 @@ class UserRepository @Inject constructor() : BaseModel {
         return RetrofitFactoryPost(map).create(UserApi::class.java)
                 .login()
     }
+    fun getTeacherIofo(map: MutableMap<String, String>): Observable<BaseResp<Teacher>> {
+
+        return RetrofitFactoryGet().create(UserApi::class.java)
+                .getTeacherIofo(map["uid"]!!)
+    }
 
     /**
      * 获取用户信息

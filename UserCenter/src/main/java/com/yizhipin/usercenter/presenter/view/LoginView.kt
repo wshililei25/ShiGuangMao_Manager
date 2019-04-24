@@ -1,5 +1,6 @@
 package com.yizhipin.usercenter.presenter.view
 
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.mvp.view.BaseView
 
@@ -8,4 +9,5 @@ import com.yizhipin.base.mvp.view.BaseView
  */
 interface LoginView : BaseView {
     fun onLoginSuccess(result: UserInfo)
+    fun onGetTeahcerInfoSuccess(result: Teacher)
 }

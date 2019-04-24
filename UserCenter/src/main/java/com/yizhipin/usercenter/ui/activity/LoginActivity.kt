@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
+import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
@@ -31,6 +32,7 @@ import org.jetbrains.anko.startActivity
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClickListener {
     /**类型(0个人,1老师,2管理人员)*/
     private var roleType: Int = 1
+    private var mUserInfo: UserInfo? = null
 
     override fun onCreateView(): Int {
         return R.layout.activity_login
@@ -96,23 +98,41 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
      * 登录成功
      */
     override fun onLoginSuccess(result: UserInfo) {
+        mUserInfo = result
         loginHuanXin(result.id)
         UserPrefsUtils.putUserInfo(result)
+
         when (result.type) {
-            1 -> {
-                if (result.realName.isNullOrBlank()) {
-                    startActivity<AuthenticationActivity>()
-                } else if (result.storeName.isNullOrBlank()) {
-                    startActivity<TeacherEnterDatumActivity>()
-                } else if (result.totalDeposit.toDouble() <= 0) {
-                    startActivity<CashPledgeActivity>()
-                } else {
-                    ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()
-                }
+            1 -> { //老师
+                val map = mutableMapOf<String, String>()
+                map["uid"] = result.id
+                mBasePresenter.getTeacherIofo(map)
             }
+            //管理
             2 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN_TEACHER).navigation()
         }
 //        finish()
+    }
+
+    /**
+     * 获取老师资料成功
+     */
+    override fun onGetTeahcerInfoSuccess(result: Teacher) {
+
+        mUserInfo?.let {
+            if (mUserInfo!!.realName.isNullOrBlank()) {
+                startActivity<AuthenticationActivity>()
+            } else if (mUserInfo!!.storeName.isNullOrBlank()) {
+                startActivity<TeacherEnterDatumActivity>()
+            } else if (result.status == "0") { //未审核
+                startActivity<TeacherApplySuccessActivity>()
+            } else if (mUserInfo!!.totalDeposit.toDouble() <= 0) {
+                startActivity<CashPledgeActivity>()
+            } else {
+                ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()
+            }
+        }
+
     }
 
     private fun loginHuanXin(uid: String) {

@@ -36,4 +36,5 @@ interface UserService {
     fun getWorksList(map: MutableMap<String, String>): Observable<MutableList<Works>>
     fun postUserWorkStatus(map: MutableMap<String, String>): Observable<WorkStatusBean>
     fun getUnreadNewCount(map: MutableMap<String, String>): Observable<Int>
+    fun getTeacherIofo(map: MutableMap<String, String>): Observable<Teacher>
 }

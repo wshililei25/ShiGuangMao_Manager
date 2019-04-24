@@ -51,8 +51,12 @@ open class UserServiceImpl @Inject constructor() : UserService {
 
     override fun login(map: MutableMap<String, String>): Observable<UserInfo> {
 
-        return mRepository.login(map)
-                .convert()
+        return mRepository.login(map).convert()
+    }
+
+    override fun getTeacherIofo(map: MutableMap<String, String>): Observable<Teacher> {
+
+        return mRepository.getTeacherIofo(map).convert()
     }
 
     /**
@@ -142,9 +146,11 @@ open class UserServiceImpl @Inject constructor() : UserService {
     override fun addWork(map: MutableMap<String, String>): Observable<Works> {
         return mRepository.addWork(map).convert()
     }
+
     override fun getWorksList(map: MutableMap<String, String>): Observable<MutableList<Works>> {
         return mRepository.getWorksList(map).convert()
     }
+
     override fun getUnreadNewCount(map: MutableMap<String, String>): Observable<Int> {
         return mRepository.getUnreadNewCount(map)
                 .convert()
