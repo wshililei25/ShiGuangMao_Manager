@@ -93,10 +93,12 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
      * 注册成功
      */
     override fun onRegisterSuccess(result: UserInfo) {
-//        UserPrefsUtils.putUserInfo(result)
+
         AppPrefsUtils.putString(BaseConstant.KEY_SP_REGISTER_USER_ID, result?.id ?: "")
         AppPrefsUtils.putString(BaseConstant.KEY_SP_TOKEN, result?.token.toString() ?: "")
-        Thread(object : Runnable {
+
+        //由于后台做了环信注册，这里不需要再注册
+        /*Thread(object : Runnable {
             override fun run() {
                 try {
                     EMClient.getInstance().createAccount(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim())
@@ -107,7 +109,7 @@ class RegisterActivity : BaseMvpActivity<RegisterPresenter>(), RegisterView, Vie
                 }
             }
 
-        }).start()
+        }).start()*/
         startActivity<UserInfoActivity>()
         finish()
     }

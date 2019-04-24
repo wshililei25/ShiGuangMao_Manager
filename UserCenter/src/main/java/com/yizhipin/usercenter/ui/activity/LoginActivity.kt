@@ -36,6 +36,11 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         return R.layout.activity_login
     }
 
+    override fun injectComponent() {
+        DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
+        mBasePresenter.mView = this
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
         mBackIv.onClick(this)
@@ -71,7 +76,6 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
             }
 
             R.id.mLoginBtn -> {
-                loginHuanXin()
                 val map = mutableMapOf<String, String>()
                 map["mobile"] = mMobileEt.text.toString()
                 map["password"] = mPswEt.text.toString()
@@ -83,37 +87,16 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
         }
     }
 
-    private fun loginHuanXin() {
-        EMClient.getInstance().login(mMobileEt.text.toString().trim(), mPswEt.text.toString().trim(), object : EMCallBack {
-
-            override fun onSuccess() {
-                Log.d("XiLei", "环信登录成功")
-            }
-
-            override fun onProgress(progress: Int, status: String) {
-            }
-
-            override fun onError(code: Int, error: String) {
-                Log.d("XiLei", "环信登录失败" + code + "," + error)
-//                runOnUiThread { Toast.makeText(applicationContext, "login failed", 0).show() }
-            }
-        })
-    }
-
     private fun isBtnEnable(): Boolean {
         return mMobileEt.text.isNullOrEmpty().not() &&
                 mPswEt.text.isNullOrEmpty().not()
-    }
-
-    override fun injectComponent() {
-        DaggerUserComponent.builder().activityComponent(mActivityComponent).userModule(UserModule()).build().inject(this)
-        mBasePresenter.mView = this
     }
 
     /**
      * 登录成功
      */
     override fun onLoginSuccess(result: UserInfo) {
+        loginHuanXin(result.id)
         UserPrefsUtils.putUserInfo(result)
         when (result.type) {
             1 -> {
@@ -132,4 +115,20 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 //        finish()
     }
 
+    private fun loginHuanXin(uid: String) {
+        EMClient.getInstance().login(uid, mPswEt.text.toString().trim(), object : EMCallBack {
+
+            override fun onSuccess() {
+                Log.d("XiLei", "环信登录成功")
+            }
+
+            override fun onProgress(progress: Int, status: String) {
+            }
+
+            override fun onError(code: Int, error: String) {
+                Log.d("XiLei", "环信登录失败" + code + "," + error)
+//                runOnUiThread { Toast.makeText(applicationContext, "login failed", 0).show() }
+            }
+        })
+    }
 }
