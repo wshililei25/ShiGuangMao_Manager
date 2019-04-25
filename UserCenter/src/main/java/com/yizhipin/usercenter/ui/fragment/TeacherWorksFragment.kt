@@ -30,7 +30,7 @@ import org.jetbrains.anko.support.v4.startActivity
 @Route(path = RouterPath.UserCenter.TEACHER_WORKS)
 class TeacherWorksFragment : BaseMvpFragment<TeacherWorkPresenter>(), TeacherWorkView, View.OnClickListener {
 
-    private lateinit var mAdapter: TeacherWorkAdapter
+     lateinit var mAdapter: TeacherWorkAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_teacher_works, container, false)

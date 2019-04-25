@@ -6,6 +6,7 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ext.setVisible
 import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.usercenter.R
+import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_teacher_apply_seccess.*
 
 /**
@@ -29,8 +30,16 @@ class TeacherApplySuccessActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.mRebackTv -> finish()
+            R.id.mRebackTv -> {
+                UserPrefsUtils.clearUserInfo()
+                finish()
+            }
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        UserPrefsUtils.clearUserInfo()
+        finish()
+    }
 }

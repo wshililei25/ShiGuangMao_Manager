@@ -26,9 +26,12 @@ class BaseConstant {
         const val KEY_SP_FRONT = "frontUrl"
         //身份证反照
         const val KEY_SP_REVERSE = "reverseUrl"
+        //老师是否入驻成功
+//        const val KEY_TEACEHR_STATUS = "teacherStatus"
+
+
         //押金
         const val FOREGIFT = "foregift "
-
         const val KEY_BOOLEAN = "isTrue"
         //用户类型
         const val KEY_USER_TYPE = "userType"

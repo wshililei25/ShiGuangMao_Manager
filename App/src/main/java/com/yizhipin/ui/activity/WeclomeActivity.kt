@@ -11,6 +11,7 @@ import com.yizhipin.provider.common.isLogined
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.ui.activity.CashPledgeActivity
 import com.yizhipin.usercenter.ui.activity.LoginActivity
+import com.yizhipin.usercenter.ui.activity.TeacherApplySuccessActivity
 import org.jetbrains.anko.startActivity
 
 /**
@@ -29,7 +30,9 @@ class WeclomeActivity : BaseActivity() {
         if (isLogined()) {
             when (AppPrefsUtils.getInt(BaseConstant.KEY_USER_TYPE)) {
                 1 -> {
-                    if (AppPrefsUtils.getString(BaseConstant.FOREGIFT).toDouble() <= 0) {
+                    /*if (AppPrefsUtils.getString(BaseConstant.KEY_TEACEHR_STATUS).isNotEmpty() && AppPrefsUtils.getString(BaseConstant.KEY_TEACEHR_STATUS) == "0") { //未审核
+                        startActivity<TeacherApplySuccessActivity>()
+                    } else*/ if (AppPrefsUtils.getString(BaseConstant.FOREGIFT).toDouble() <= 0) {
                         startActivity<CashPledgeActivity>()
                     } else {
                         ARouter.getInstance().build(RouterPath.App.PATH_MAIN).navigation()

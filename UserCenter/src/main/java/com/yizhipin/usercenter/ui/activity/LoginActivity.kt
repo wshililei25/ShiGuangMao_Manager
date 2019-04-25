@@ -9,11 +9,13 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
+import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
+import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
@@ -120,6 +122,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun onGetTeahcerInfoSuccess(result: Teacher) {
 
         mUserInfo?.let {
+//            AppPrefsUtils.putString(BaseConstant.KEY_TEACEHR_STATUS,result.status)
             if (mUserInfo!!.realName.isNullOrBlank()) {
                 startActivity<AuthenticationActivity>()
             } else if (mUserInfo!!.storeName.isNullOrBlank()) {
