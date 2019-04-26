@@ -6,14 +6,14 @@
     tools:ignore="MissingDefaultResource">
 
     <com.yizhipin.base.widgets.HeaderBar
-        android:id="@+id/mHead"
+        android:id="@+id/mHeadBar"
         style="@style/MatchWrap"
         app:titleText="@string/real_name_authentication" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mHead"
+        android:layout_below="@+id/mHeadBar"
         android:layout_marginTop="@dimen/common_margin"
         android:background="@color/common_white"
         android:orientation="vertical">

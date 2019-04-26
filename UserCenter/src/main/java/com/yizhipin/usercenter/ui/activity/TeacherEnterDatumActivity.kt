@@ -27,6 +27,7 @@ import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.TeacherEnterDatumPresenter
 import com.yizhipin.usercenter.presenter.view.TeacherEnterDatumView
+import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_teacher_enter_datum.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
@@ -60,6 +61,7 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
         mTeacherTypeView.onClick(this)
         mQuartersTypeView.onClick(this)
         mBtn.onClick(this)
+        mHeadBar.getBackIv().onClick(this)
     }
 
     override fun injectComponent() {
@@ -69,7 +71,7 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
 
     override fun onClick(v: View) {
         when (v.id) {
-
+            R.id.mBackIv -> UserPrefsUtils.clearUserInfo()
             R.id.mShopView -> startActivityForResult<ShopActivity>(ProvideReqCode.CODE_REQ_SHOP)
             R.id.mAddressView -> {
                 val popupWindow = PopupWindow(this)
@@ -87,7 +89,7 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                 popupWindow.setContentView(rootView)
                 popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT)
                 popupWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT)
-                popupWindow.showAsDropDown(mHead)
+                popupWindow.showAsDropDown(mHeadBar)
             }
             R.id.mTeacherTypeView -> {
                 var customDialog = TeacherTypeDialog(this)
@@ -155,5 +157,10 @@ class TeacherEnterDatumActivity : BaseMvpActivity<TeacherEnterDatumPresenter>(),
                         mQuartersTypeEt.text = t.takePhoteType.name
                     }
                 }.registerInBus(this)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        UserPrefsUtils.clearUserInfo()
     }
 }

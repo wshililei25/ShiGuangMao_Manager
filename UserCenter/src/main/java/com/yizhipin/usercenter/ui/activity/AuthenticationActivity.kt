@@ -24,6 +24,7 @@ import com.yizhipin.usercenter.injection.component.DaggerUserComponent
 import com.yizhipin.usercenter.injection.module.UserModule
 import com.yizhipin.usercenter.presenter.AuthenticationPresenter
 import com.yizhipin.usercenter.presenter.view.AuthenticationView
+import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_authentication.*
 import org.devio.takephoto.model.TResult
 import org.jetbrains.anko.startActivity
@@ -64,6 +65,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
         mFrontCardPhoto.onClick(this)
         mReverseCardPhoto.onClick(this)
         mBtn.onClick(this)
+        mHeadBar.getBackIv().onClick(this)
     }
 
     /**
@@ -103,6 +105,7 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
 
     override fun onClick(v: View) {
         when (v.id) {
+            R.id.mBackIv -> UserPrefsUtils.clearUserInfo()
             R.id.mFrontCardPhoto -> {
                 mIsFront = true
                 showAlertView()
@@ -143,10 +146,10 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
 
     override fun onUpdateUserInfoSuccess(result: UserInfo) {
 
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_REAL_NAME, result?.realName  ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_CARD, result?.idCard   ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_FRONT, result?.cardBefore   ?: "")
-        AppPrefsUtils.putString(BaseConstant.KEY_SP_REVERSE, result?.cardAfter   ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_REAL_NAME, result?.realName ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_CARD, result?.idCard ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_FRONT, result?.cardBefore ?: "")
+        AppPrefsUtils.putString(BaseConstant.KEY_SP_REVERSE, result?.cardAfter ?: "")
         startActivity<TeacherEnterDatumActivity>()
         finish()
     }
@@ -255,5 +258,10 @@ class AuthenticationActivity : BaseTakePhotoActivity<AuthenticationPresenter>(),
     }
 
     override fun onError(mes: String) {
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        UserPrefsUtils.clearUserInfo()
     }
 }

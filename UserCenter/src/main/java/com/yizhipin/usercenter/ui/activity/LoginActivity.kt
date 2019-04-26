@@ -9,13 +9,11 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.hyphenate.EMCallBack
 import com.hyphenate.chat.EMClient
-import com.yizhipin.base.common.BaseConstant
 import com.yizhipin.base.data.response.Teacher
 import com.yizhipin.base.data.response.UserInfo
 import com.yizhipin.base.ext.enable
 import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseMvpActivity
-import com.yizhipin.base.utils.AppPrefsUtils
 import com.yizhipin.provider.router.RouterPath
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.injection.component.DaggerUserComponent
@@ -106,9 +104,17 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
 
         when (result.type) {
             1 -> { //老师
-                val map = mutableMapOf<String, String>()
-                map["uid"] = result.id
-                mBasePresenter.getTeacherIofo(map)
+
+                if (mUserInfo!!.realName.isNullOrBlank()) {
+                    startActivity<AuthenticationActivity>()
+                } else if (mUserInfo!!.storeName.isNullOrBlank()) {
+                    startActivity<TeacherEnterDatumActivity>()
+                } else {
+                    val map = mutableMapOf<String, String>()
+                    map["uid"] = result.id
+                    mBasePresenter.getTeacherIofo(map)
+                }
+
             }
             //管理
             2 -> ARouter.getInstance().build(RouterPath.App.PATH_MAIN_TEACHER).navigation()
@@ -122,11 +128,15 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     override fun onGetTeahcerInfoSuccess(result: Teacher) {
 
         mUserInfo?.let {
-//            AppPrefsUtils.putString(BaseConstant.KEY_TEACEHR_STATUS,result.status)
-            if (mUserInfo!!.realName.isNullOrBlank()) {
-                startActivity<AuthenticationActivity>()
-            } else if (mUserInfo!!.storeName.isNullOrBlank()) {
-                startActivity<TeacherEnterDatumActivity>()
+            //            AppPrefsUtils.putString(BaseConstant.KEY_TEACEHR_STATUS,result.status)
+            /* if (mUserInfo!!.realName.isNullOrBlank()) {
+                 startActivity<AuthenticationActivity>()
+             } else if (mUserInfo!!.storeName.isNullOrBlank()) {
+                 startActivity<TeacherEnterDatumActivity>()
+             } else */
+
+            if (result.works == null || result.works.size <= 0) {
+                startActivity<TeacherWorksActivity>()
             } else if (result.status == "0") { //未审核
                 startActivity<TeacherApplySuccessActivity>()
             } else if (mUserInfo!!.totalDeposit.toDouble() <= 0) {
@@ -139,6 +149,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), LoginView, View.OnClick
     }
 
     private fun loginHuanXin(uid: String) {
+        Log.d("XiLei", "环信登录---uid====" + uid)
         EMClient.getInstance().login(uid, mPswEt.text.toString().trim(), object : EMCallBack {
 
             override fun onSuccess() {

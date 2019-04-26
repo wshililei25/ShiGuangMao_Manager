@@ -5,6 +5,7 @@ import com.yizhipin.base.ext.onClick
 import com.yizhipin.base.ui.activity.BaseActivity
 import com.yizhipin.usercenter.R
 import com.yizhipin.usercenter.ui.fragment.TeacherWorksFragment
+import com.yizhipin.usercenter.utils.UserPrefsUtils
 import kotlinx.android.synthetic.main.activity_teacher_works.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
@@ -40,6 +41,13 @@ class TeacherWorksActivity : BaseActivity() {
             startActivity<TeacherApplySuccessActivity>()
             finish()
         }
+        mHeaderBar.getBackIv().onClick {
+            UserPrefsUtils.clearUserInfo()
+        }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        UserPrefsUtils.clearUserInfo()
+    }
 }
